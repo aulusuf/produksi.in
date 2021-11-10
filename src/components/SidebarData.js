@@ -1,91 +1,111 @@
 import React from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
-import * as IoIcons from 'react-icons/io';
 import * as RiIcons from 'react-icons/ri';
+import * as GiIcons from 'react-icons/gi';
+import * as MdIcons from 'react-icons/md';
+import * as BiIcons from 'react-icons/bi';
+
 
 export const SidebarData = [
   {
     title: 'Dashboard',
-    path: '/overview',
-    icon: <AiIcons.AiFillHome />,
+    path: '/dashboard',
+    icon: <AiIcons.AiOutlineDashboard />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
+
+  },
+  {
+    title: 'Produksi',
+    icon: <GiIcons.GiGearHammer />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
 
     subNav: [
       {
-        title: 'Users',
-        path: '/overview/users',
-        icon: <IoIcons.IoIosPaper />
+        title: 'Buat Permintaan',
+        path: '/produksi/permintaan',
+        icon: <GiIcons.GiGearHammer />,
+        cName: 'sub-nav'
       },
       {
-        title: 'Revenue',
-        path: '/overview/revenue',
-        icon: <IoIcons.IoIosPaper />
+        title: 'Proses',
+        path: '/produksi/proses',
+        icon: <GiIcons.GiGearHammer />,
+        cName: 'sub-nav'
+      },
+      {
+        title: 'Selesai',
+        path: '/produksi/selesai',
+        icon: <GiIcons.GiGearHammer />
       }
     ]
   },
   {
-    title: 'Reports',
-    path: '/reports',
-    icon: <IoIcons.IoIosPaper />,
+    title: 'Produk',
+    icon: <MdIcons.MdProductionQuantityLimits />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
 
     subNav: [
       {
-        title: 'Reports',
-        path: '/reports/reports1',
-        icon: <IoIcons.IoIosPaper />,
+        title: 'Tambah Produk',
+        path: '/produk/tambah-produk',
+        icon: <MdIcons.MdProductionQuantityLimits />,
         cName: 'sub-nav'
       },
       {
-        title: 'Reports 2',
-        path: '/reports/reports2',
-        icon: <IoIcons.IoIosPaper />,
+        title: 'Data Produk',
+        path: '/produk/data-produk',
+        icon: <MdIcons.MdProductionQuantityLimits />,
         cName: 'sub-nav'
-      },
-      {
-        title: 'Reports 3',
-        path: '/reports/reports3',
-        icon: <IoIcons.IoIosPaper />
       }
     ]
   },
   {
-    title: 'Products',
-    path: '/products',
-    icon: <FaIcons.FaCartPlus />
+    title: 'Material',
+    icon: <GiIcons.GiMaterialsScience />,
+
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
+
+    subNav: [
+      {
+        title: 'Permintaan',
+        path: '/material/permintaan',
+        icon: <GiIcons.GiMaterialsScience />
+      },
+      {
+        title: 'Stok',
+        path: '/material/stok',
+        icon: <GiIcons.GiMaterialsScience />
+      }
+    ]
   },
   {
-    title: 'Team',
-    path: '/team',
-    icon: <IoIcons.IoMdPeople />
-  },
-  {
-    title: 'Messages',
-    path: '/messages',
+    title: 'Kategori',
+    path: '/kategori',
     icon: <FaIcons.FaEnvelopeOpenText />,
+  },
+  {
+    title: 'Pegawai',
+    icon: <BiIcons.BiGroup style={{color:'white'}}/>,
 
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
 
     subNav: [
       {
-        title: 'Message 1',
-        path: '/messages/message1',
-        icon: <IoIcons.IoIosPaper />
+        title: 'Jadwal',
+        path: '/pegawai/jadwal',
+        icon: <BiIcons.BiGroup />
       },
       {
-        title: 'Message 2',
-        path: '/messages/message2',
-        icon: <IoIcons.IoIosPaper />
+        title: 'Data Pegawai',
+        path: '/pegawai/data-pegawai',
+        icon: <BiIcons.BiGroup />
       }
     ]
   },
-  {
-    title: 'Support',
-    path: '/support',
-    icon: <IoIcons.IoMdHelpCircle />
-  }
 ];

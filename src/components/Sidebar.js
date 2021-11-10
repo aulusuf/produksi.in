@@ -59,7 +59,7 @@ export function Sidebar () {
                 <NavIcon to='#'>
                     <FaIcons.FaBars onClick={showSidebar} />
                 </NavIcon>
-                <NavIcon to='#' style={{textDecoration:'none', color:'white'}}>
+                <NavIcon to='/dashboard' style={{textDecoration:'none', color:'white'}}>
                         Produksi.in
                 </NavIcon>
             </Navbar>
