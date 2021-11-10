@@ -8,3 +8,19 @@
   transform: translate(-50%, -50%);
   position: absolute;
 }
+
+.content {
+  background-color: #f4f4f4;
+  margin-top: 60px;
+}
+
+.content-box {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px 30px;
+}
+
+.content-head {
+  font-size: 16px;
+  font-weight: 700;
+}
