@@ -1,7 +1,29 @@
-import React from "react";
+import React from 'react';
 
 const Dashboard = () => {
-  return <div>Masuk Dashboard Manajemen</div>;
+  return (
+    <div className='home'>
+      <h1>Dashboard</h1>
+      <h1>Dashboard</h1>
+      <h1>Dashboard</h1>
+      <h1>Dashboard</h1>
+      <h1>Dashboard</h1>
+      <h1>Dashboard</h1>
+      <h1>Dashboard</h1>
+      <h1>Dashboard</h1>
+      <h1>Dashboard</h1>
+      <h1>Dashboard</h1>
+      <h1>Dashboard</h1>
+      <h1>Dashboard</h1>
+      <h1>Dashboard</h1>
+      <h1>Dashboard</h1>
+      <h1>Dashboard</h1>
+      <h1>Dashboard</h1>
+      <h1>Dashboard</h1>
+      <h1>Dashboard</h1>
+      <h1>Dashboard</h1>
+    </div>
+  );
 };
 
 export default Dashboard;

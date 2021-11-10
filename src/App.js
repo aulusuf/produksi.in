@@ -1,38 +1,40 @@
 // routing
 
-import "./App.css";
-import { Sidebar } from "./components/Sidebar";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Overview from "./pages/Overview";
-import { Reports, ReportsOne, ReportsTwo, ReportsThree } from "./pages/Reports";
-import Team from "./pages/Team";
-import Login from "./pages/Login";
-import "./styles/bootstrap/css/bootstrap.min.css";
-import "./styles/custom.css";
+import './App.css';
+import { Sidebar } from './components/Sidebar';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Dashboard from './pages/manajemen/Dashboard';
+import BuatPermintaan from './pages/manajemen/produksi/PermintaanProduksi';
+import ProsesProduksi from './pages/manajemen/produksi/ProsesProduksi';
+import SelesaiProduksi from './pages/manajemen/produksi/SelesaiProduksi';
+import TambahProduk from './pages/manajemen/products/TambahProduk';
+import DataProduk from './pages/manajemen/products/DataProduk';
+import PermintaanMaterial from './pages/manajemen/material/PermintaanMaterial';
+import StokMaterial from './pages/manajemen/material/StokMaterial';
+import Kategori from './pages/manajemen/Kategori';
+import JadwalPegawai from './pages/manajemen/pegawai/JadwalPegawai';
+import DataPegawai from './pages/manajemen/pegawai/DataPegawai';
 
 function App() {
   return (
     <Router>
-      {/* <Sidebar /> */}
+      <Sidebar />
       <Switch>
-        <Route path="/login" exact component={Login} />
-        <Route path="/overview">
-          <Sidebar />
-          <Overview />
-        </Route>
-        <Route path="/reports">
-          <Sidebar />
-          <Reports />
-        </Route>
-        {/* <Route path="/overview" exact component={Overview} />
-        <Route path="/reports" exact component={Reports} /> */}
-        <Route path="/reports/reports1" exact component={ReportsOne} />
-        <Route path="/reports/reports2" exact component={ReportsTwo} />
-        <Route path="/reports/reports3" exact component={ReportsThree} />
-        <Route path="/team" exact component={Team} />
+        <Route path='/manajemen/dashboard' exact component={Dashboard} />
+        <Route path='/manajemen/produksi/permintaan' exact component={BuatPermintaan} />
+        <Route path='/manajemen/produksi/proses' exact component={ProsesProduksi} />
+        <Route path='/manajemen/produksi/selesai' exact component={SelesaiProduksi} />
+        <Route path='/manajemen/produk/tambah-produk' exact component={TambahProduk} />
+        <Route path='/manajemen/produk/data-produk' exact component={DataProduk} />
+        <Route path='/manajemen/material/permintaan' exact component={PermintaanMaterial} />
+        <Route path='/manajemen/material/stok' exact component={StokMaterial} />
+        <Route path='/manajemen/kategori' exact component={Kategori} />
+        <Route path='/manajemen/pegawai/jadwal' exact component={JadwalPegawai} />
+        <Route path='/manajemen/pegawai/data-pegawai' exact component={DataPegawai} />
       </Switch>
     </Router>
   );
 }
 
 export default App;
+
