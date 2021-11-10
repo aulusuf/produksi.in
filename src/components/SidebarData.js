@@ -10,7 +10,7 @@ import * as BiIcons from 'react-icons/bi';
 export const SidebarData = [
   {
     title: 'Dashboard',
-    path: '/dashboard',
+    path: '/manajemen/dashboard',
     icon: <AiIcons.AiOutlineDashboard />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -25,19 +25,19 @@ export const SidebarData = [
     subNav: [
       {
         title: 'Buat Permintaan',
-        path: '/produksi/permintaan',
+        path: '/manajemen/produksi/permintaan',
         icon: <GiIcons.GiGearHammer />,
         cName: 'sub-nav'
       },
       {
         title: 'Proses',
-        path: '/produksi/proses',
+        path: '/manajemen/produksi/proses',
         icon: <GiIcons.GiGearHammer />,
         cName: 'sub-nav'
       },
       {
         title: 'Selesai',
-        path: '/produksi/selesai',
+        path: '/manajemen/produksi/selesai',
         icon: <GiIcons.GiGearHammer />
       }
     ]
@@ -51,13 +51,13 @@ export const SidebarData = [
     subNav: [
       {
         title: 'Tambah Produk',
-        path: '/produk/tambah-produk',
+        path: '/manajemen/produk/tambah-produk',
         icon: <MdIcons.MdProductionQuantityLimits />,
         cName: 'sub-nav'
       },
       {
         title: 'Data Produk',
-        path: '/produk/data-produk',
+        path: '/manajemen/produk/data-produk',
         icon: <MdIcons.MdProductionQuantityLimits />,
         cName: 'sub-nav'
       }
@@ -73,19 +73,19 @@ export const SidebarData = [
     subNav: [
       {
         title: 'Permintaan',
-        path: '/material/permintaan',
+        path: '/manajemen/material/permintaan',
         icon: <GiIcons.GiMaterialsScience />
       },
       {
         title: 'Stok',
-        path: '/material/stok',
+        path: '/manajemen/material/stok',
         icon: <GiIcons.GiMaterialsScience />
       }
     ]
   },
   {
     title: 'Kategori',
-    path: '/kategori',
+    path: '/manajemen/kategori',
     icon: <FaIcons.FaEnvelopeOpenText />,
   },
   {
@@ -98,12 +98,12 @@ export const SidebarData = [
     subNav: [
       {
         title: 'Jadwal',
-        path: '/pegawai/jadwal',
+        path: '/manajemen/pegawai/jadwal',
         icon: <BiIcons.BiGroup />
       },
       {
         title: 'Data Pegawai',
-        path: '/pegawai/data-pegawai',
+        path: '/manajemen/pegawai/data-pegawai',
         icon: <BiIcons.BiGroup />
       }
     ]

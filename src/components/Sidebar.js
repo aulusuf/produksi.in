@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from './SidebarData';
 import SubMenu from './SubMenu';
 import { IconContext } from 'react-icons/lib';
-import { Container, Navbar } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 
 
     const NavIcon = styled(Link)`
@@ -20,7 +19,7 @@ import { Container, Navbar } from 'react-bootstrap';
   
   const SidebarNav = styled.nav`
   padding-top: 60px;
-    background: #15171c;
+    background: #0771B8;
     width: 250px;
     height: 100vh;
     display: flex;
@@ -54,15 +53,17 @@ export function Sidebar () {
             integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
             crossorigin="anonymous"
             />
-    
-            <Navbar fixed="top" style={{backgroundColor:'#15171c'}}>
-                <NavIcon to='#'>
-                    <FaIcons.FaBars onClick={showSidebar} />
-                </NavIcon>
-                <NavIcon to='/dashboard' style={{textDecoration:'none', color:'white'}}>
-                        Produksi.in
-                </NavIcon>
-            </Navbar>
+            <div class="shadow-sm bg-black rounded">
+              <Navbar fixed="top" style={{backgroundColor:'white', boxShadow:'black'}}>
+                  <NavIcon to='#'>
+                      <FaIcons.FaBars onClick={showSidebar} style={{color:'black'}}/>
+                  </NavIcon>
+                  <NavIcon to='/manajemen/dashboard' style={{textDecoration:'none', color:'black'}}>
+                          Produksi.in
+                  </NavIcon>
+              </Navbar>
+            </div>
+            
         <SidebarNav sidebar={sidebar}>
           <SidebarWrap>
             {/* <NavIcon to='#'>
