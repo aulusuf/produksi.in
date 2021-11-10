@@ -2,7 +2,7 @@ import React from 'react';
 
 const DataProduk = () => {
   return (
-    <div className='permintaan produksi'>
+    <div className="marginAll">
       <h1>Data Produk</h1>
       <h1>Data Produk</h1>
       <h1>Data Produk</h1>

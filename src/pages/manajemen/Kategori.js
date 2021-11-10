@@ -2,7 +2,7 @@ import React from 'react';
 
 const Kategori = () => {
   return (
-    <div className='kategori'>
+    <div className="marginAll">
       <h1>Kategori</h1>
       <h1>Kategori</h1>
       <h1>Kategori</h1>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const SelesaiProduksi = () => {
   return (
-    <div className='home'>
+    <div className="marginAll">
       <h1>Selesai Produksi</h1>
       <h1>Selesai Produksi</h1>
       <h1>Selesai Produksi</h1>
