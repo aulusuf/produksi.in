@@ -12,7 +12,6 @@ import DataProduk from './pages/manajemen/products/DataProduk';
 import PermintaanMaterial from './pages/manajemen/material/PermintaanMaterial';
 import StokMaterial from './pages/manajemen/material/StokMaterial';
 import Kategori from './pages/manajemen/Kategori';
-import JadwalPegawai from './pages/manajemen/pegawai/JadwalPegawai';
 import DataPegawai from './pages/manajemen/pegawai/DataPegawai';
 
 function App() {
