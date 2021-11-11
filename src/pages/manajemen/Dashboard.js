@@ -124,7 +124,7 @@ const Dashboard = () => {
               <h3>Kategori Produk</h3>
                 <Row>
                   <Col>
-                  <div class="shadow-sm bg-body rounded">
+                    <div class="shadow-sm bg-body rounded">
                       <Image style={{height:'170px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
                       <p style={{textAlign:'center'}}>Tas</p>
                     </div>
