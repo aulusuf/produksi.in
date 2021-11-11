@@ -38,7 +38,7 @@ const DataProduk = () => {
                       Gaya Hidup
                     </Container>
                   </div>
-                  <p>Biaya Produksi Satuan</p>
+                  <text>Biaya Produksi Satuan</text>
                   <h5>Rp. <text>200.000.000</text></h5>
                   <div className="d-flex justify-content-center">
                     <Button as="input" type="submit" value="Ubah Produk" className="button-edit-produk"/>
