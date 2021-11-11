@@ -1,61 +1,82 @@
-import React from "react";
+import Button from '@restart/ui/esm/Button';
+import React from 'react';
+import { Container, Table } from 'react-bootstrap';
 
 const PermintaanMaterial = () => {
   return (
-    <div className="content vh-100">
-      <div className="container row mx-auto pt-3 gx-3">
-        {/* Profil */}
-        <div className="col-xl-6 col-sm-12 p-2">
-          <div className="content-box d-flex">
-            <div className="content-head d-flex justify-content-end align-items-center mb-2 fs-3 col-4">
-              <img
-                src="https://randomuser.me/api/portraits/men/19.jpg"
-                alt="foto"
-                className="photo-sm rounded-circle"
-              />
+    <div className="marginAll">
+      <h1>Material</h1>
+
+      <div class="shadow-sm p-3 mt-3 bg-body rounded">
+          <Container style={{paddingTop:'20px', paddingBottom:'20px'}}>
+            <h3>Permintaan</h3>
+            <div style={{marginTop:'5%'}}>
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>
+                      <div className="d-flex justify-content-center">
+                        <Button as="input" type="submit" value="Kirim" className="button-submit-prosuksi"/>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                    <td>
+                      <div className="d-flex justify-content-center">
+                        <Button variant="primary" size="lg" disabled className="button-selesai-material">
+                          Selesai
+                        </Button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                    <td>
+                      <div className="d-flex justify-content-center">
+                        <Button variant="primary" size="lg" disabled className="button-selesai-material">
+                          Selesai
+                        </Button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                    <td>
+                      <div className="d-flex justify-content-center">
+                        <Button variant="primary" size="lg" disabled className="button-selesai-material">
+                          Selesai
+                        </Button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </Table>
             </div>
-            <div className="content-body mb-2 d-flex align-items-center ms-3">
-              <div>
-                <div className="mb-2 fs-3 fw-bold">John Doe</div>
-                <div className="mb-2">Manajemen</div>
-              </div>
-            </div>
-          </div>
+          </Container>  
         </div>
-        {/* Grafik */}
-        <div className="col-xl-6 col-sm-12 p-2">
-          <div className="content-box">
-            <div className="content-head mb-2 fs-5">Grafik</div>
-            <div className="content-body mb-2">this is content body</div>
-          </div>
-        </div>
-        {/* Statistik */}
-        <div className="col-xl-6 col-sm-12 p-2">
-          <div className="content-box">
-            <div className="content-head mb-2 fs-5">Statistik</div>
-            <div className="content-body mb-2">this is content body</div>
-          </div>
-        </div>
-        {/* Kategori Produk */}
-        <div className="col-xl-6 col-sm-12 p-2">
-          <div className="content-box">
-            <div className="content-head mb-2 fs-5">Kategori Produk</div>
-            <div className="content-body mb-2">this is content body</div>
-          </div>
-        </div>
-        <div className="col-xl-6 col-sm-12 p-2" height="350px">
-          <div>
-            <div className="content-button">this is the content2</div>
-            <div className="content-button">this is the content2</div>
-          </div>
-        </div>
-        <div className="col-xl-6 col-sm-12 p-2">
-          <div className="content-box">
-            <div className="content-head mb-2 fs-5">Kategori Produk</div>
-            <div className="content-body mb-2">this is content body</div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };

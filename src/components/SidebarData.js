@@ -90,22 +90,7 @@ export const SidebarData = [
   },
   {
     title: 'Pegawai',
+    path: '/manajemen/pegawai',
     icon: <BiIcons.BiGroup style={{color:'white'}}/>,
-
-    iconClosed: <RiIcons.RiArrowDownSFill />,
-    iconOpened: <RiIcons.RiArrowUpSFill />,
-
-    subNav: [
-      {
-        title: 'Jadwal',
-        path: '/manajemen/pegawai/jadwal',
-        icon: <BiIcons.BiGroup />
-      },
-      {
-        title: 'Data Pegawai',
-        path: '/manajemen/pegawai/data-pegawai',
-        icon: <BiIcons.BiGroup />
-      }
-    ]
   },
 ];

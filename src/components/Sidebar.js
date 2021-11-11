@@ -18,7 +18,6 @@ import { Navbar } from 'react-bootstrap';
   `;
   
   const SidebarNav = styled.nav`
-  padding-top: 60px;
     background: #0771B8;
     width: 250px;
     height: 100vh;
@@ -54,7 +53,7 @@ export function Sidebar () {
             crossorigin="anonymous"
             />
             <div class="shadow-sm bg-black rounded">
-              <Navbar fixed="top" style={{backgroundColor:'white', boxShadow:'black'}}>
+              <Navbar fixed="top" style={{backgroundColor:'blue', boxShadow:'black'}}>
                   <NavIcon to='#'>
                       <FaIcons.FaBars onClick={showSidebar} style={{color:'black'}}/>
                   </NavIcon>
