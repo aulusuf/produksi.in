@@ -29,8 +29,7 @@ function App() {
         <Route path='/manajemen/material/permintaan' exact component={PermintaanMaterial} />
         <Route path='/manajemen/material/stok' exact component={StokMaterial} />
         <Route path='/manajemen/kategori' exact component={Kategori} />
-        <Route path='/manajemen/pegawai/jadwal' exact component={JadwalPegawai} />
-        <Route path='/manajemen/pegawai/data-pegawai' exact component={DataPegawai} />
+        <Route path='/manajemen/pegawai' exact component={DataPegawai} />
       </Switch>
     </Router>
   );
