@@ -55,9 +55,9 @@ export function Sidebar () {
             <div class="shadow-sm bg-black rounded">
               <Navbar fixed="top" style={{backgroundColor:'blue', boxShadow:'black'}}>
                   <NavIcon to='#'>
-                      <FaIcons.FaBars onClick={showSidebar} style={{color:'black'}}/>
+                      <FaIcons.FaBars onClick={showSidebar} style={{color:'white'}}/>
                   </NavIcon>
-                  <NavIcon to='/manajemen/dashboard' style={{textDecoration:'none', color:'black'}}>
+                  <NavIcon to='/manajemen/dashboard' style={{textDecoration:'none', color:'white'}}>
                           Produksi.in
                   </NavIcon>
               </Navbar>

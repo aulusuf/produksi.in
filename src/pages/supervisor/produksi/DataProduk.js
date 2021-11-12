@@ -6,7 +6,7 @@ const DataProduk = () => {
   const [lgShow, setLgShow] = useState(false);
 
   return (
-    <div className="marginAll" style={{paddingTop:'20px', paddingBottom:'20px'}}>
+    <div className="marginAll">
 
       <Modal
         size="lg"
@@ -95,16 +95,7 @@ const DataProduk = () => {
         </Modal.Body>
       </Modal>
 
-      <Row>
-        <Col>
-          <h3>Produk</h3>
-        </Col>
-        <Col>
-          <div className="d-flex justify-content-end" style={{marginRight:'7%'}}>
-            <Button as="input" type="submit" value="Tambah Produk" className="button-submit-prosuksi"/>
-          </div>
-        </Col>
-      </Row>
+      <h1>Produksi</h1>
 
       <div class="shadow-sm p-3 bg-body rounded">
           <Container style={{paddingTop:'20px', paddingBottom:'20px'}}>

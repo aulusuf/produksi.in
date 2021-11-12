@@ -4,9 +4,7 @@ import "./styles/all.css";
 import * as BiIcons from 'react-icons/bi';
 
 const Dashboard = () => {
-  // perandaian role manajer supervisor produksi
   return (
-    // Output ada tiga
     <div className="marginAll">
         <Row>
           <Col>
@@ -20,43 +18,13 @@ const Dashboard = () => {
                   </Col>
                   <Col sm={9}>
                     <div style={{textAlign:"center", paddingTop:'10px'}}>
-                        <h3>Hallo Manager</h3>
-                        <text>Farhan Ismail</text>
+                        <h3>Hallo <text>Farhan Ismail</text></h3>
+                        <text style={{fontSize:'21px'}}>Supervisor</text>
                     </div>
                   </Col>
                 </Row>
               </Container>  
             </div>
-          </Col>
-          <Col>
-            <div class="shadow-sm p-3 mt-3 bg-body rounded">
-              <Container >
-                <Row>
-                  <Col sm={3}>
-                    <h3>Analisis</h3>
-                  </Col>
-                  <Col>
-
-                    <Dropdown>
-                      <Dropdown.Toggle variant="Info" id="dropdown-basic">
-                        Barang Produksi
-                      </Dropdown.Toggle>
-
-                      <Dropdown.Menu>
-                        <Dropdown.Item href="#/action-1">Tas</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">Sepatu</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Baju</Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown>
-                    </Col>
-                </Row>
-              </Container>
-            </div>
-          </Col>
-        </Row>
-
-        <Row>
-          <Col>
             <div class="shadow-sm p-3 mt-3 bg-body rounded">
               <Container style={{ paddingBottom:'30px'}}>
               <h3>Statistik</h3>
@@ -122,36 +90,57 @@ const Dashboard = () => {
           </Col>
           <Col>
             <div class="shadow-sm p-3 mt-3 bg-body rounded">
-              <Container>
-              <h3>Kategori Produk</h3>
-                <Row>
-                  <Col>
-                    <div class="shadow-sm bg-body rounded">
-                      <Image style={{height:'170px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
-                      <p style={{textAlign:'center'}}>Tas</p>
-                    </div>
-                  </Col>
-                  <Col>
-                  <div class="shadow-sm bg-body rounded">
-                      <Image style={{height:'170px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
-                      <p style={{textAlign:'center'}}>Tas</p>
-                    </div>
-                  </Col>
-                  <Col>
-                    <text style={{textAlign:'center'}}>Lihat Semua</text>
-                  </Col>
-                </Row>
-              </Container>
+                <Container style={{paddingTop:'20px', paddingBottom:'20px'}}>
+                    <h3>Riwayat Produksi</h3>
+                    <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td>1</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        </tr>
+                        <tr>
+                        <td>2</td>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        </tr>
+                        <tr>
+                        <td>3</td>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        </tr>
+                        <tr>
+                        <td>4</td>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        </tr>
+                    </tbody>
+                    </Table>
+                </Container> 
             </div>
           </Col>
         </Row>
+
+        
 
         <Row>
           <Col>
             <div class="shadow-sm p-4 mt-3 bg-body rounded">
               <Container style={{paddingTop:'22px', paddingBottom:'22px'}}>
-              <h3 style={{textAlign:'center'}}>Buat Permintaan Produksi</h3>
-              </Container>  
+              <h3 style={{textAlign:'center'}}>Buat Permintaan Material</h3>
+              </Container> 
             </div>
             <div class="shadow-sm p-4 mt-3 bg-body rounded">
               <Container style={{paddingTop:'22px', paddingBottom:'22px'}}>

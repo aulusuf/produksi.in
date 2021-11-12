@@ -600,14 +600,14 @@ const DataPegawai = () => {
               </Col>
             </Row>
             <div style={{marginTop:'2%'}}>
-              <MDBDataTable
-                scrollX
-                striped
-                bordered
-                data={data}
-              />
+            <MDBDataTable
+              scrollX
+              striped
+              bordered
+              data={data}
+            />
             </div>
-          </Container>  
+          </Container>
         </div>
     </div>
   );
