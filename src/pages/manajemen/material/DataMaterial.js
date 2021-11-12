@@ -1,6 +1,6 @@
 import Button from '@restart/ui/esm/Button';
-import React, { useRef, useState } from 'react';
-import { Col, Container, FloatingLabel, Form, Image, Modal, Row, Table } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Col, Container, Form, Image, Modal, Row} from 'react-bootstrap';
 
 const DataMaterial = () => {
   const [lgShow, setLgShow] = useState(false);
