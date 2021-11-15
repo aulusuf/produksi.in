@@ -6,7 +6,6 @@ import { SidebarSupervisor } from './components/supervisor/SidebarSupervisor';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Dashboard from './pages/manajemen/Dashboard';
 import BuatPermintaan from './pages/manajemen/produksi/PermintaanProduksi';
-import ProsesProduksi from './pages/manajemen/produksi/ProsesProduksi';
 import SelesaiProduksi from './pages/manajemen/produksi/SelesaiProduksi';
 import TambahProduk from './pages/manajemen/products/TambahProduk';
 import DataProduk from './pages/manajemen/products/DataProduk';
@@ -35,7 +34,6 @@ function App() {
       <Switch>
         <Route path='/manajemen/dashboard' exact component={Dashboard} />
         <Route path='/manajemen/produksi/permintaan' exact component={BuatPermintaan} />
-        <Route path='/manajemen/produksi/proses' exact component={ProsesProduksi} />
         <Route path='/manajemen/produksi/selesai' exact component={SelesaiProduksi} />
         <Route path='/manajemen/produk/tambah-produk' exact component={TambahProduk} />
         <Route path='/manajemen/produk/data-produk' exact component={DataProduk} />

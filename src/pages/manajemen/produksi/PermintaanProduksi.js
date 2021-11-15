@@ -1,9 +1,11 @@
 import Button from '@restart/ui/esm/Button';
-import React from 'react';
+import React, { useState } from 'react';
 import { Col, Container, FloatingLabel, Form, Image, Row, Table } from 'react-bootstrap';
 import "../styles/produksi.css";
 
 const BuatPermintaan = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
+
   return (
     <div className="marginAll">
       <h1>Produksi</h1>
@@ -13,10 +15,24 @@ const BuatPermintaan = () => {
             <h3>Permintaan Produksi Baru</h3>
             <Row style={{marginTop:'5%'}}>
               <Col sm={5}>
-                <div className="d-flex justify-content-center">
-                  <div class="shadow-sm bg-body rounded">
-                    <Image style={{height:'170px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
+              <div className="d-flex justify-content-center">
+                  <div >
+                  <div>
+                    {selectedImage && (
+                      <div  class="shadow-sm bg-body rounded">
+                        <img alt="" width={"100px"} height={"100px"} src={URL.createObjectURL(selectedImage)} />
+                      </div>
+                    )}
+                    </div>
                   </div>
+                </div>
+                <div className="d-flex justify-content-end" style={{marginTop:'20px'}}>
+                  <input
+                    type="file"
+                    onChange={(event) => {
+                    setSelectedImage(event.target.files[0]);
+                    }}
+                  />
                 </div>
                 <div>
                   <Row style={{marginTop:'20px'}}>
@@ -71,7 +87,7 @@ const BuatPermintaan = () => {
                   <Col>
                     <div className="d-flex justify-content-center">
                       <Button as="input" type="submit" value="Buat Permintaan" className="button-submit-prosuksi"/>
-                      <Button as="input" type="submit" value="Batal" className="button-cencel-prosuksi"/>
+                      <Button as="input" type="submit" value="Batal" className="button-cencel-prosuksi" onClick={()=>setSelectedImage(null)}/>
                     </div>
                   </Col>
                 </Row>
