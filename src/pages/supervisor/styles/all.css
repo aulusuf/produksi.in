@@ -3,26 +3,19 @@
 }
 
 .button-submit-prosuksi {
-    background-color: #2479F9;
+    background-color: #0033ff;
     color: white;
     cursor: pointer;
     border-radius: 5px;
-    border-color: #2479F9;
-}
-.button-proses-prosuksi {
-    background-color: rgb(23, 67, 245);
-    color: white;
-    border-radius: 5px;
-    border-color: #2479F9;
+    border-color: #0033ff;
 }
 .button-submit-prosuksi:hover{
-    background: rgb(23, 67, 245);
+    background: #2f59ff;
     color: white;
     cursor: pointer;
 }
 .button-cencel-prosuksi {
     margin-left: 6%;
-    margin-right: 3%;
     background-color: #F92424;
     color: white;
     cursor: pointer;
@@ -36,6 +29,7 @@
 }
 
 .button-edit-produk {
+    margin-left: 6%;
     background-color: #F9A424;
     color: white;
     cursor: pointer;
@@ -53,12 +47,4 @@
     color: white;
     border-radius: 5px;
     border-color: #009229;
-}
-.cursor {
-    cursor: pointer;
-}
-.modal-content  {
-    -webkit-border-radius: 12px !important;
-    -moz-border-radius: 12px !important;
-    border-radius: 12px !important; 
 }

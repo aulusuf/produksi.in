@@ -5,7 +5,8 @@ import * as FaIcons from 'react-icons/fa';
 import { SidebarData } from './SidebarData';
 import SubMenu from './SubMenu';
 import { IconContext } from 'react-icons/lib';
-import { Navbar } from 'react-bootstrap';
+import { Image, Navbar } from 'react-bootstrap';
+import produksiIn from '../img/produksi.in.png'
 
 
     const NavIcon = styled(Link)`
@@ -53,21 +54,18 @@ export function Sidebar () {
             crossorigin="anonymous"
             />
             <div class="shadow-sm bg-black rounded">
-              <Navbar fixed="top" style={{backgroundColor:'blue', boxShadow:'black'}}>
+              <Navbar fixed="top" style={{backgroundColor:'white', boxShadow:'black'}}>
                   <NavIcon to='#'>
-                      <FaIcons.FaBars onClick={showSidebar} style={{color:'black'}}/>
+                    <FaIcons.FaBars onClick={showSidebar} style={{color:'black'}}/>
                   </NavIcon>
-                  <NavIcon to='/manajemen/dashboard' style={{textDecoration:'none', color:'black'}}>
-                          Produksi.in
+                  <NavIcon to='/manajemen/dashboard' style={{textDecoration:'none', color:'white'}}>
+                    <Image style={{height:'45px', width:'110px'}} src={produksiIn}/>
                   </NavIcon>
               </Navbar>
             </div>
             
         <SidebarNav sidebar={sidebar}>
           <SidebarWrap>
-            {/* <NavIcon to='#'>
-              <AiIcons.AiOutlineClose onClick={showSidebar} />
-            </NavIcon> */}
             {SidebarData.map((item, index) => {
               return <SubMenu item={item} key={index} />;
             })}

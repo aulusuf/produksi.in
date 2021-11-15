@@ -30,12 +30,6 @@ export const SidebarData = [
         cName: 'sub-nav'
       },
       {
-        title: 'Proses',
-        path: '/manajemen/produksi/proses',
-        icon: <GiIcons.GiGearHammer />,
-        cName: 'sub-nav'
-      },
-      {
         title: 'Selesai',
         path: '/manajemen/produksi/selesai',
         icon: <GiIcons.GiGearHammer />
@@ -71,6 +65,11 @@ export const SidebarData = [
     iconOpened: <RiIcons.RiArrowUpSFill />,
 
     subNav: [
+      {
+        title: 'Data Material',
+        path: '/manajemen/material/data-material',
+        icon: <GiIcons.GiMaterialsScience />
+      },
       {
         title: 'Permintaan',
         path: '/manajemen/material/permintaan',
