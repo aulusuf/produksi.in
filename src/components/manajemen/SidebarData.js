@@ -54,6 +54,12 @@ export const SidebarData = [
         path: '/manajemen/produk/data-produk',
         icon: <MdIcons.MdProductionQuantityLimits />,
         cName: 'sub-nav'
+      },
+      {
+        title: 'Kategori',
+        path: '/manajemen/produk/kategori',
+        icon: <MdIcons.MdProductionQuantityLimits />,
+        cName: 'sub-nav'
       }
     ]
   },
@@ -66,13 +72,18 @@ export const SidebarData = [
 
     subNav: [
       {
+        title: 'Permintaan',
+        path: '/manajemen/material/permintaan',
+        icon: <GiIcons.GiMaterialsScience />
+      },
+      {
         title: 'Data Material',
         path: '/manajemen/material/data-material',
         icon: <GiIcons.GiMaterialsScience />
       },
       {
-        title: 'Permintaan',
-        path: '/manajemen/material/permintaan',
+        title: 'Type',
+        path: '/manajemen/material/tipe',
         icon: <GiIcons.GiMaterialsScience />
       },
       {
@@ -81,11 +92,6 @@ export const SidebarData = [
         icon: <GiIcons.GiMaterialsScience />
       }
     ]
-  },
-  {
-    title: 'Kategori',
-    path: '/manajemen/kategori',
-    icon: <FaIcons.FaEnvelopeOpenText />,
   },
   {
     title: 'Pegawai',

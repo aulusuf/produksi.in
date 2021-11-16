@@ -27,6 +27,7 @@ import DataProdukSupervisor from "./pages/supervisor/produksi/DataProduk";
 import PermintaanMaterialSupervisor from "./pages/supervisor/material/PermintaanMaterial";
 import StokMaterialSupervisor from "./pages/supervisor/material/StokMaterial";
 import DataPegawaiSupervisor from "./pages/supervisor/pegawai/DataPegawai";
+import Tipe from "./pages/manajemen/material/Tipe";
 
 function App() {
   return (
@@ -52,6 +53,9 @@ function App() {
           <Route path="/manajemen/produk/data-produk">
             <DataProduk/>
           </Route>
+          <Route path="/manajemen/produk/kategori">
+            <Kategori/>
+          </Route>
           <Route path="/manajemen/material/data-material">
             <DataMaterial/>
           </Route>
@@ -61,8 +65,8 @@ function App() {
           <Route path="/manajemen/material/stok">
             <StokMaterial/>
           </Route>
-          <Route path="/manajemen/kategori">
-            <Kategori/>
+          <Route path="/manajemen/material/tipe">
+            <Tipe/>
           </Route>
           <Route path="/manajemen/pegawai">
             <DataPegawai/>
