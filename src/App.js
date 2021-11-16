@@ -1,5 +1,6 @@
 // routing
 import "./styles/custom.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import Login from "./pages/Login";
 
@@ -26,12 +27,20 @@ import PermintaanMaterialSupervisor from "./pages/supervisor/material/Permintaan
 import StokMaterialSupervisor from "./pages/supervisor/material/StokMaterial";
 import DataPegawaiSupervisor from "./pages/supervisor/pegawai/DataPegawai";
 
+import DashboardProduksi from "./pages/produksi/Dashboard";
+import PermintaanMaterialProduksi from "./pages/produksi/material/PermintaanMaterial";
+import StokMaterialProduksi from "./pages/produksi/material/StokMaterial";
+import DataPegawaiProduksi from "./pages/produksi/pegawai/DataPegawai";
+import DataProdukProduksi from "./pages/produksi/produksi/DataProduk";
+import PenugasanProduksi from "./pages/produksi/produksi/PenugasanProduksi";
+import RiwayatPenugasan from "./pages/produksi/produksi/RiwayatPenugasan";
+
 function App() {
   return (
     <Router>
+      <Sidebar />
       <Switch>
         <Route path="/" exact component={Login} />
-        <Sidebar />
         {/* <SidebarSupervisor /> */}
         <Route path="/manajemen/dashboard" exact component={Dashboard} />
         <Route
@@ -108,6 +117,34 @@ function App() {
           exact
           component={DataPegawaiSupervisor}
         />
+        {/* Dari Hadi */}
+        <Route path="/produksi/Dashboard" exact component={DashboardProduksi} />
+        <Route
+          path="/produksi/permintaanMaterial"
+          exact
+          component={PermintaanMaterialProduksi}
+        />
+        <Route
+          path="/produksi/stokMaterial"
+          exact
+          component={StokMaterialProduksi}
+        />
+        <Route
+          path="/produksi/dataProduk"
+          exact
+          component={DataProdukProduksi}
+        />
+        <Route
+          path="/produksi/dataPegawai"
+          exact
+          component={DataPegawaiProduksi}
+        />
+        <Route
+          path="/produksi/dataProduk"
+          exact
+          component={PenugasanProduksi}
+        />
+        <Route path="/produksi/dataProduk" exact component={RiwayatPenugasan} />
       </Switch>
     </Router>
   );
