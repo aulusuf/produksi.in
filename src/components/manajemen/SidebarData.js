@@ -10,7 +10,7 @@ import * as BiIcons from 'react-icons/bi';
 export const SidebarData = [
   {
     title: 'Dashboard',
-    path: '/manajemen/dashboard',
+    path: '/manajemen/',
     icon: <AiIcons.AiOutlineDashboard />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
