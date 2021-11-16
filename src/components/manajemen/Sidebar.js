@@ -58,7 +58,7 @@ export function Sidebar () {
                   <NavIcon to='#'>
                     <FaIcons.FaBars onClick={showSidebar} style={{color:'black'}}/>
                   </NavIcon>
-                  <NavIcon to='/manajemen/dashboard' style={{textDecoration:'none', color:'white'}}>
+                  <NavIcon to='/manajemen/' style={{textDecoration:'none', color:'white'}}>
                     <Image style={{height:'50px', width:'110px'}} src={produksiIn}/>
                   </NavIcon>
               </Navbar>

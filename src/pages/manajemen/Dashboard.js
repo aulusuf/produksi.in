@@ -327,15 +327,13 @@ const Dashboard = () => {
 
       <Row>
       <Col>
-          <div class="mt-3 bg-body rounded" style={{ paddingBottom:'30px'}}>
-            <Container>
-                <div className="button-dashboard"  onClick={() => history.push(`/manajemen/produksi/permintaan`)}>
-                  <h3 style={{textAlign:'center', fontSize:'22px', paddingTop:'10px'}}>Buat Permintaan Produksi</h3>
-                </div>
-                <div className="button-dashboard" onClick={() => history.push(`/manajemen/produksi/selesai`)}>
-                  <h3 style={{textAlign:'center', fontSize:'22px', paddingTop:'10px'}}>Lihat Produksi Dalam Proses</h3>
-                </div>
-            </Container>  
+          <div class="mt-3 rounded" style={{ paddingBottom:'30px'}}>
+            <div className="button-dashboard"  onClick={() => history.push(`/manajemen/produksi/permintaan`)}>
+              <h3 style={{textAlign:'center', fontSize:'22px', paddingTop:'10px'}}>Buat Permintaan Produksi</h3>
+            </div>
+            <div className="button-dashboard" onClick={() => history.push(`/manajemen/produksi/selesai`)}>
+              <h3 style={{textAlign:'center', fontSize:'22px', paddingTop:'10px'}}>Lihat Produksi Dalam Proses</h3>
+            </div>
           </div>
         </Col>
         <Col>

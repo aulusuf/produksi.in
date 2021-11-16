@@ -1,4 +1,5 @@
 // routing
+import "./styles/custom.css";
 
 import React from 'react';
 import './App.css';
@@ -15,17 +16,17 @@ import PermintaanMaterial from './pages/manajemen/material/PermintaanMaterial';
 import StokMaterial from './pages/manajemen/material/StokMaterial';
 import Kategori from './pages/manajemen/Kategori';
 import DataPegawai from './pages/manajemen/pegawai/DataPegawai';
+import Login from "./pages/Login";
 
-
-import DashboardSupervisor from './pages/supervisor/Dashboard';
-import PermintaanProduksiSupervisor from './pages/supervisor/produksi/PermintaanProduksi';
-import ProsesProduksiSupervisor from './pages/supervisor/produksi/ProsesProduksi';
-import SelesaiProduksiSupervisor from './pages/supervisor/produksi/SelesaiProduksi';
-import DataProdukSupervisor from './pages/supervisor/produksi/DataProduk';
-import PermintaanMaterialSupervisor from './pages/supervisor/material/PermintaanMaterial';
-import StokMaterialSupervisor from './pages/supervisor/material/StokMaterial';
-import DataPegawaiSupervisor from './pages/supervisor/pegawai/DataPegawai';
-
+import DashboardSupervisor from "./pages/supervisor/Dashboard";
+import DashboardProduksi from "./pages/manajemen/Dashboard";
+import PermintaanProduksiSupervisor from "./pages/supervisor/produksi/PermintaanProduksi";
+import ProsesProduksiSupervisor from "./pages/supervisor/produksi/ProsesProduksi";
+import SelesaiProduksiSupervisor from "./pages/supervisor/produksi/SelesaiProduksi";
+import DataProdukSupervisor from "./pages/supervisor/produksi/DataProduk";
+import PermintaanMaterialSupervisor from "./pages/supervisor/material/PermintaanMaterial";
+import StokMaterialSupervisor from "./pages/supervisor/material/StokMaterial";
+import DataPegawaiSupervisor from "./pages/supervisor/pegawai/DataPegawai";
 
 function App() {
   return (
@@ -33,11 +34,46 @@ function App() {
       <div>
         <Sidebar/>
         <Switch>
+          <Route exact path="/">
+            <Login/>
+          </Route>
           <Route exact path="/manajemen/">
             <Dashboard/>
           </Route>
           <Route path="/manajemen/produksi/permintaan">
             <BuatPermintaan/>
+          </Route>
+          <Route path="/manajemen/produksi/selesai">
+            <SelesaiProduksi/>
+          </Route>
+          <Route path="/manajemen/produk/tambah-produk">
+            <TambahProduk/>
+          </Route>
+          <Route path="/manajemen/produk/data-produk">
+            <DataProduk/>
+          </Route>
+          <Route path="/manajemen/material/data-material">
+            <DataMaterial/>
+          </Route>
+          <Route path="/manajemen/material/permintaan">
+            <PermintaanMaterial/>
+          </Route>
+          <Route path="/manajemen/material/stok">
+            <StokMaterial/>
+          </Route>
+          <Route path="/manajemen/kategori">
+            <Kategori/>
+          </Route>
+          <Route path="/manajemen/pegawai">
+            <DataPegawai/>
+          </Route>
+
+
+          <Route exact path="/supervisor">
+            <DashboardSupervisor/>
+          </Route>
+          <Route exact path="/produksi">
+            <DashboardProduksi/>
           </Route>
         </Switch>
       </div>
@@ -75,4 +111,3 @@ function App() {
 }
 
 export default App;
-

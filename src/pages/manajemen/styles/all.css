@@ -1,5 +1,7 @@
-.marginAll {
-    margin: 65px 10%;
+.marginBody {
+    margin-top: 65px;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .button-submit-prosuksi {
