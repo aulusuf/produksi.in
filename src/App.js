@@ -32,11 +32,11 @@ function App() {
   return (
     <Router>
       <div>
+        <Sidebar/>
         <Switch>
           <Route exact path="/">
             <Login/>
           </Route>
-          <Sidebar/>
           <Route exact path="/manajemen">
             <Dashboard/>
           </Route>
