@@ -54,12 +54,12 @@ export function Sidebar () {
             crossorigin="anonymous"
             />
             <div class="shadow-sm bg-black rounded">
-              <Navbar fixed="top" style={{backgroundColor:'rgb(250, 252, 255)', boxShadow:'black'}}>
+              <Navbar fixed="top" style={{backgroundColor:'white', boxShadow:'black'}}>
                   <NavIcon to='#'>
                     <FaIcons.FaBars onClick={showSidebar} style={{color:'black'}}/>
                   </NavIcon>
-                  <NavIcon to='/manajemen/' style={{textDecoration:'none', color:'white'}}>
-                    <Image style={{height:'50px', width:'110px'}} src={produksiIn}/>
+                  <NavIcon to='/manajemen' style={{textDecoration:'none', color:'white'}}>
+                    <Image style={{height:'45px', width:'110px'}} src={produksiIn}/>
                   </NavIcon>
               </Navbar>
             </div>
