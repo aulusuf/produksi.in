@@ -1,24 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/bootstrap/css/bootstrap.min.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import AuthService from "../services/auth.services";
 import axios from "axios";
+import Form from "react-validation/build/form";
+import Input from "react-validation/build/input";
+import CheckButton from "react-validation/build/button";
 
-const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+const Login = (props) => {
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
   const [user, setUser] = useState();
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+  const history = useHistory();
+
+  const handleLogin = (event) => {
+    event.preventDefault();
     const user = { username, password };
-    const response = await axios.post("http://localhost:8080/api/login", user);
-    setUser(response.data);
-    localStorage.setItem("user", response.data);
-    console.log(response.data);
+
+    axios
+      .post("api/signin", user)
+      .then((res) => {
+        localStorage["name"] = res.data.name;
+        localStorage["role"] = res.data.role[0];
+        localStorage["token"] = res.data.token;
+        const roleNumber = JSON.stringify(localStorage["role"]);
+        console.log(roleNumber, "test");
+        console.log(localStorage);
+        history.push("/base");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
-  if (user) {
-    return <div>halo</div>;
-  }
+
   return (
     <div className="bg-login vh-100">
       <div className="container row">
@@ -29,13 +46,13 @@ const Login = () => {
               <p>Masuk untuk akses</p>
             </div>
             <div className="login-box">
-              <form onsubmit={handleLogin}>
+              <form onSubmit={handleLogin}>
                 <div className="mb-3">
-                  <label className="form-label">Email</label>
+                  <label className="form-label">Username</label>
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="email"
+                    placeholder="Username"
                     value={username}
                     onChange={({ target }) => setUsername(target.value)}
                   />

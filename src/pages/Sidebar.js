@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
-import { SidebarData } from "./SidebarData";
-import SubMenu from "./SubMenu";
+import { SidebarData } from "../components/manajemen/SidebarData";
+import SubMenu from "../components/manajemen/SubMenu";
 import { IconContext } from "react-icons/lib";
 import { Image, Navbar } from "react-bootstrap";
-import produksiIn from "../img/produksi.in.png";
+// import produksiIn from "../img/produksi.in.png";
 
 const NavIcon = styled(Link)`
   margin-left: 2rem;
@@ -34,7 +34,7 @@ const SidebarWrap = styled.div`
   width: 100%;
 `;
 
-export function Sidebar() {
+function Sidebar() {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
@@ -42,12 +42,6 @@ export function Sidebar() {
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-          crossorigin="anonymous"
-        />
         <div class="shadow-sm bg-black rounded">
           <Navbar
             fixed="top"
@@ -65,7 +59,7 @@ export function Sidebar() {
             >
               <Image
                 style={{ height: "45px", width: "110px" }}
-                src={produksiIn}
+                // src={produksiIn}
               />
             </NavIcon>
           </Navbar>
@@ -82,3 +76,5 @@ export function Sidebar() {
     </>
   );
 }
+
+export default Sidebar;

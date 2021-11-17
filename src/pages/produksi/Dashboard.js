@@ -1,14 +1,26 @@
 import React from "react";
-import { Col, Container, Row, Image, Dropdown, Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import {
+  Col,
+  Container,
+  Row,
+  Image,
+  Dropdown,
+  Table,
+  Button,
+} from "react-bootstrap";
 import "./styles/all.css";
 import * as BiIcons from "react-icons/bi";
 
 const Dashboard = () => {
   return (
     <div className="marginAll">
-      <Row>
+      <Row className="my-2">
         <Col>
-          <div class="shadow-sm p-3 mt-3 bg-body rounded">
+          <div
+            class="shadow-sm p-3 mt-3 bg-body rounded"
+            style={{ height: "200px" }}
+          >
             <Container style={{ paddingTop: "30px", paddingBottom: "30px" }}>
               <Row>
                 <Col sm={3}>
@@ -35,26 +47,22 @@ const Dashboard = () => {
             </Container>
           </div>
         </Col>
-      </Row>
-
-      <Row>
         <Col>
-          <div class="shadow-sm p-4 mt-3 bg-body rounded">
-            <Container style={{ paddingTop: "22px", paddingBottom: "22px" }}>
-              <h3 style={{ textAlign: "center" }}>Buat Permintaan Material</h3>
-            </Container>
-          </div>
-        </Col>
-
-        <Col>
-          <div class="shadow-sm p-3 mt-3 bg-body rounded">
+          <div
+            className="shadow-sm p-3 mt-3 bg-body rounded"
+            style={{ height: "200px" }}
+          >
             <Container>
-              <h3>Produk</h3>
+              <p className="fw-bold mb-2">Produk</p>
               <Row>
                 <Col>
-                  <div class="shadow-sm bg-body rounded">
+                  <div
+                    class="shadow-sm bg-body rounded overflow-hidden"
+                    style={{ height: "130px" }}
+                  >
+                    <div className="card_content"></div>
                     <Image
-                      style={{ height: "170px" }}
+                      style={{ width: "80px" }}
                       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
                       rounded
                     />
@@ -62,9 +70,13 @@ const Dashboard = () => {
                   </div>
                 </Col>
                 <Col>
-                  <div class="shadow-sm bg-body rounded">
+                  <div
+                    class="shadow-sm bg-body rounded overflow-hidden"
+                    style={{ height: "130px" }}
+                  >
+                    <div className="card_content"></div>
                     <Image
-                      style={{ height: "170px" }}
+                      style={{ width: "80px" }}
                       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
                       rounded
                     />
@@ -80,7 +92,15 @@ const Dashboard = () => {
         </Col>
       </Row>
 
-      <div class="shadow-sm p-3 mt-3 bg-body rounded">
+      <Row className="my-4">
+        <Col>
+          <Button variant="primary" className="col-12 py-3">
+            Buat Permintaan Material
+          </Button>
+        </Col>
+      </Row>
+
+      <div class="shadow-sm p-3 my-2 bg-body rounded">
         <Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
           <h3>Jadwal</h3>
           <Table striped bordered hover>
