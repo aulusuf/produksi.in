@@ -11,7 +11,7 @@ const DataMaterial = () => {
 
 
   return (
-    <div className="marginAll" style={{paddingTop:'20px', paddingBottom:'20px'}}>
+    <div className="marginBody" style={{paddingTop:'20px', paddingBottom:'20px'}}>
 
       <Modal
         size=""

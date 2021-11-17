@@ -7,7 +7,7 @@ const SelesaiProduksi = () => {
   const [LgShowDell, setLgShowDell] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   return (
-      <div className="marginAll">
+      <div className="marginBody">
 
         <Modal
           size=""
@@ -61,8 +61,8 @@ const SelesaiProduksi = () => {
                   </Form.Group>
                 </Row>
                   <Col>
-                    <div className="d-flex mt-2 justify-content-center">
-                      <Button as="input" type="submit" value="Dalam Proses" className="button-submit-prosuksi" style={{paddingLeft:'20px', paddingRight:'20px', marginTop:'10%'}}/>
+                    <div className="d-flex mt-5 justify-content-center">
+                      <Button as="input" type="submit" value="Selesai" className="button-submit-prosuksi" style={{paddingLeft:'20px', paddingRight:'20px'}}/>
                     </div>
                   </Col>
               </Col>

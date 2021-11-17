@@ -9,7 +9,7 @@ const Tipe = () => {
   const [LgShowDell, setLgShowDell] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   return (
-    <div className="marginAll">
+    <div className="marginBody">
 
       <Modal
         size=""
@@ -82,7 +82,7 @@ const Tipe = () => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="modal-detail-produk">
-            Edit Kategori
+            Edit Material
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -172,7 +172,7 @@ const Tipe = () => {
                 </Col>
                 <Col>
                     <div>
-                        <Button as="input" type="submit" value="Tambah Material" className="button-submit-prosuksi" onClick={() => setLgShowAdd(true)}/>
+                        <Button as="input" type="submit" value="Selesai" className="button-submit-prosuksi"/>
                         <Button as="input" type="submit" value="Batal" className="button-cencel-prosuksi"/>
                     </div>
                 </Col>

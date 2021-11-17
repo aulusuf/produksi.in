@@ -1,117 +1,133 @@
-// routing
-import "./styles/custom.css";
+import React, { useState } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import React from 'react';
-import './App.css';
-import { Sidebar } from './components/manajemen/Sidebar';
-import { SidebarSupervisor } from './components/supervisor/SidebarSupervisor';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Dashboard from './pages/manajemen/Dashboard';
-import BuatPermintaan from './pages/manajemen/produksi/PermintaanProduksi';
-import SelesaiProduksi from './pages/manajemen/produksi/SelesaiProduksi';
-import TambahProduk from './pages/manajemen/products/TambahProduk';
-import DataProduk from './pages/manajemen/products/DataProduk';
-import DataMaterial from './pages/manajemen/material/DataMaterial';
-import PermintaanMaterial from './pages/manajemen/material/PermintaanMaterial';
-import StokMaterial from './pages/manajemen/material/StokMaterial';
-import Kategori from './pages/manajemen/Kategori';
-import DataPegawai from './pages/manajemen/pegawai/DataPegawai';
-import Login from "./pages/Login";
+import Sidebar from "./Components/Sidebar";
+import Header from "./Components/Header";
+import "./Styles/App.scss";
+import "./Styles/Container.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Login from "./Pages/Login";
+import Dashboard from "./Pages/Dashboard";
+import BuatPermintaan from './Pages/manajemen/produksi/PermintaanProduksi';
+import SelesaiProduksi from './Pages/manajemen/produksi/SelesaiProduksi';
+import TambahProduk from './Pages/manajemen/products/TambahProduk';
+import DataProduk from './Pages/manajemen/products/DataProduk';
+import DataMaterial from './Pages/manajemen/material/DataMaterial';
+import PermintaanMaterial from './Pages/manajemen/material/PermintaanMaterial';
+import StokMaterial from './Pages/manajemen/material/StokMaterial';
+import Kategori from './Pages/manajemen/products/Kategori';
+import DataPegawai from './Pages/manajemen/pegawai/DataPegawai';
+import Tipe from "./Pages/manajemen/material/Tipe";
 
-import DashboardSupervisor from "./pages/supervisor/Dashboard";
-import DashboardProduksi from "./pages/manajemen/Dashboard";
-import PermintaanProduksiSupervisor from "./pages/supervisor/produksi/PermintaanProduksi";
-import ProsesProduksiSupervisor from "./pages/supervisor/produksi/ProsesProduksi";
-import SelesaiProduksiSupervisor from "./pages/supervisor/produksi/SelesaiProduksi";
-import DataProdukSupervisor from "./pages/supervisor/produksi/DataProduk";
-import PermintaanMaterialSupervisor from "./pages/supervisor/material/PermintaanMaterial";
-import StokMaterialSupervisor from "./pages/supervisor/material/StokMaterial";
-import DataPegawaiSupervisor from "./pages/supervisor/pegawai/DataPegawai";
-import Tipe from "./pages/manajemen/material/Tipe";
+import DashboardSupervisor from "./Pages/supervisor/Dashboard";
 
 function App() {
-  return (
-    <Router>
-      <div>
-        <Sidebar/>
-        <Switch>
-          <Route exact path="/">
-            <Login/>
-          </Route>
-          <Route exact path="/manajemen">
-            <Dashboard/>
-          </Route>
-          <Route path="/manajemen/produksi/permintaan">
-            <BuatPermintaan/>
-          </Route>
-          <Route path="/manajemen/produksi/selesai">
-            <SelesaiProduksi/>
-          </Route>
-          <Route path="/manajemen/produk/tambah-produk">
-            <TambahProduk/>
-          </Route>
-          <Route path="/manajemen/produk/data-produk">
-            <DataProduk/>
-          </Route>
-          <Route path="/manajemen/produk/kategori">
-            <Kategori/>
-          </Route>
-          <Route path="/manajemen/material/data-material">
-            <DataMaterial/>
-          </Route>
-          <Route path="/manajemen/material/permintaan">
-            <PermintaanMaterial/>
-          </Route>
-          <Route path="/manajemen/material/stok">
-            <StokMaterial/>
-          </Route>
-          <Route path="/manajemen/material/tipe">
-            <Tipe/>
-          </Route>
-          <Route path="/manajemen/pegawai">
-            <DataPegawai/>
-          </Route>
+  // eslint-disable-next-line
+  const [toggled, setToggled] = useState(false);
 
 
-          <Route exact path="/supervisor">
-            <DashboardSupervisor/>
-          </Route>
-          <Route exact path="/produksi">
-            <DashboardProduksi/>
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-  )
-  // return (
-  //   <Router>
-  //     <Sidebar />
-  //     {/* <SidebarSupervisor /> */}
-  //     <Switch>
-  //       <Route path='/manajemen/dashboard' exact component={Dashboard} />
-  //       <Route path='/manajemen/produksi/permintaan' exact component={BuatPermintaan} />
-  //       <Route path='/manajemen/produksi/selesai' exact component={SelesaiProduksi} />
-  //       <Route path='/manajemen/produk/tambah-produk' exact component={TambahProduk} />
-  //       <Route path='/manajemen/produk/data-produk' exact component={DataProduk} />
-  //       <Route path='/manajemen/material/data-material' exact component={DataMaterial} />
-  //       <Route path='/manajemen/material/permintaan' exact component={PermintaanMaterial} />
-  //       <Route path='/manajemen/material/stok' exact component={StokMaterial} />
-  //       <Route path='/manajemen/kategori' exact component={Kategori} />
-  //       <Route path='/manajemen/pegawai' exact component={DataPegawai} />
+  const handleToggleSidebar = (value) => {
+    setToggled(value);
+  };
+
+    return (
+      <BrowserRouter>
+        <Route
+          render={(props) => (
+            <div style={{ display: "flex", height: "100%" }}>
+                <Sidebar
+                  toggled={toggled}
+                  handleToggleSidebar={handleToggleSidebar}
+                />
+              <Switch>
+                <Route exact path="/">
+                  {(props) => (
+                    <div className="parent">
+                      <Login/>
+                    </div>
+                  )}
+                </Route>
+                <Route exact path="/manajemen">
+                  <div className="parent">
+                    <Header
+                    />
+                    <Dashboard />
+                  </div>
+                </Route>
+                <Route exact path="/manajemen/produksi">
+                  <div className="parent">
+                    <Header/>
+                    <BuatPermintaan />
+                  </div>
+                </Route>
+                <Route path="/manajemen/produksi/selesai">
+                  <div className="parent">
+                    <Header/>
+                    <SelesaiProduksi />
+                  </div>
+                </Route>
+                <Route exact path="/manajemen/produk">
+                  <div className="parent">
+                    <Header/>
+                    <TambahProduk />
+                  </div>
+                </Route>
+                <Route path="/manajemen/produk/data-produk">
+                  <div className="parent">
+                    <Header/>
+                    <DataProduk />
+                  </div>
+                </Route>
+                <Route path="/manajemen/produk/kategori">
+                  <div className="parent">
+                    <Header/>
+                    <Kategori />
+                  </div>
+                </Route>
+                <Route exact path="/manajemen/material">
+                  <div className="parent">
+                    <Header/>
+                    <PermintaanMaterial />
+                  </div>
+                </Route>
+                <Route path="/manajemen/material/data-material">
+                  <div className="parent">
+                    <Header/>
+                    <DataMaterial />
+                  </div>
+                </Route>
+                <Route path="/manajemen/material/stok">
+                  <div className="parent">
+                    <Header/>
+                    <StokMaterial />
+                  </div>
+                </Route>
+                <Route path="/manajemen/material/tipe">
+                  <div className="parent">
+                    <Header/>
+                    <Tipe />
+                  </div>
+                </Route>
+                <Route exact path="/manajemen/pegawai">
+                  <div className="parent">
+                    <Header/>
+                    <DataPegawai />
+                  </div>
+                </Route>
 
 
-        
-  //       <Route path='/supervisor/dashboard' exact component={DashboardSupervisor} />
-  //       <Route path='/supervisor/produksi/permintaan' exact component={PermintaanProduksiSupervisor} />
-  //       <Route path='/supervisor/produksi/proses' exact component={ProsesProduksiSupervisor} />
-  //       <Route path='/supervisor/produksi/selesai' exact component={SelesaiProduksiSupervisor} />
-  //       <Route path='/supervisor/produksi/data-produk' exact component={DataProdukSupervisor} />
-  //       <Route path='/supervisor/material/permintaan' exact component={PermintaanMaterialSupervisor} />
-  //       <Route path='/supervisor/material/stok' exact component={StokMaterialSupervisor} />
-  //       <Route path='/supervisor/pegawai' exact component={DataPegawaiSupervisor} />
-  //     </Switch>
-  //   </Router>
-  // );
+                <Route exact path="/supervisor">
+                  <div className="parent">
+                    <Header/>
+                    <DashboardSupervisor />
+                  </div>
+                </Route>
+              </Switch>
+            </div>
+          )}
+        />
+      </BrowserRouter>
+    );
 }
 
 export default App;

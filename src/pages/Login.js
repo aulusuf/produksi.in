@@ -1,23 +1,23 @@
 import React from "react";
-import "../styles/bootstrap/css/bootstrap.min.css";
+import "../Styles/bootstrap/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import { Col, Image, Row } from "react-bootstrap";
-import Produksi from '../img/produksi.png';
-import produksiIn from '../img/produksi.in.png'
+import Produksi from '../Assets/produksi.png';
+import produksiIn from '../Assets/produksi.in.png'
 
 const Login = () => {
   return (
     <div className="bg-login vh-100">
       <div className="container row">
         <div className="box col-xl-7 col-md-6 col-sm-8 col-xs-10 d-flex flex-column justify-content-center">
+          <div className="logo pb-3 d-flex justify-content-center">
+            <Image style={{height:'80px'}} src={produksiIn}/>
+          </div>
           <div className="form-box bg-white rounded px-3 py-4">
-            <div className="logo pb-3 d-flex justify-content-center">
-              <Image style={{height:'80px'}} src={produksiIn}/>
-            </div>
             <div className="login-box">
               <Row>
-                <Col className="pt-5">
-                  <Image style={{height:'200px'}} src={Produksi}/>
+                <Col sm="7" className="d-flex p-5 justify-content-center">
+                  <Image style={{height:'180px'}} src={Produksi}/>
                 </Col>
                 <Col>
                 <div class="shadow-sm p-3 bg-body rounded">

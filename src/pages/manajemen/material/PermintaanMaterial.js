@@ -4,7 +4,7 @@ import { Container, Table } from 'react-bootstrap';
 
 const PermintaanMaterial = () => {
   return (
-    <div className="marginAll">
+    <div className="marginBody">
       <h1>Material</h1>
 
       <div class="shadow-sm p-3 mt-3 bg-body rounded">

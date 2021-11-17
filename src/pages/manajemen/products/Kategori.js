@@ -9,7 +9,7 @@ const Kategori = () => {
   const [LgShowDell, setLgShowDell] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   return (
-    <div className="marginAll">
+    <div className="marginBody">
 
       <Modal
         size=""

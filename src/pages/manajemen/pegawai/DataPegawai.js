@@ -526,7 +526,7 @@ const DataPegawai = () => {
   };
 
   return (
-    <div className="marginAll">
+    <div className="marginBody">
 
       <Modal
         size=""

@@ -6,7 +6,7 @@ const TambahProduk = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   
   return(
-    <div className="marginAll">
+    <div className="marginBody">
       <h1>Produk</h1>
 
       <div class="shadow-sm p-3 mt-3 bg-body rounded">
@@ -25,7 +25,7 @@ const TambahProduk = () => {
                     </div>
                   </div>
                 </div>
-                <div className="d-flex justify-content-end" style={{marginTop:'20px', marginLeft:'60px', marginRight:'60px'}}>
+                <div className="d-flex justify-content-center" style={{marginTop:'20px'}}>
                   <input
                     type="file"
                     onChange={(event) => {
@@ -97,8 +97,8 @@ const TambahProduk = () => {
             </Row>
 
             <Row>
-              <Col>
-                <div className="d-flex justify-content-center">
+              <Col sm='3'>
+                <div className="d-flex mt-2 justify-content-center">
                   <div class="shadow-sm bg-body rounded">
                     <Image style={{height:'150px', width:'150px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
                   </div>
@@ -113,8 +113,8 @@ const TambahProduk = () => {
                   <Form.Control className="mt-3" type="number" placeholder="Jumlah..." />
                 </div>
               </Col>
-              <Col>
-                <div className="d-flex justify-content-center">
+              <Col sm='3'>
+                <div className="d-flex mt-2 justify-content-center">
                   <div class="shadow-sm bg-body rounded">
                     <Image style={{height:'150px', width:'150px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
                   </div>
@@ -129,8 +129,8 @@ const TambahProduk = () => {
                   <Form.Control className="mt-3" type="number" placeholder="Jumlah..." />
                 </div>
               </Col>
-              <Col>
-                <div className="d-flex justify-content-center">
+              <Col sm='3'>
+                <div className="d-flex mt-2 justify-content-center">
                   <div class="shadow-sm bg-body rounded">
                     <Image style={{height:'150px', width:'150px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
                   </div>
@@ -145,8 +145,8 @@ const TambahProduk = () => {
                   <Form.Control className="mt-3" type="number" placeholder="Jumlah..." />
                 </div>
               </Col>
-              <Col>
-                <div className="d-flex justify-content-center">
+              <Col sm='3'>
+                <div className="d-flex mt-2 justify-content-center">
                   <div class="shadow-sm bg-body rounded">
                     <Image style={{height:'150px', width:'150px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
                   </div>
@@ -161,8 +161,24 @@ const TambahProduk = () => {
                   <Form.Control className="mt-3" type="number" placeholder="Jumlah..." />
                 </div>
               </Col>
-              <Col>
-                <div className="d-flex justify-content-center">
+              <Col sm='3'>
+                <div className="d-flex mt-3 justify-content-center">
+                  <div class="shadow-sm bg-body rounded">
+                    <Image style={{height:'150px', width:'150px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
+                  </div>
+                </div>
+                <div className="mt-4 m-2">
+                  <Form.Select defaultValue="Pilih Produk...">
+                    <option>Material...</option>
+                    <option>Tas</option>
+                    <option>Sepatu</option>
+                    <option>Baju</option>
+                  </Form.Select>
+                  <Form.Control className="mt-3" type="number" placeholder="Jumlah..." />
+                </div>
+              </Col>
+              <Col sm='3'>
+                <div className="d-flex mt-3 justify-content-center">
                   <div class="shadow-sm bg-body rounded">
                     <Image style={{height:'150px', width:'150px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
                   </div>
