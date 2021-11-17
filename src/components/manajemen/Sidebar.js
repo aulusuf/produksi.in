@@ -122,6 +122,8 @@ const Submenu = styled(SubMenu)`
     margin-right:5px;
     background-color:  #006EBD;
     border-radius: 8px;
+    color: white;
+    text-decoration: none;
   }
 `;
 
@@ -153,7 +155,7 @@ export function Sidebar () {
       />
       <div class="shadow-sm bg-black rounded">
         <Navbar fixed="top" style={{backgroundColor:'rgb(250, 252, 255)', boxShadow:'black'}}>
-          <NavIcon to='/manajemen/' style={{textDecoration:'none', color:'white'}}>
+          <NavIcon to='/manajemen/'>
             <Image style={{height:'50px', width:'110px'}} src={produksiIn}/>
           </NavIcon>
         </Navbar>
