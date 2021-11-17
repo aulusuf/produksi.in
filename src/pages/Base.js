@@ -13,9 +13,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const Base = (props) => {
   const [role, setRole] = React.useState();
   console.log(localStorage);
-  const roleNumber = JSON.parse(localStorage["role"]);
+  console.log(localStorage["name"]);
+  const roleNumber = localStorage["name"];
   console.log(roleNumber);
-  if (roleNumber == 1) {
+  if (roleNumber) {
     return <div>{roleNumber}</div>;
   } else {
     return (
