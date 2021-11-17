@@ -110,10 +110,10 @@ import "react-pro-sidebar/dist/css/styles.css";
 
 const Menuitem = styled(MenuItem)`
   :hover {
-    margin-left:5px;
+    margin-left:3px;
     margin-right:5px;
     background-color:  #006EBD;
-    border-radius: 10px;
+    border-radius: 8px;
   }
 `;
 const Submenu = styled(SubMenu)`
@@ -121,7 +121,7 @@ const Submenu = styled(SubMenu)`
     margin-left:5px;
     margin-right:5px;
     background-color:  #006EBD;
-    border-radius: 10px;
+    border-radius: 8px;
   }
 `;
 
