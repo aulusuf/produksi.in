@@ -41,7 +41,7 @@ const Sidebar = (props) => {
 `;
 const Submenu = styled(SubMenu)`
   :hover {
-    margin-left:5px;
+    margin-left:3px;
     margin-right:5px;
     background-color:  #006EBD;
     border-radius: 8px;
