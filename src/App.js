@@ -20,6 +20,7 @@ import DataPegawai from "./Pages/manajemen/pegawai/DataPegawai";
 import Tipe from "./Pages/manajemen/material/Tipe";
 
 import DashboardSupervisor from "./Pages/supervisor/Dashboard";
+import DashboardProduksi from "./Pages/produksi/Dashboard";
 
 function App() {
   // eslint-disable-next-line
@@ -118,7 +119,13 @@ function App() {
               <Route exact path="/supervisor">
                 <div className="parent">
                   <Header />
-                  <DashboardSupervisor />
+                  <DashboardProduksi />
+                </div>
+              </Route>
+              <Route exact path="/produksi">
+                <div className="parent">
+                  <Header />
+                  <DashboardProduksi />
                 </div>
               </Route>
             </div>
