@@ -78,7 +78,7 @@ function App() {
                   <TambahProduk />
                 </div>
               </Route>
-              <Route path="/manajemen/produk/data-produk">
+              <Route path="/manajemen/produksi/data-produk">
                 <div className="parent">
                   <Header />
                   <DataProduk />
