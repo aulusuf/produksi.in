@@ -68,7 +68,7 @@ function Sidebar() {
         <SidebarNav sidebar={sidebar}>
           <SidebarWrap>
             {SidebarData.map((item, index) => {
-              return <SubMenu item={item} key={index} />;
+              return <SubMenu props={item} key={index} />;
             })}
           </SidebarWrap>
         </SidebarNav>

@@ -1,18 +1,38 @@
-import React, { useState, useEffect } from "react";
-import "../styles/bootstrap/css/bootstrap.min.css";
+import React, { useState, createContext } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useHistory } from "react-router-dom";
-import AuthService from "../services/auth.services";
+// import AuthService from "../services/auth.services";
 import axios from "axios";
-import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
-import CheckButton from "react-validation/build/button";
+// import Form from "react-validation/build/form";
+// import Input from "react-validation/build/input";
+// import CheckButton from "react-validation/build/button";
+
+function setLocalStorage(key, value) {
+  try {
+    window.localStorage.setItem(key, JSON.stringify(value));
+  } catch (e) {
+    return (
+      e instanceof DOMException &&
+      // everything except Firefox
+      (e.code === 22 ||
+        // Firefox
+        e.code === 1014 ||
+        // test name field too, because code might not be present
+        // everything except Firefox
+        e.name === "QuotaExceededError" ||
+        // Firefox
+        e.name === "NS_ERROR_DOM_QUOTA_REACHED")
+    );
+  }
+}
 
 const Login = (props) => {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
-  const [user, setUser] = useState();
+  // const [user, setUser] = useState();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState();
+  const UserContext = createContext(null);
 
   const history = useHistory();
 
@@ -27,7 +47,7 @@ const Login = (props) => {
         localStorage["role"] = res.data.role[0];
         localStorage["token"] = res.data.token;
         const roleNumber = JSON.stringify(localStorage["role"]);
-        console.log(roleNumber, "test");
+        console.log(roleNumber);
         console.log(localStorage);
         history.push("/base");
       })

@@ -1,10 +1,10 @@
 // routing
-import "./styles/custom.css";
+import "./Styles/custom.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Login from "./pages/Login";
-import Routes from "./pages/Routes";
-import Base from "./pages/Base";
+import Login from "./Pages/Login";
+import Routes from "./Pages/Routes";
+import Base from "./Pages/Base";
 
 // import { Sidebar } from "./pages/Sidebar";
 // import { SidebarSupervisor } from "./components/supervisor/SidebarSupervisor";

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const SidebarLink = styled(Link)`
   display: flex;
-  color: #AAD6FA;
+  color: #aad6fa;
   justify-content: space-between;
-  align-items: center;
+  align-propss: center;
   padding: 2px 20px;
   list-style: none;
   height: 50px;
@@ -14,9 +14,9 @@ const SidebarLink = styled(Link)`
   font-size: 16px;
 
   &:hover {
-    background: #277FD9;
+    background: #277fd9;
     cursor: pointer;
-    color: white
+    color: white;
   }
 `;
 
@@ -25,48 +25,48 @@ const SidebarLabel = styled.span`
 `;
 
 const DropdownLink = styled(Link)`
-  background: #1E97C4;
+  background: #1e97c4;
   height: 50px;
   padding-left: 3rem;
   display: flex;
-  align-items: center;
+  align-propss: center;
   text-decoration: none;
   color: #f5f5f5;
   font-size: 16px;
 
   &:hover {
-    background: #277FD9;
+    background: #277fd9;
     cursor: pointer;
     color: #f5f5f5;
   }
 `;
 
-const SubMenu = ({ item }) => {
+const SubMenu = ({ props }) => {
   const [subnav, setSubnav] = useState(false);
 
   const showSubnav = () => setSubnav(!subnav);
 
   return (
     <>
-      <SidebarLink to={item.path} onClick={item.subNav && showSubnav}>
+      <SidebarLink to={props.path} onClick={props.subNav && showSubnav}>
         <div>
-          {item.icon}
-          <SidebarLabel>{item.title}</SidebarLabel>
+          {props.icon}
+          <SidebarLabel>{props.title}</SidebarLabel>
         </div>
         <div>
-          {item.subNav && subnav
-            ? item.iconOpened
-            : item.subNav
-            ? item.iconClosed
+          {props.subNav && subnav
+            ? props.iconOpened
+            : props.subNav
+            ? props.iconClosed
             : null}
         </div>
       </SidebarLink>
       {subnav &&
-        item.subNav.map((item, index) => {
+        props.subNav.map((props, index) => {
           return (
-            <DropdownLink to={item.path} key={index}>
-              {item.icon}
-              <SidebarLabel>{item.title}</SidebarLabel>
+            <DropdownLink to={props.path} key={index}>
+              {props.icon}
+              <SidebarLabel>{props.title}</SidebarLabel>
             </DropdownLink>
           );
         })}
