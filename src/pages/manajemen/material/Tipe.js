@@ -2,14 +2,14 @@ import Button from '@restart/ui/esm/Button';
 import React, { useState } from 'react';
 import { Col, Container, Form, Modal, Row, Table } from 'react-bootstrap';
 
-const Kategori = () => {
+const Tipe = () => {
   
   const [LgShowAdd, setLgShowAdd] = useState(false);
   const [LgShowUpdate, setLgShowUpdate] = useState(false);
   const [LgShowDell, setLgShowDell] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   return (
-    <div className="marginAll">
+    <div className="marginBody">
 
       <Modal
         size=""
@@ -21,7 +21,7 @@ const Kategori = () => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="modal-detail-produk">
-            Kategori Baru
+            Tipe Baru
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -82,7 +82,7 @@ const Kategori = () => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="modal-detail-produk">
-            Edit Kategori
+            Edit Material
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -153,13 +153,40 @@ const Kategori = () => {
         </Modal.Body>
       </Modal>
       
-      <h1>Kategori</h1>
+      <h1>Material</h1>
+
+          <div class="shadow-sm p-3 mt-3 bg-body rounded">
+        <Container style={{paddingTop:'20px', paddingBottom:'20px'}}>
+        
+          
+      <Row style={{ marginBottom:'2%'}}>
+        <h4>Tambah Tipe / Ubah Material</h4>
+            <Row style={{ marginTop:'2%'}}>
+                <Col sm='4'>
+                    <Form.Label column className="d-flex justify-content-end">
+                        Nama
+                    </Form.Label>
+                </Col>
+                <Col sm='3'>
+                    <Form.Control type="text" placeholder="Nama..." />
+                </Col>
+                <Col>
+                    <div>
+                        <Button as="input" type="submit" value="Selesai" className="button-submit-prosuksi"/>
+                        <Button as="input" type="submit" value="Batal" className="button-cencel-prosuksi"/>
+                    </div>
+                </Col>
+            </Row>
+          </Row>
+        </Container>  
+      </div>
 
       <div class="shadow-sm p-3 mt-3 bg-body rounded">
         <Container style={{paddingTop:'20px', paddingBottom:'20px'}}>
+        
           <Row>
             <Col>
-              <h3>Data Kategori</h3>
+              <h3>Tipe</h3>
             </Col>
             <Col>
               <div className="d-flex justify-content-end">
@@ -236,4 +263,4 @@ const Kategori = () => {
   );
 };
 
-export default Kategori;
+export default Tipe;

@@ -7,7 +7,7 @@ const BuatPermintaan = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   return (
-    <div className="marginAll">
+    <div className="marginBody">
       <h1>Produksi</h1>
 
       <div class="shadow-sm p-3 mt-3 bg-body rounded">
@@ -79,7 +79,7 @@ const BuatPermintaan = () => {
                     </Col>
                   </Form.Group>
                   <Form.Label column sm="3">
-                    Biaya Produksi
+                    Total Biaya
                   </Form.Label>
                   <Col sm="4" style={{marginTop:'7px'}}>
                     <h5>Rp. <text>200.000.000</text></h5>
