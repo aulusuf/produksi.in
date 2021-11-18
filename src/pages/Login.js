@@ -17,6 +17,7 @@ const Login = () => {
     axios
       .post("api/signin", user)
       .then((res) => {
+        console.log(res);
         localStorage["name"] = res.data.name;
         localStorage["role"] = res.data.role[0];
         localStorage["token"] = res.data.token;

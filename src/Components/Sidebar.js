@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   ProSidebar,
   Menu,
@@ -21,6 +21,7 @@ import SidebarMenu from "./SidebarMenu";
 
 const Sidebar = (props) => {
   const [collapsed, setCollapsed] = useState(false);
+  const [role, setRole] = useState(false);
   const history = useHistory();
   const styles = {
     sideBarHeight: {
@@ -35,6 +36,10 @@ const Sidebar = (props) => {
       cursor: "pointer",
     },
   };
+
+  useEffect(() => {
+    setRole(JSON.parse(localStorage["role"]));
+  }, [history]);
   // const Menuitem = styled(MenuItem)`
   //   :hover {
   //     margin-left: 3px;
@@ -63,21 +68,24 @@ const Sidebar = (props) => {
   };
 
   const sidebarContentByRole = () => {
-    if (JSON.parse(localStorage["role"]) === 1) {
-      return (
-        <SidebarContent>
-          <Menu>
-            {SidebarDataManajemen.map((item, index) => {
-              return <SidebarMenu props={item} key={index} />;
-            })}
-            {/* {sidebarMenu()} */}
-          </Menu>
-        </SidebarContent>
-      );
-    } else {
-      console.log("hello");
-      return "hello";
-    }
+    return (
+      <SidebarContent>
+        <Menu>
+          {role === 1
+            ? SidebarDataManajemen.map((item, index) => {
+                return <SidebarMenu props={item} key={index} />;
+              })
+            : role === 2
+            ? SidebarDataManajemen.map((item, index) => {
+                return <SidebarMenu props={item} key={index} />;
+              })
+            : SidebarDataManajemen.map((item, index) => {
+                return <SidebarMenu props={item} key={index} />;
+              })}
+          {/* {sidebarMenu()} */}
+        </Menu>
+      </SidebarContent>
+    );
   };
 
   return (
