@@ -79,3 +79,86 @@ export const SidebarDataManajemen = [
     path: "/manajemen/pegawai",
   },
 ];
+export const SidebarDataSupervisor = [
+  {
+    MenuitemIcon: <AiIcons.AiOutlineDashboard />,
+    label: "Dashboard",
+    path: "/supervisor",
+  },
+  {
+    title: "Produksi",
+    SubmenuIcon: <GiIcons.GiGearHammer />,
+    subNav: [
+      {
+        MenuitemIcon: <GiIcons.GiGearHammer />,
+        label: "Lihat Permintaan",
+        path: "/supervisor/produksi/permintaan",
+      },
+      {
+        MenuitemIcon: <GiIcons.GiGearHammer />,
+        label: "Data Produk",
+        path: "/supervisor/produksi/produk", // -> it can be '/produk'
+      },
+    ],
+  },
+  {
+    title: "Material",
+    SubmenuIcon: <GiIcons.GiMaterialsScience />,
+    subNav: [
+      {
+        MenuitemIcon: <GiIcons.GiMaterialsScience />,
+        label: "Permintaan",
+        path: "/supervisor/material/permintaan",
+      },
+      {
+        MenuitemIcon: <GiIcons.GiMaterialsScience />,
+        label: "Sisa",
+        path: "/supervisor/material/sisa",
+      },
+    ],
+  },
+  {
+    MenuitemIcon: <BiIcons.BiGroup />,
+    label: "Pegawai",
+    path: "/supervisor/pegawai", // -> it can be '/pegawai'
+  },
+];
+export const SidebarDataTimProduksi = [
+  {
+    MenuitemIcon: <AiIcons.AiOutlineDashboard />,
+    label: "Dashboard",
+    path: "/manajemen",
+  },
+  {
+    title: "Produksi",
+    SubmenuIcon: <GiIcons.GiGearHammer />,
+    subNav: [
+      {
+        MenuitemIcon: <GiIcons.GiGearHammer />,
+        label: "Penugasan",
+        path: "/tim_produksi/produksi/penugasan",
+      },
+      {
+        MenuitemIcon: <GiIcons.GiGearHammer />,
+        label: "Data Produk",
+        path: "/tim_produksi/produksi/produk", // -> it can be '/produk'
+      },
+    ],
+  },
+  {
+    title: "Material",
+    SubmenuIcon: <GiIcons.GiMaterialsScience />,
+    subNav: [
+      {
+        MenuitemIcon: <GiIcons.GiMaterialsScience />,
+        label: "Permintaan",
+        path: "/tim_produksi/material/permintaan",
+      },
+      {
+        MenuitemIcon: <GiIcons.GiMaterialsScience />,
+        label: "Sisa",
+        path: "/tim_produksi/material/sisa",
+      },
+    ],
+  },
+];
