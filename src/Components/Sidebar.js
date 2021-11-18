@@ -16,7 +16,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 // import * as BiIcons from "react-icons/bi";
 // import styled from "styled-components";
 
-import { SidebarDataManajemen } from "../Pages/manajemen/SidebarDataManajemen";
+import { SidebarDataManajemen, SidebarDataProduksi, SidebarDataSupervisor, SidebarManajemen } from "../Pages/manajemen/SidebarDataManajemen";
 import SidebarMenu from "./SidebarMenu";
 
 const Sidebar = (props) => {
@@ -76,12 +76,13 @@ const Sidebar = (props) => {
                 return <SidebarMenu props={item} key={index} />;
               })
             : role === 2
-            ? SidebarDataManajemen.map((item, index) => {
+            ? SidebarDataSupervisor.map((item, index) => {
                 return <SidebarMenu props={item} key={index} />;
               })
-            : SidebarDataManajemen.map((item, index) => {
+            : SidebarDataProduksi.map((item, index) => {
                 return <SidebarMenu props={item} key={index} />;
-              })}
+              })
+            }
           {/* {sidebarMenu()} */}
         </Menu>
       </SidebarContent>
