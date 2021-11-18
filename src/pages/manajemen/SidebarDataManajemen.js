@@ -3,6 +3,9 @@ import * as AiIcons from "react-icons/ai";
 import * as GiIcons from "react-icons/gi";
 import * as MdIcons from "react-icons/md";
 import * as BiIcons from "react-icons/bi";
+import styled from "styled-components";
+import { Menu, MenuItem, SidebarContent, SubMenu } from "react-pro-sidebar";
+import { Link } from "react-router-dom";
 
 export const SidebarDataManajemen = [
   {
@@ -92,18 +95,9 @@ export const SidebarDataSupervisor = [
     subNav: [
       {
         MenuitemIcon: <GiIcons.GiGearHammer />,
-        label: "Lihat Permintaan",
+
+        label: "Permintaan",
         path: "/supervisor/produksi",
-      },
-      {
-        MenuitemIcon: <GiIcons.GiGearHammer />,
-        label: "Proses",
-        path: "/supervisor/produksi/proses",
-      },
-      {
-        MenuitemIcon: <GiIcons.GiGearHammer />,
-        label: "Selesai",
-        path: "/supervisor/produksi/selesai",
       },
       {
         MenuitemIcon: <GiIcons.GiGearHammer />,
@@ -134,3 +128,127 @@ export const SidebarDataSupervisor = [
     path: "/supervisor/pegawai",
   },
 ];
+
+export const SidebarDataProduksi = [
+  {
+    MenuitemIcon: <AiIcons.AiOutlineDashboard />,
+    label: "Dashboard",
+    path: "/prosuksi",
+  },
+  {
+    title: "Produksi",
+    SubmenuIcon: <GiIcons.GiGearHammer />,
+    subNav: [
+      {
+        MenuitemIcon: <GiIcons.GiGearHammer />,
+        label: "Penugasan",
+        path: "/prosuksi/penugasan",
+      },
+      {
+        MenuitemIcon: <GiIcons.GiGearHammer />,
+        label: "Data Produk",
+        path: "/prosuksi/data-produk",
+      },
+    ],
+  },
+  {
+    title: "Material",
+    SubmenuIcon: <GiIcons.GiMaterialsScience />,
+    subNav: [
+      {
+        MenuitemIcon: <GiIcons.GiMaterialsScience />,
+        label: "Permintaan",
+        path: "/prosuksi/material",
+      },
+      {
+        MenuitemIcon: <GiIcons.GiMaterialsScience />,
+        label: "Sisa",
+        path: "/prosuksi/sisa",
+      },
+    ],
+  },
+  {
+    MenuitemIcon: <BiIcons.BiGroup />,
+    label: "Pegawai",
+    path: "/prosuksi/pegawai",
+  },
+];
+const Menuitem = styled(MenuItem)`
+    :hover {
+      margin-left: 3px;
+      margin-right: 5px;
+      background-color: #006ebd;
+      border-radius: 8px;
+    }
+  `;
+  const Submenu = styled(SubMenu)`
+    :hover {
+      margin-left: 3px;
+      margin-right: 5px;
+      background-color: #006ebd;
+      border-radius: 8px;
+      color: white;
+      text-decoration: none;
+    }
+  `;
+
+export const SidebarManajemen = () => {
+  <SidebarContent>
+    <Menu>
+      <Menuitem icon={<AiIcons.AiOutlineDashboard />}> 
+        Dashboard
+        <Link to='/manajemen' />
+      </Menuitem>
+
+      <Submenu title="Produksi" icon={<GiIcons.GiGearHammer />}>
+        <Menuitem icon={<GiIcons.GiGearHammer />}>
+          Buat Permintaan
+          <Link to='/manajemen/produksi' />
+        </Menuitem>
+        <Menuitem icon={<GiIcons.GiGearHammer />}>
+          Selesai
+          <Link to='/manajemen/produksi/selesai' />
+        </Menuitem>
+      </Submenu>
+
+      <Submenu title="Produk" icon={<MdIcons.MdProductionQuantityLimits />}>
+        <Menuitem icon={<MdIcons.MdProductionQuantityLimits />}>
+          Tambah Produk
+          <Link to='/manajemen/produk' />
+        </Menuitem>
+        <Menuitem icon={<MdIcons.MdProductionQuantityLimits />}>
+          Data Produk
+          <Link to='/manajemen/produk/data-produk' />
+        </Menuitem>
+        <Menuitem icon={<MdIcons.MdProductionQuantityLimits />}>
+          Kategori
+          <Link to='/manajemen/produk/kategori' />
+        </Menuitem>
+      </Submenu>
+
+      <Submenu title="Material" icon={<GiIcons.GiMaterialsScience />}>
+        <Menuitem icon={<GiIcons.GiMaterialsScience />}>
+          Permintaan
+          <Link to='/manajemen/material' />
+        </Menuitem>
+        <Menuitem icon={<GiIcons.GiMaterialsScience />}>
+          Data Material
+          <Link to='/manajemen/material/data-material' />
+        </Menuitem>
+        <Menuitem icon={<GiIcons.GiMaterialsScience />}>
+          Tipe
+          <Link to='/manajemen/material/tipe' />
+        </Menuitem>
+        <Menuitem icon={<GiIcons.GiMaterialsScience />}>
+          Stok
+          <Link to='/manajemen/material/stok' />
+        </Menuitem>
+      </Submenu>
+
+      <Menuitem icon={<BiIcons.BiGroup />}>
+        Pegawai
+        <Link to='/manajemen/pegawai' />
+      </Menuitem>
+    </Menu>
+  </SidebarContent>;
+}

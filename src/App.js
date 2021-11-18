@@ -6,6 +6,7 @@ import Header from "./Components/Header";
 import "./Styles/App.scss";
 import "./Styles/Container.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import Login from "./Pages/Login";
 import Dashboard from "./Pages/Dashboard";
 import BuatPermintaan from "./Pages/manajemen/produksi/PermintaanProduksi";
@@ -20,6 +21,10 @@ import DataPegawai from "./Pages/manajemen/pegawai/DataPegawai";
 import Tipe from "./Pages/manajemen/material/Tipe";
 
 import DashboardSupervisor from "./Pages/supervisor/Dashboard";
+import PermintaanProduksi from "./Pages/supervisor/produksi/PermintaanProduksi";
+import Material from "./Pages/supervisor/material/PermintaanMaterial";
+import Stok from "./Pages/supervisor/material/StokMaterial";
+
 import DashboardProduksi from "./Pages/produksi/Dashboard";
 
 function App() {
@@ -109,23 +114,92 @@ function App() {
                   <Tipe />
                 </div>
               </Route>
-              <Route exact path="/manajemen/pegawai">
+              <Route path="/manajemen/pegawai">
                 <div className="parent">
                   <Header />
                   <DataPegawai />
                 </div>
               </Route>
 
+              {/* Supervisor */}
               <Route exact path="/supervisor">
                 <div className="parent">
                   <Header />
-                  <DashboardProduksi />
+                  <DashboardSupervisor />
                 </div>
               </Route>
               <Route exact path="/produksi">
                 <div className="parent">
                   <Header />
                   <DashboardProduksi />
+                </div>
+              </Route>
+              <Route exact path="/supervisor/produksi">
+                <div className="parent">
+                  <Header />
+                  <PermintaanProduksi />
+                </div>
+              </Route>
+              <Route path="/supervisor/produksi/data-produk">
+                <div className="parent">
+                  <Header />
+                  <DataProduk />
+                </div>
+              </Route>
+              <Route exact path="/supervisor/material">
+                <div className="parent">
+                  <Header />
+                  <Material />
+                </div>
+              </Route>
+              <Route path="/supervisor/material/stok">
+                <div className="parent">
+                  <Header />
+                  <Stok />
+                </div>
+              </Route>
+              <Route path="/supervisor/pegawai">
+                <div className="parent">
+                  <Header />
+                  <DataPegawai />
+                </div>
+              </Route>
+
+              {/* Produksi */}
+              <Route exact path="/produksi">
+                <div className="parent">
+                  <Header />
+                  <DashboardProduksi />
+                </div>
+              </Route>
+              <Route path="/produksi/penugasan">
+                <div className="parent">
+                  <Header />
+                  <PermintaanProduksi />
+                </div>
+              </Route>
+              <Route path="/produksi/data-produk">
+                <div className="parent">
+                  <Header />
+                  <DataProduk />
+                </div>
+              </Route>
+              <Route path="/produksi/material">
+                <div className="parent">
+                  <Header />
+                  <Material />
+                </div>
+              </Route>
+              <Route path="/produksi/sisa">
+                <div className="parent">
+                  <Header />
+                  <Stok />
+                </div>
+              </Route>
+              <Route path="/produksi/pegawai">
+                <div className="parent">
+                  <Header />
+                  <DataPegawai />
                 </div>
               </Route>
             </div>
