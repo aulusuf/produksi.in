@@ -1,127 +1,123 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   ProSidebar,
   Menu,
-  MenuItem,
-  SubMenu,
+  // MenuItem,
+  // SubMenu,
   SidebarHeader,
   SidebarContent,
 } from "react-pro-sidebar";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { AiOutlineMenu } from "react-icons/ai";
-import * as AiIcons from 'react-icons/ai';
-import * as GiIcons from 'react-icons/gi';
-import * as MdIcons from 'react-icons/md';
-import * as BiIcons from 'react-icons/bi';
-import styled from 'styled-components';
+// import * as AiIcons from "react-icons/ai";
+// import * as GiIcons from "react-icons/gi";
+// import * as MdIcons from "react-icons/md";
+// import * as BiIcons from "react-icons/bi";
+// import styled from "styled-components";
+
+import { SidebarDataManajemen } from "../Pages/manajemen/SidebarDataManajemen";
+import SidebarMenu from "./SidebarMenu";
 
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const [role, setRole] = useState(false);
+  const history = useHistory();
   const styles = {
     sideBarHeight: {
       height: "100vh",
     },
     menuIcon: {
-      marginTop:'5px',
-      marginBottom:'10px',
+      marginTop: "5px",
+      marginBottom: "10px",
       float: "left",
-      marginLeft:'25px',
-      fontSize:'30px',
-      cursor: 'pointer'
-    }
+      marginLeft: "25px",
+      fontSize: "30px",
+      cursor: "pointer",
+    },
   };
-  const Menuitem = styled(MenuItem)`
-  :hover {
-    margin-left:3px;
-    margin-right:5px;
-    background-color:  #006EBD;
-    border-radius: 8px;
-  }
-`;
-const Submenu = styled(SubMenu)`
-  :hover {
-    margin-left:3px;
-    margin-right:5px;
-    background-color:  #006EBD;
-    border-radius: 8px;
-    color: white;
-    text-decoration: none;
-  }
-`;
+
+  useEffect(() => {
+    setRole(JSON.parse(localStorage["role"]));
+  }, [history]);
+  // const Menuitem = styled(MenuItem)`
+  //   :hover {
+  //     margin-left: 3px;
+  //     margin-right: 5px;
+  //     background-color: #006ebd;
+  //     border-radius: 8px;
+  //   }
+  // `;
+  // const Submenu = styled(SubMenu)`
+  //   :hover {
+  //     margin-left: 3px;
+  //     margin-right: 5px;
+  //     background-color: #006ebd;
+  //     border-radius: 8px;
+  //     color: white;
+  //     text-decoration: none;
+  //   }
+  // `;
   const onClickMenuIcon = () => {
     setCollapsed(!collapsed);
   };
-  
+
+  const handleLogout = () => {
+    window.localStorage.clear();
+    history.push("/");
+  };
+
+  const sidebarContentByRole = () => {
+    return (
+      <SidebarContent>
+        <Menu>
+          {role === 1
+            ? SidebarDataManajemen.map((item, index) => {
+                return <SidebarMenu props={item} key={index} />;
+              })
+            : role === 2
+            ? SidebarDataManajemen.map((item, index) => {
+                return <SidebarMenu props={item} key={index} />;
+              })
+            : SidebarDataManajemen.map((item, index) => {
+                return <SidebarMenu props={item} key={index} />;
+              })}
+          {/* {sidebarMenu()} */}
+        </Menu>
+      </SidebarContent>
+    );
+  };
 
   return (
     <>
-      <ProSidebar
-        collapsed={collapsed}
-      >
-        <SidebarHeader>
+      <ProSidebar collapsed={collapsed}>
+        <SidebarHeader className="text-end">
           <div style={styles.menuIcon} onClick={onClickMenuIcon}>
             <AiOutlineMenu />
           </div>
+          <div
+            clasName="d-flex"
+            style={{
+              marginTop: "10px",
+              marginRight: "10px",
+              marginBottom: "10px",
+            }}
+          >
+            <button className="btn btn-danger" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
         </SidebarHeader>
-        <SidebarContent>
-        <Menu>
-          <Menuitem icon={<AiIcons.AiOutlineDashboard fontSize='18px'/>} > 
-            Dashboard
-            <Link to='/manajemen' />
-          </Menuitem>
+        {sidebarContentByRole()}
 
-          <Submenu title="Produksi" icon={<GiIcons.GiGearHammer fontSize='18px' />}>
-            <Menuitem icon={<GiIcons.GiGearHammer />}>
-              Buat Permintaan
-              <Link to='/manajemen/produksi' />
-            </Menuitem>
-            <Menuitem icon={<GiIcons.GiGearHammer />}>
-              Selesai
-              <Link to='/manajemen/produksi/selesai' />
-            </Menuitem>
-          </Submenu>
-
-          <Submenu title="Produk" icon={<MdIcons.MdProductionQuantityLimits fontSize='18px' />}>
-            <Menuitem icon={<MdIcons.MdProductionQuantityLimits />}>
-              Tambah Produk
-              <Link to='/manajemen/produk' />
-            </Menuitem>
-            <Menuitem icon={<MdIcons.MdProductionQuantityLimits />}>
-              Data Produk
-              <Link to='/manajemen/produk/data-produk' />
-            </Menuitem>
-            <Menuitem icon={<MdIcons.MdProductionQuantityLimits />}>
-              Kategori
-              <Link to='/manajemen/produk/kategori' />
-            </Menuitem>
-          </Submenu>
-
-          <Submenu title="Material" icon={<GiIcons.GiMaterialsScience fontSize='18px' />}>
-            <Menuitem icon={<GiIcons.GiMaterialsScience />}>
-              Permintaan
-              <Link to='/manajemen/material' />
-            </Menuitem>
-            <Menuitem icon={<GiIcons.GiMaterialsScience />}>
-              Data Material
-              <Link to='/manajemen/material/data-material' />
-            </Menuitem>
-            <Menuitem icon={<GiIcons.GiMaterialsScience />}>
-              Tipe
-              <Link to='/manajemen/material/tipe' />
-            </Menuitem>
-            <Menuitem icon={<GiIcons.GiMaterialsScience />}>
-              Stok
-              <Link to='/manajemen/material/stok' />
-            </Menuitem>
-          </Submenu>
-
-          <Menuitem icon={<BiIcons.BiGroup fontSize='18px' />}>
-            Pegawai
-            <Link to='/manajemen/pegawai' />
-          </Menuitem>
-        </Menu>
-        </SidebarContent>
+        {/* <SidebarContent>
+          <Menu>
+            {SidebarDataManajemen.map((item, index) => {
+              return <SidebarMenu props={item} key={index} />;
+            })}
+            
+          </Menu>
+        </SidebarContent> */}
       </ProSidebar>
     </>
   );
