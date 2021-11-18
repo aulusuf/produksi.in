@@ -1,9 +1,9 @@
 import React from "react";
-import "../Styles/Header.css";
 import { Image } from "react-bootstrap";
-import produksiIn from '../Assets/produksi.in.png';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import produksiIn from '../Assets/produksi.in.png';
+import "../Styles/Header.css";
 
 const NavIcon = styled(Link)`
   margin-left: 2rem;

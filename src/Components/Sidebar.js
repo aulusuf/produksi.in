@@ -16,7 +16,7 @@ import * as MdIcons from 'react-icons/md';
 import * as BiIcons from 'react-icons/bi';
 import styled from 'styled-components';
 
-const Sidebar = (props) => {
+const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const styles = {
     sideBarHeight: {
@@ -66,12 +66,12 @@ const Submenu = styled(SubMenu)`
         </SidebarHeader>
         <SidebarContent>
         <Menu>
-          <Menuitem icon={<AiIcons.AiOutlineDashboard />}> 
+          <Menuitem icon={<AiIcons.AiOutlineDashboard fontSize='18px'/>} > 
             Dashboard
             <Link to='/manajemen' />
           </Menuitem>
 
-          <Submenu title="Produksi" icon={<GiIcons.GiGearHammer />}>
+          <Submenu title="Produksi" icon={<GiIcons.GiGearHammer fontSize='18px' />}>
             <Menuitem icon={<GiIcons.GiGearHammer />}>
               Buat Permintaan
               <Link to='/manajemen/produksi' />
@@ -82,7 +82,7 @@ const Submenu = styled(SubMenu)`
             </Menuitem>
           </Submenu>
 
-          <Submenu title="Produk" icon={<MdIcons.MdProductionQuantityLimits />}>
+          <Submenu title="Produk" icon={<MdIcons.MdProductionQuantityLimits fontSize='18px' />}>
             <Menuitem icon={<MdIcons.MdProductionQuantityLimits />}>
               Tambah Produk
               <Link to='/manajemen/produk' />
@@ -97,7 +97,7 @@ const Submenu = styled(SubMenu)`
             </Menuitem>
           </Submenu>
 
-          <Submenu title="Material" icon={<GiIcons.GiMaterialsScience />}>
+          <Submenu title="Material" icon={<GiIcons.GiMaterialsScience fontSize='18px' />}>
             <Menuitem icon={<GiIcons.GiMaterialsScience />}>
               Permintaan
               <Link to='/manajemen/material' />
@@ -116,7 +116,7 @@ const Submenu = styled(SubMenu)`
             </Menuitem>
           </Submenu>
 
-          <Menuitem icon={<BiIcons.BiGroup />}>
+          <Menuitem icon={<BiIcons.BiGroup fontSize='18px' />}>
             Pegawai
             <Link to='/manajemen/pegawai' />
           </Menuitem>
