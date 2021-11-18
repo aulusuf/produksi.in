@@ -160,40 +160,34 @@ function App() {
               </Route>
 
               {/* Produksi */}
-              <Route exact path="/produksi">
+              <Route exact path="/tim_produksi">
                 <div className="parent">
                   <Header />
                   <DashboardProduksi />
                 </div>
               </Route>
-              <Route path="/produksi/penugasan">
+              <Route path="/tim-produksi/penugasan">
                 <div className="parent">
                   <Header />
                   <PermintaanProduksi />
                 </div>
               </Route>
-              <Route path="/produksi/data-produk">
+              <Route path="/tim-produksi/data-produk">
                 <div className="parent">
                   <Header />
                   <DataProduk />
                 </div>
               </Route>
-              <Route path="/produksi/material">
+              <Route path="/tim-produksi/material">
                 <div className="parent">
                   <Header />
                   <Material />
                 </div>
               </Route>
-              <Route path="/produksi/sisa">
+              <Route path="/tim-produksi/sisa">
                 <div className="parent">
                   <Header />
                   <Stok />
-                </div>
-              </Route>
-              <Route path="/produksi/pegawai">
-                <div className="parent">
-                  <Header />
-                  <DataPegawai />
                 </div>
               </Route>
             </div>
