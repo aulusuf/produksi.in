@@ -1,105 +1,91 @@
-import React, { useState, createContext } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useState } from "react";
+import "../Styles/bootstrap/css/bootstrap.min.css";
 import { Link, useHistory } from "react-router-dom";
-// import AuthService from "../services/auth.services";
+import { Col, Image, Row } from "react-bootstrap";
+import Produksi from "../Assets/produksi.png";
+import produksiIn from "../Assets/produksi.in.png";
 import axios from "axios";
-// import Form from "react-validation/build/form";
-// import Input from "react-validation/build/input";
-// import CheckButton from "react-validation/build/button";
 
-function setLocalStorage(key, value) {
-  try {
-    window.localStorage.setItem(key, JSON.stringify(value));
-  } catch (e) {
-    return (
-      e instanceof DOMException &&
-      // everything except Firefox
-      (e.code === 22 ||
-        // Firefox
-        e.code === 1014 ||
-        // test name field too, because code might not be present
-        // everything except Firefox
-        e.name === "QuotaExceededError" ||
-        // Firefox
-        e.name === "NS_ERROR_DOM_QUOTA_REACHED")
-    );
-  }
-}
-
-const Login = (props) => {
+const Login = () => {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
-  // const [user, setUser] = useState();
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState();
-  const UserContext = createContext(null);
-
   const history = useHistory();
 
   const handleLogin = (event) => {
     event.preventDefault();
     const user = { username, password };
-
     axios
       .post("api/signin", user)
       .then((res) => {
         localStorage["name"] = res.data.name;
         localStorage["role"] = res.data.role[0];
         localStorage["token"] = res.data.token;
-        const roleNumber = JSON.stringify(localStorage["role"]);
-        console.log(roleNumber);
-        console.log(localStorage);
-        history.push("/base");
+        // const roleNumber = JSON.parse(localStorage["role"]);
+        // console.log(roleNumber);
+        // console.log(localStorage);
+        if (JSON.parse(localStorage["role"]) === 1) {
+          history.push("/manajemen");
+        } else if (JSON.parse(localStorage["role"]) === 2) {
+          history.push("/supervisor");
+        }
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
   return (
     <div className="bg-login vh-100">
       <div className="container row">
-        <div className="box col-xl-4 col-md-6 col-sm-8 col-xs-10 d-flex flex-column justify-content-center">
+        <div className="box col-xl-7 col-md-6 col-sm-8 col-xs-10 d-flex flex-column justify-content-center">
+          <div className="logo pb-3 d-flex justify-content-center">
+            <Image style={{ height: "80px" }} src={produksiIn} />
+          </div>
           <div className="form-box bg-white rounded px-3 py-4">
-            <div className="logo pb-3">
-              <h2>Produksi.in</h2>
-              <p>Masuk untuk akses</p>
-            </div>
             <div className="login-box">
-              <form onSubmit={handleLogin}>
-                <div className="mb-3">
-                  <label className="form-label">Username</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Username"
-                    value={username}
-                    onChange={({ target }) => setUsername(target.value)}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label for="password" className="form-label">
-                    Password
-                  </label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    placeholder="password"
-                    value={password}
-                    onChange={({ target }) => setPassword(target.value)}
-                  />
-                </div>
-                <div className="text-center pt-3">
-                  <div>
-                    <button type="submit" className="btn btn-primary">
-                      Masuk
-                    </button>
+              <Row>
+                <Col sm="7" className="d-flex p-5 justify-content-center">
+                  <Image style={{ height: "180px" }} src={Produksi} />
+                </Col>
+                <Col>
+                  <div class="shadow-sm p-3 bg-body rounded">
+                    <form onSubmit={handleLogin}>
+                      <div className="mb-3">
+                        <label className="form-label">Username</label>
+                        <input
+                          className="form-control"
+                          placeholder="Username"
+                          type="text"
+                          value={username}
+                          onChange={({ target }) => setUsername(target.value)}
+                        />
+                      </div>
+                      <div className="mb-3">
+                        <label className="form-label">Password</label>
+                        <input
+                          className="form-control"
+                          placeholder="password"
+                          type="password"
+                          value={password}
+                          onChange={({ target }) => setPassword(target.value)}
+                        />
+                      </div>
+                      <div className="text-center pt-3">
+                        <div>
+                          <button className="btn btn-primary">
+                            Masuk
+                            <Link to="/manajemen/" />
+                          </button>
+                        </div>
+                        <div>
+                          <Link to="/manajemen/" className="py-3">
+                            Lupa password?
+                          </Link>
+                        </div>
+                      </div>
+                    </form>
                   </div>
-                  <div>
-                    <Link className="py-3">Lupa password?</Link>
-                  </div>
-                </div>
-              </form>
+                </Col>
+              </Row>
             </div>
           </div>
         </div>
