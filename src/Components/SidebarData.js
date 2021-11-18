@@ -102,7 +102,7 @@ export const SidebarDataSupervisor = [
       {
         MenuitemIcon: <GiIcons.GiGearHammer />,
         label: "Data Produk",
-        path: "/supervisor/produksi/data-produk",
+        path: "/supervisor/produksi/produk", // -> it can be '/produk'
       },
     ],
   },
@@ -113,27 +113,26 @@ export const SidebarDataSupervisor = [
       {
         MenuitemIcon: <GiIcons.GiMaterialsScience />,
         label: "Permintaan",
-        path: "/supervisor/material",
+        path: "/supervisor/material/permintaan",
       },
       {
         MenuitemIcon: <GiIcons.GiMaterialsScience />,
-        label: "Stok",
-        path: "/supervisor/material/stok",
+        label: "Sisa",
+        path: "/supervisor/material/sisa",
       },
     ],
   },
   {
     MenuitemIcon: <BiIcons.BiGroup />,
     label: "Pegawai",
-    path: "/supervisor/pegawai",
+    path: "/supervisor/pegawai", // -> it can be '/pegawai'
   },
 ];
-
-export const SidebarDataProduksi = [
+export const SidebarDataTimProduksi = [
   {
     MenuitemIcon: <AiIcons.AiOutlineDashboard />,
     label: "Dashboard",
-    path: "/prosuksi",
+    path: "/tim_produksi",
   },
   {
     title: "Produksi",
@@ -142,12 +141,12 @@ export const SidebarDataProduksi = [
       {
         MenuitemIcon: <GiIcons.GiGearHammer />,
         label: "Penugasan",
-        path: "/prosuksi/penugasan",
+        path: "/tim_produksi/penugasan",
       },
       {
         MenuitemIcon: <GiIcons.GiGearHammer />,
         label: "Data Produk",
-        path: "/prosuksi/data-produk",
+        path: "/tim_produksi/data-produk", // -> it can be '/produk'
       },
     ],
   },
@@ -158,21 +157,17 @@ export const SidebarDataProduksi = [
       {
         MenuitemIcon: <GiIcons.GiMaterialsScience />,
         label: "Permintaan",
-        path: "/prosuksi/material",
+        path: "/tim_produksi/material",
       },
       {
         MenuitemIcon: <GiIcons.GiMaterialsScience />,
         label: "Sisa",
-        path: "/prosuksi/sisa",
+        path: "/tim_produksi/sisa",
       },
     ],
   },
-  {
-    MenuitemIcon: <BiIcons.BiGroup />,
-    label: "Pegawai",
-    path: "/prosuksi/pegawai",
-  },
 ];
+
 const Menuitem = styled(MenuItem)`
     :hover {
       margin-left: 3px;

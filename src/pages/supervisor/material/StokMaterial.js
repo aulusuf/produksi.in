@@ -130,7 +130,7 @@ const StokMaterial = () => {
                   <td>@fat</td>
                   <td>
                     <div className="d-flex justify-content-center">
-                      <Button variant="primary" size="lg" disabled className="button-proses-prosuksi">Dalam Proses</Button>
+                      <text style={{fontStyle:'italic', color:'#2479F9'}}>Dalam Proses</text>
                     </div>
                   </td>
                 </tr>
@@ -141,7 +141,7 @@ const StokMaterial = () => {
                   <td>@fat</td>
                   <td>
                     <div className="d-flex justify-content-center">
-                      <Button variant="primary" size="lg" disabled className="button-proses-prosuksi">Dalam Proses</Button>
+                      <text style={{fontStyle:'italic', color:'#2479F9'}}>Dalam Proses</text>
                     </div>
                   </td>
                 </tr>
@@ -152,7 +152,7 @@ const StokMaterial = () => {
                   <td>@fat</td>
                   <td>
                     <div className="d-flex justify-content-center">
-                      <Button variant="primary" size="lg" disabled className="button-proses-prosuksi">Dalam Proses</Button>
+                      <text style={{fontStyle:'italic', color:'#2479F9'}}>Dalam Proses</text>
                     </div>
                   </td>
                 </tr>

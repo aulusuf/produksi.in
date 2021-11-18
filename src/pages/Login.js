@@ -28,6 +28,8 @@ const Login = () => {
           history.push("/manajemen");
         } else if (JSON.parse(localStorage["role"]) === 2) {
           history.push("/supervisor");
+        } else {
+          history.push("/tim_produksi");
         }
       })
       .catch((err) => {

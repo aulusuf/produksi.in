@@ -17,7 +17,11 @@ import { AiOutlineMenu } from "react-icons/ai";
 // import styled from "styled-components";
 
 
-import { SidebarDataManajemen, SidebarDataProduksi, SidebarDataSupervisor } from "../Pages/manajemen/SidebarDataManajemen";
+import {
+  SidebarDataManajemen,
+  SidebarDataSupervisor,
+  SidebarDataTimProduksi,
+} from "./SidebarData";
 import SidebarMenu from "./SidebarMenu";
 
 const Sidebar = () => {
@@ -80,7 +84,7 @@ const Sidebar = () => {
             ? SidebarDataSupervisor.map((item, index) => {
                 return <SidebarMenu props={item} key={index} />;
               })
-            : SidebarDataProduksi.map((item, index) => {
+            : SidebarDataTimProduksi.map((item, index) => {
                 return <SidebarMenu props={item} key={index} />;
               })
             }

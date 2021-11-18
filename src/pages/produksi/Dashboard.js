@@ -181,8 +181,8 @@ const Dashboard = () => {
 
       <Row>
         <Col>
-        <div className="cursor">
-            <div class="shadow-sm pt-5 pb-5 p-3 mt-3 bg-body rounded">
+          <div className="cursor">
+            <div class="shadow-sm pt-5 pb-5  p-3 mt-3 bg-body rounded">
               <Container className="padding-profil" onClick={() => setLgShowProfil(true)}>
                 <Row>
                   <Col sm={3}>
@@ -191,7 +191,7 @@ const Dashboard = () => {
                     </div>
                   </Col>
                   <Col sm={9}>
-                    <div style={{textAlign:"center", paddingTop:'10px'}}>
+                    <div style={{textAlign:"center", paddingTop:'11px', paddingBottom:'13px'}}>
                       <h3>Hallo <text>Farhan Ismail</text></h3>
                       <text style={{fontSize:'21px'}}>Team <text>Produksi</text></text>
                     </div>
@@ -201,15 +201,16 @@ const Dashboard = () => {
             </div>
           </div>
         </Col>
+        
         <Col>
           <div class="shadow-sm p-3 mt-3 bg-body rounded">
             <Container>
               <h3>Produk</h3>
-              <Row>
+              <Row className="d-flex justify-content-center">
                 <Col sm='5'>
                   <div class="shadow-sm bg-body rounded">
                     <div className="d-flex justify-content-center">
-                      <Image style={{height:'145px', width:'150px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
+                      <Image style={{height:'135px', width:'140px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
                     </div>
                     <p style={{textAlign:'center'}}>Tas</p>
                   </div>
@@ -217,33 +218,34 @@ const Dashboard = () => {
                 <Col sm='5'>
                   <div class="shadow-sm bg-body rounded">
                     <div className="d-flex justify-content-center">
-                      <Image style={{height:'145px', width:'150px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
+                      <Image style={{height:'135px', width:'140px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
                     </div>
                     <p style={{textAlign:'center'}}>Tas</p>
                   </div>
                 </Col>
-                <Col className="cursor" onClick={() => history.push(`/produksi/data-produk`)}>
+              </Row>
+              
+              <Col className="cursor" onClick={() => history.push(`/tim_produksi/data-produk`)}>
                   <div className="d-flex justify-content-center">
                     <text style={{textAlign:'center'}}>Lihat Semua</text>
                   </div>
                 </Col>
-              </Row>
             </Container>
           </div>
         </Col>
       </Row>
 
-      <Row className="my-3">
+      <Row className="mt-4">
         <Col>
           <div className="col-12">
-            <div className="button-dashboard-produksi"  onClick={() => history.push(`/produksi/material`)}>
+            <div className="button-dashboard-produksi"  onClick={() => history.push(`/tim_produksi/material`)}>
               <h3 style={{textAlign:'center', fontSize:'22px'}}>Buat Permintaan Material</h3>
             </div>
           </div>
         </Col>
       </Row>
 
-      <div class="shadow-sm p-3 my-2 bg-body rounded">
+      <div class="shadow-sm p-3 bg-body rounded">
         <Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
           <h3>Jadwal</h3>
           <Table striped bordered hover>

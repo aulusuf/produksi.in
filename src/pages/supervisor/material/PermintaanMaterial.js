@@ -105,7 +105,6 @@ const PermintaanMaterial = () => {
                 <tr>
                   <th>#</th>
                   <th>First Name</th>
-                  <th>Last Name</th>
                   <th>Username</th>
                   <th>Action</th>
                 </tr>
@@ -114,7 +113,6 @@ const PermintaanMaterial = () => {
                 <tr>
                   <td>1</td>
                   <td>Mark</td>
-                  <td>Otto</td>
                   <td>@mdo</td>
                   <td>
                     <div className="d-flex justify-content-center">
@@ -126,33 +124,30 @@ const PermintaanMaterial = () => {
                 <tr>
                   <td>2</td>
                   <td>Jacob</td>
-                  <td>Thornton</td>
                   <td>@fat</td>
                   <td>
                     <div className="d-flex justify-content-center">
-                      <Button variant="primary" size="lg" disabled className="button-proses-prosuksi">Dalam Proses</Button>
+                      <text style={{fontStyle:'italic', color:'#2479F9'}}>Dalam Proses</text>
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <td>3</td>
                   <td>Jacob</td>
-                  <td>Thornton</td>
                   <td>@fat</td>
                   <td>
                     <div className="d-flex justify-content-center">
-                      <Button variant="primary" size="lg" disabled className="button-proses-prosuksi">Dalam Proses</Button>
+                      <text style={{fontStyle:'italic', color:'#2479F9'}}>Dalam Proses</text>
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <td>4</td>
                   <td>Jacob</td>
-                  <td>Thornton</td>
                   <td>@fat</td>
                   <td>
                     <div className="d-flex justify-content-center">
-                      <Button variant="primary" size="lg" disabled className="button-proses-prosuksi">Dalam Proses</Button>
+                      <text style={{fontStyle:'italic', color:'#2479F9'}}>Dalam Proses</text>
                     </div>
                   </td>
                 </tr>

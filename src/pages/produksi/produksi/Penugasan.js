@@ -890,7 +890,7 @@ const Penugasan = () => {
     ],
   };
   return (
-    <div className="marginAll">
+    <div className="marginBody">
       <h1>Produksi</h1>
       <Row className="my-4">
         <div class="shadow-sm p-3 mt-3 bg-body rounded">
@@ -902,7 +902,6 @@ const Penugasan = () => {
                   <tr>
                     <th>#</th>
                     <th>First Name</th>
-                    <th>Last Name</th>
                     <th>Username</th>
                     <th>Action</th>
                   </tr>
@@ -911,7 +910,6 @@ const Penugasan = () => {
                   <tr>
                     <td>1</td>
                     <td>Mark</td>
-                    <td>Otto</td>
                     <td>@mdo</td>
                     <td>
                       <div className="d-flex justify-content-center">
@@ -927,7 +925,6 @@ const Penugasan = () => {
                   <tr>
                     <td>2</td>
                     <td>Jacob</td>
-                    <td>Thornton</td>
                     <td>@fat</td>
                     <td>
                       <div className="d-flex justify-content-center">
@@ -945,7 +942,6 @@ const Penugasan = () => {
                   <tr>
                     <td>3</td>
                     <td>Jacob</td>
-                    <td>Thornton</td>
                     <td>@fat</td>
                     <td>
                       <div className="d-flex justify-content-center">
@@ -963,7 +959,6 @@ const Penugasan = () => {
                   <tr>
                     <td>4</td>
                     <td>Jacob</td>
-                    <td>Thornton</td>
                     <td>@fat</td>
                     <td>
                       <div className="d-flex justify-content-center">
@@ -985,13 +980,56 @@ const Penugasan = () => {
         </div>
       </Row>
       <Row className="my-4">
-        <div class="shadow-sm p-3 mt-3 bg-body rounded">
+      <div class="shadow-sm p-3 mt-3 bg-body rounded">
+          <Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
+            <h3>Riwayat Penugasan</h3>
+            <div style={{ marginTop: "5%" }}>
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                </tbody>
+              </Table>
+            </div>
+          </Container>
+        </div>
+        {/* <div class="shadow-sm p-3 mt-3 bg-body rounded">
           <Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
             <div style={{ marginTop: "2%" }}>
               <MDBDataTable scrollX striped bordered data={data} />
             </div>
           </Container>
-        </div>
+        </div> */}
       </Row>
     </div>
   );

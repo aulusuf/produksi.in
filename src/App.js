@@ -26,6 +26,9 @@ import Material from "./Pages/supervisor/material/PermintaanMaterial";
 import Stok from "./Pages/supervisor/material/StokMaterial";
 
 import DashboardProduksi from "./Pages/produksi/Dashboard";
+import Penugasan from "./Pages/produksi/produksi/Penugasan";
+import DataProdukP from "./Pages/produksi/produksi/DataProduk";
+import MaterialStok from "./Pages/produksi/material/StokMaterial";
 
 function App() {
   // eslint-disable-next-line
@@ -166,40 +169,34 @@ function App() {
               </Route>
 
               {/* Produksi */}
-              <Route exact path="/produksi">
+              <Route exact path="/tim_produksi">
                 <div className="parent">
                   <Header />
                   <DashboardProduksi />
                 </div>
               </Route>
-              <Route path="/produksi/penugasan">
+              <Route path="/tim_produksi/penugasan">
                 <div className="parent">
                   <Header />
-                  <PermintaanProduksi />
+                  <Penugasan />
                 </div>
               </Route>
-              <Route path="/produksi/data-produk">
+              <Route path="/tim_produksi/data-produk">
                 <div className="parent">
                   <Header />
-                  <DataProduk />
+                  <DataProdukP />
                 </div>
               </Route>
-              <Route path="/produksi/material">
+              <Route path="/tim_produksi/material">
                 <div className="parent">
                   <Header />
                   <Material />
                 </div>
               </Route>
-              <Route path="/produksi/sisa">
+              <Route path="/tim_produksi/sisa">
                 <div className="parent">
                   <Header />
-                  <Stok />
-                </div>
-              </Route>
-              <Route path="/produksi/pegawai">
-                <div className="parent">
-                  <Header />
-                  <DataPegawai />
+                  <MaterialStok />
                 </div>
               </Route>
             </div>
