@@ -1,6 +1,6 @@
 import Button from '@restart/ui/esm/Button';
 import React, { useState } from 'react';
-import { Col, Container, FloatingLabel, Form, Row, Table } from 'react-bootstrap';
+import { Col, Container, FloatingLabel, Form, Image, Row, Table } from 'react-bootstrap';
 import "../styles/produksi.css";
 
 const BuatPermintaan = () => {
@@ -26,20 +26,17 @@ const BuatPermintaan = () => {
                     </div>
                   </div>
                 </div>
-                <div className="d-flex justify-content-end" style={{marginTop:'20px'}}>
-                  <input
-                    type="file"
-                    onChange={(event) => {
-                    setSelectedImage(event.target.files[0]);
-                    }}
-                  />
-                </div>
+                  <div className="d-flex justify-content-center">
+                    <div class="shadow-sm bg-body rounded">
+                      <Image style={{height:'150px', width:'150px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
+                    </div>
+                  </div>
                 <div>
                   <Row style={{marginTop:'20px'}}>
                   <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
                     <Form.Label column sm="4">
                       Pilih Produk
-                    </Form.Label>
+                    </Form.Label> 
                     <Col sm="7">
                       <Form.Select defaultValue="Pilih Produk...">
                         <option>Pilih Produk...</option>

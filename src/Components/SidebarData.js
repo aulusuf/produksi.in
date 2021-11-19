@@ -19,7 +19,7 @@ export const SidebarDataManajemen = [
     subNav: [
       {
         MenuitemIcon: <GiIcons.GiGearHammer />,
-        label: "Lihat Permintaan",
+        label: "Buat Permintaan",
         path: "/manajemen/produksi",
       },
       {
