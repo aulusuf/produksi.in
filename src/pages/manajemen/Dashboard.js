@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Col,
   Container,
@@ -24,7 +24,15 @@ const Dashboard = () => {
   const [LgShowProfil, setLgShowProfil] = useState(false);
   const [LgShowProfilEdit, setLgShowProfilEdit] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+
+  const [username, setUsername] = useState();
+  const [roleName, setRoleName] = useState();
   // perandaian role manajer supervisor produksi
+
+  useEffect(() => {
+    setUsername(JSON.parse(localStorage["username"]));
+    setRoleName(JSON.parse([localStorage["role"]]));
+  }, []);
   return (
     // Output ada tiga
     <div className="marginAll">
@@ -218,8 +226,8 @@ const Dashboard = () => {
                   </Col>
                   <Col sm={8}>
                     <div style={{ textAlign: "center", paddingTop: "20px" }}>
-                      <h3>Hallo Manager</h3>
-                      <text>Farhan Ismail</text>
+                      <h3>Hallo {username}</h3>
+                      <text>{roleName}</text>
                     </div>
                   </Col>
                 </Row>
