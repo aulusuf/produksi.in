@@ -195,11 +195,11 @@ const TambahProduk = () => {
               </Col>   
             </Row>
             <Col>
-                <div className="d-flex mt-4 justify-content-center">
-                  <Button as="input" type="submit" value="Tamba Produk" className="button-submit-prosuksi"/>
-                  <Button as="input" type="submit" value="Batal" className="button-cencel-prosuksi" onClick={()=>setSelectedImage(null)}/>
-                </div>
-              </Col>
+              <div className="d-flex mt-4 justify-content-center">
+                <Button as="input" type="submit" value="Tamba Produk" className="button-submit-prosuksi"/>
+                <Button as="input" type="submit" value="Batal" className="button-cencel-prosuksi" onClick={()=>setSelectedImage(null)}/>
+              </div>
+            </Col>
         </Container>  
       </div>
     </div>

@@ -113,7 +113,7 @@ export const SidebarDataSupervisor = [
       {
         MenuitemIcon: <GiIcons.GiMaterialsScience />,
         label: "Permintaan",
-        path: "/supervisor/material/permintaan",
+        path: "/supervisor/material",
       },
       {
         MenuitemIcon: <GiIcons.GiMaterialsScience />,

@@ -19,7 +19,7 @@ const DataProduk = () => {
             Detail Produk
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="d-flex justify-content-center">
           <Row>
             <Col sm='5'>
               <div>

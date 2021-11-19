@@ -17,7 +17,7 @@ const NavIcon = styled(Link)`
 const Header = () => {
   return (
     <div>
-      <NavIcon to="/manajemen">
+      <NavIcon>
         <Image style={{ height: "50px", width: "110px" }} src={produksiIn} />
       </NavIcon>
     </div>

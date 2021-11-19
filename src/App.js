@@ -29,6 +29,7 @@ import DashboardProduksi from "./Pages/produksi/Dashboard";
 import Penugasan from "./Pages/produksi/produksi/Penugasan";
 import DataProdukP from "./Pages/produksi/produksi/DataProduk";
 import MaterialStok from "./Pages/produksi/material/StokMaterial";
+import PermintaanMaterialP from "./Pages/produksi/material/PermintaanMaterial";
 
 function App() {
   // eslint-disable-next-line
@@ -87,7 +88,7 @@ function App() {
                   <DataProduk />
                 </div>
               </Route>
-              <Route path="/manajemen/produk/kategori">
+              <Route path="/manajemen/produksi/kategori">
                 <div className="parent">
                   <Header />
                   <Kategori />
@@ -143,7 +144,7 @@ function App() {
                   <PermintaanProduksi />
                 </div>
               </Route>
-              <Route path="/supervisor/produksi/data-produk">
+              <Route path="/supervisor/produksi/produk">
                 <div className="parent">
                   <Header />
                   <DataProduk />
@@ -155,7 +156,7 @@ function App() {
                   <Material />
                 </div>
               </Route>
-              <Route path="/supervisor/material/stok">
+              <Route path="/supervisor/material/sisa">
                 <div className="parent">
                   <Header />
                   <Stok />
@@ -190,7 +191,7 @@ function App() {
               <Route path="/tim_produksi/material">
                 <div className="parent">
                   <Header />
-                  <Material />
+                  <PermintaanMaterialP />
                 </div>
               </Route>
               <Route path="/tim_produksi/sisa">
