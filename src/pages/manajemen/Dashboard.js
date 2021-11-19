@@ -30,7 +30,8 @@ const Dashboard = () => {
   // perandaian role manajer supervisor produksi
 
   // useEffect(() => {
-  //   setUsername(JSON.parse(localStorage["username"]));
+  // setUsername(JSON.stringify(localStorage["username"]));
+  console.log(username);
   //   setRoleName(JSON.parse([localStorage["role"]]));
   // }, []);
   // perandaian role manajer supervisor produksi

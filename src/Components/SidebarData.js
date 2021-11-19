@@ -20,7 +20,7 @@ export const SidebarDataManajemen = [
       {
         MenuitemIcon: <GiIcons.GiGearHammer />,
         label: "Buat Permintaan",
-        path: "/manajemen/produksi",
+        path: "/manajemen/produksi/permintaan",
       },
       {
         MenuitemIcon: <GiIcons.GiGearHammer />,
