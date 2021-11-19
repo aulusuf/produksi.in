@@ -35,13 +35,16 @@ const DataPegawai = () => {
   //     });
   // }, [userData]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
     const newUser = { name, email, roleId, username, password };
+    e.preventDefault();
     axios.post("/api/signup", newUser).then((res) => {
       console.log(res.data);
+      window.location.reload();
     });
     setLgShow(false);
+
+    // axios.get("/api/users");
   };
 
   // console.log(userData);

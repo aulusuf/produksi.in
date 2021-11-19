@@ -74,9 +74,7 @@ const Login = () => {
                       </div>
                       <div className="text-center pt-3">
                         <div>
-                          <button className="btn btn-primary">
-                            Masuk
-                          </button>
+                          <button className="btn btn-primary">Masuk</button>
                         </div>
                         <div>
                           <Link to="/manajemen/" className="py-3">
