@@ -47,7 +47,7 @@ const Login = () => {
             <div className="login-box">
               <Row>
                 <Col sm="7" className="d-flex p-5 justify-content-center">
-                  <Image style={{ height: "180px" }} src={Produksi} />
+                  <Image style={{ height: "16vmax" }} src={Produksi} />
                 </Col>
                 <Col>
                   <div class="shadow-sm p-3 bg-body rounded">
@@ -76,7 +76,6 @@ const Login = () => {
                         <div>
                           <button className="btn btn-primary">
                             Masuk
-                            <Link to="/manajemen/" />
                           </button>
                         </div>
                         <div>

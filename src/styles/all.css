@@ -57,6 +57,9 @@
     border-radius: 5px;
     border-color: #009229;
 }
+.button-selesai-material:hover {
+    background-color: #046b21;
+}
 .cursor {
     cursor: pointer;
 }

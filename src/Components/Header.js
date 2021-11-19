@@ -1,9 +1,9 @@
 import React from "react";
-import "../Styles/Header.css";
 import { Image } from "react-bootstrap";
-import produksiIn from "../Assets/produksi.in.png";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import produksiIn from '../Assets/produksi.in.png';
+import "../Styles/Header.css";
 
 const NavIcon = styled(Link)`
   margin-left: 2rem;
@@ -17,7 +17,7 @@ const NavIcon = styled(Link)`
 const Header = () => {
   return (
     <div>
-      <NavIcon to="/manajemen">
+      <NavIcon>
         <Image style={{ height: "50px", width: "110px" }} src={produksiIn} />
       </NavIcon>
     </div>

@@ -11,6 +11,19 @@
     background-color: #0462a5;
 }
 
+.button-dashboard-produksi {
+    margin-bottom: 30px;
+    padding-top: 28px;
+    padding-bottom: 25px;
+    border-radius: 10px;
+    background-color: #006EBD;
+    cursor: pointer;
+    color: white;
+}
+.button-dashboard-produksi:hover {
+    background-color: #0462a5;
+}
+
 .modal-body {
     background-color: rgba(239, 246, 255);
     border-radius: 10px;

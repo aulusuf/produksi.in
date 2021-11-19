@@ -183,7 +183,6 @@ const Tipe = () => {
 
       <div class="shadow-sm p-3 mt-3 bg-body rounded">
         <Container style={{paddingTop:'20px', paddingBottom:'20px'}}>
-        
           <Row>
             <Col>
               <h3>Tipe</h3>

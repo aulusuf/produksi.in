@@ -1,21 +1,31 @@
-.marginAll {
-    margin: 65px 10%;
+.marginBody {
+    margin-top: 10px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 20px;
 }
 
 .button-submit-prosuksi {
-    background-color: #0033ff;
+    background-color: #2479F9;
     color: white;
     cursor: pointer;
     border-radius: 5px;
-    border-color: #0033ff;
+    border-color: #2479F9;
+}
+.button-proses-prosuksi {
+    background-color: rgb(23, 67, 245);
+    color: white;
+    border-radius: 5px;
+    border-color: #2479F9;
 }
 .button-submit-prosuksi:hover{
-    background: #2f59ff;
+    background: rgb(23, 67, 245);
     color: white;
     cursor: pointer;
 }
 .button-cencel-prosuksi {
     margin-left: 6%;
+    margin-right: 3%;
     background-color: #F92424;
     color: white;
     cursor: pointer;
@@ -29,7 +39,6 @@
 }
 
 .button-edit-produk {
-    margin-left: 6%;
     background-color: #F9A424;
     color: white;
     cursor: pointer;
@@ -47,4 +56,15 @@
     color: white;
     border-radius: 5px;
     border-color: #009229;
+}
+.button-selesai-material:hover {
+    background-color: #046b21;
+}
+.cursor {
+    cursor: pointer;
+}
+.modal-content  {
+    -webkit-border-radius: 12px !important;
+    -moz-border-radius: 12px !important;
+    border-radius: 12px !important; 
 }

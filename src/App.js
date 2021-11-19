@@ -6,6 +6,7 @@ import Header from "./Components/Header";
 import "./Styles/App.scss";
 import "./Styles/Container.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import Login from "./Pages/Login";
 import Dashboard from "./Pages/Dashboard";
 import BuatPermintaan from "./Pages/manajemen/produksi/PermintaanProduksi";
@@ -20,6 +21,15 @@ import DataPegawai from "./Pages/manajemen/pegawai/DataPegawai";
 import Tipe from "./Pages/manajemen/material/Tipe";
 
 import DashboardSupervisor from "./Pages/supervisor/Dashboard";
+import PermintaanProduksi from "./Pages/supervisor/produksi/PermintaanProduksi";
+import Material from "./Pages/supervisor/material/PermintaanMaterial";
+import Stok from "./Pages/supervisor/material/StokMaterial";
+
+import DashboardProduksi from "./Pages/produksi/Dashboard";
+import Penugasan from "./Pages/produksi/produksi/Penugasan";
+import DataProdukP from "./Pages/produksi/produksi/DataProduk";
+import MaterialStok from "./Pages/produksi/material/StokMaterial";
+import PermintaanMaterialP from "./Pages/produksi/material/PermintaanMaterial";
 
 function App() {
   // eslint-disable-next-line
@@ -72,13 +82,13 @@ function App() {
                   <TambahProduk />
                 </div>
               </Route>
-              <Route path="/manajemen/produk/data-produk">
+              <Route path="/manajemen/produksi/data-produk">
                 <div className="parent">
                   <Header />
                   <DataProduk />
                 </div>
               </Route>
-              <Route path="/manajemen/produk/kategori">
+              <Route path="/manajemen/produksi/kategori">
                 <div className="parent">
                   <Header />
                   <Kategori />
@@ -108,17 +118,86 @@ function App() {
                   <Tipe />
                 </div>
               </Route>
-              <Route exact path="/manajemen/pegawai">
+              <Route path="/manajemen/pegawai">
                 <div className="parent">
                   <Header />
                   <DataPegawai />
                 </div>
               </Route>
 
+              {/* Supervisor */}
               <Route exact path="/supervisor">
                 <div className="parent">
                   <Header />
                   <DashboardSupervisor />
+                </div>
+              </Route>
+              <Route exact path="/produksi">
+                <div className="parent">
+                  <Header />
+                  <DashboardProduksi />
+                </div>
+              </Route>
+              <Route exact path="/supervisor/produksi">
+                <div className="parent">
+                  <Header />
+                  <PermintaanProduksi />
+                </div>
+              </Route>
+              <Route path="/supervisor/produksi/produk">
+                <div className="parent">
+                  <Header />
+                  <DataProduk />
+                </div>
+              </Route>
+              <Route exact path="/supervisor/material">
+                <div className="parent">
+                  <Header />
+                  <Material />
+                </div>
+              </Route>
+              <Route path="/supervisor/material/sisa">
+                <div className="parent">
+                  <Header />
+                  <Stok />
+                </div>
+              </Route>
+              <Route path="/supervisor/pegawai">
+                <div className="parent">
+                  <Header />
+                  <DataPegawai />
+                </div>
+              </Route>
+
+              {/* Produksi */}
+              <Route exact path="/tim_produksi">
+                <div className="parent">
+                  <Header />
+                  <DashboardProduksi />
+                </div>
+              </Route>
+              <Route path="/tim_produksi/penugasan">
+                <div className="parent">
+                  <Header />
+                  <Penugasan />
+                </div>
+              </Route>
+              <Route path="/tim_produksi/data-produk">
+                <div className="parent">
+                  <Header />
+                  <DataProdukP />
+                </div>
+              </Route>
+              <Route path="/tim_produksi/material">
+                <div className="parent">
+                  <Header />
+                  <PermintaanMaterialP />
+                </div>
+              </Route>
+              <Route path="/tim_produksi/sisa">
+                <div className="parent">
+                  <Header />
+                  <MaterialStok />
                 </div>
               </Route>
             </div>
