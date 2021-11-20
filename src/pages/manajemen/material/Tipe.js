@@ -1,6 +1,6 @@
 import Button from "@restart/ui/esm/Button";
 import React, { useState } from "react";
-import { Col, Container, Form, Modal, Row, Table } from "react-bootstrap";
+import { Col, Container, Form, Modal, Row } from "react-bootstrap";
 import TypeTable from "../../../Data/TypeTable";
 
 const Tipe = () => {
