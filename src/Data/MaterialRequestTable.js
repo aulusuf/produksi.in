@@ -1,0 +1,55 @@
+import React, { useState, useEffect } from "react";
+import { Table } from "react-bootstrap";
+import Button from "@restart/ui/esm/Button";
+import axios from "axios";
+
+export default function MaterialRequestTable(props) {
+  const [matReqData, setMatReqData] = useState([]);
+
+  useEffect(() => {
+    axios.get("/api/material_requests").then((res) => {
+      setMatReqData(res.data);
+      // console.log(res.data);
+    });
+  }, []);
+
+  return (
+    <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Produk</th>
+          <th>Material</th>
+          <th>Jumlah</th>
+          <th>Dari</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {matReqData.map((reqMat) => {
+          return (
+            <tr key={reqMat.id} data={reqMat}>
+              <td>{reqMat.id}</td>
+              <td>{reqMat.productId}</td>
+              <td>{reqMat.materialId}</td>
+              <td>{reqMat.amount}</td>
+              <td>{reqMat.userId}</td>
+              {/* ditambahkan if else untuk status material request */}
+              <td>
+                {" "}
+                <div className="d-flex justify-content-center">
+                  <Button
+                    as="input"
+                    type="submit"
+                    value="Kirim"
+                    className="button-submit-prosuksi"
+                  />
+                </div>
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </Table>
+  );
+}
