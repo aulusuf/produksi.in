@@ -18,6 +18,7 @@ const Login = () => {
       .post("api/signin", user)
       .then((res) => {
         console.log(res);
+        localStorage["id"] = res.data.id;
         localStorage["name"] = res.data.name;
         localStorage["username"] = res.data.username;
         localStorage["role"] = res.data.role[0];

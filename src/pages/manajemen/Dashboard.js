@@ -18,6 +18,7 @@ import * as MdIcons from "react-icons/md";
 import * as BsIcons from "react-icons/bs";
 import Button from "@restart/ui/esm/Button";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 const Dashboard = () => {
   let history = useHistory();
@@ -25,16 +26,30 @@ const Dashboard = () => {
   const [LgShowProfil, setLgShowProfil] = useState(false);
   const [LgShowProfilEdit, setLgShowProfilEdit] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [username, setUsername] = useState();
-  const [roleName, setRoleName] = useState();
-  // perandaian role manajer supervisor produksi
+  const [userData, setUserData] = useState({});
 
-  // useEffect(() => {
-  // setUsername(JSON.stringify(localStorage["username"]));
-  console.log(username);
-  //   setRoleName(JSON.parse([localStorage["role"]]));
-  // }, []);
-  // perandaian role manajer supervisor produksi
+  const userName = localStorage.getItem("name");
+  const userRole = localStorage.getItem("roleName");
+  console.log(userName);
+
+  const getUserData = () => {
+    // event.preventDefault();
+    // setLgShowProfil(true);
+    const params = localStorage.getItem("id");
+    console.log(params);
+    axios
+      .get("/api/user/" + params)
+      .then((res) => {
+        setUserData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getUserData();
+  }, []);
 
   return (
     // Output ada tiga
@@ -62,13 +77,15 @@ const Dashboard = () => {
                 </div>
               </Col>
               <Col sm={8}>
+                {/* PROFILE CONTENT */}
                 <Row className="mb-2">
                   <Col sm="3">Nama</Col>
-                  <Col>Farhan Ismail</Col>
+                  <Col>{userData.name}</Col>
+                  {/* <Col>Farhan Ismail</Col> */}
                 </Row>
                 <Row className="mb-2">
                   <Col sm="3">Email</Col>
-                  <Col>farhanismail@mail.com</Col>
+                  <Col>{userData.email}</Col>
                 </Row>
                 <Row className="mb-2">
                   <Col sm="3">Jabatan</Col>
@@ -78,7 +95,7 @@ const Dashboard = () => {
                 </Row>
                 <Row className="mb-2">
                   <Col sm="3">Username</Col>
-                  <Col>Hannn</Col>
+                  <Col>{userData.username}</Col>
                 </Row>
               </Col>
               <Col>
@@ -215,6 +232,10 @@ const Dashboard = () => {
                   className="padding-profil"
                   onClick={() => setLgShowProfil(true)}
                 >
+                  {/* <Container
+                  className="padding-profil"
+                  onClick={() => setLgShowProfil(true)}
+                > */}
                   <Row>
                     <Col sm={4}>
                       <div className="d-flex justify-content-center">
@@ -229,9 +250,10 @@ const Dashboard = () => {
                       <div className="text-profil">
                         <h3>
                           Hallo{" "}
-                          <text style={{ color: "#035896" }}>Manager</text>
+                          {/* <text style={{ color: "#035896" }}>{user.name}</text> */}
+                          <span style={{ color: "#035896" }}>{userRole}</span>
                         </h3>
-                        <text style={{ fontSize: "17px" }}>Farhan Ismail</text>
+                        <text style={{ fontSize: "17px" }}>{userName}</text>
                       </div>
                     </Col>
                   </Row>
