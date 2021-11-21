@@ -69,12 +69,12 @@ export const SidebarDataManajemen = [
         label: "Tipe",
         path: "/manajemen/material/tipe",
       },
-      {
-        MenuitemIcon: <GiIcons.GiMaterialsScience />,
-        label: "Stok",
-        path: "/manajemen/material/stok",
-      },
     ],
+  },
+  {
+    MenuitemIcon: <GiIcons.GiMaterialsScience />,
+    label: "Stok",
+    path: "/manajemen/material/stok",
   },
   {
     MenuitemIcon: <BiIcons.BiGroup />,

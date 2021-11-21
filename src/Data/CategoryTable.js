@@ -3,7 +3,7 @@ import { Table, Button } from "react-bootstrap";
 import axios from "axios";
 import CategoryTableData from "./CategoryTableData";
 
-export default function UserTable(props) {
+export default function CategoryTable(props) {
   const [categoryData, setCategoryData] = useState([]);
 
   useEffect(() => {
