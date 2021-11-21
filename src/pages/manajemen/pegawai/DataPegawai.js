@@ -1,7 +1,6 @@
 import Button from "@restart/ui/esm/Button";
 import React, { useState, useEffect } from "react";
 import { Col, Container, Form, Image, Modal, Row } from "react-bootstrap";
-import DataTable from "react-data-table-component";
 import axios from "axios";
 import { FaLastfmSquare } from "react-icons/fa";
 import UserTable from "../../../Data/UserTable";
