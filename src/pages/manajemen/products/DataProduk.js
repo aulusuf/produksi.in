@@ -11,6 +11,7 @@ import {
   Button
 } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import LoadingData from "../../../Components/LoadingProduct";
 
 const DataProduk = () => {
   let history = useHistory();
@@ -20,12 +21,14 @@ const DataProduk = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const [productData, setProductData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     axios
       .get("/api/products")
       .then((res) => {
         setProductData(res.data);
+        setLoading(true); 
       })
       .catch((err) => {
         console.log(err);
@@ -319,7 +322,7 @@ const DataProduk = () => {
         <Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
           <h3>Data Produk</h3>
           <Row>
-            {productData.map((product) => {
+            {loading ? productData.map((product) => {
               return (
                 <Col sm="3">
                   <div
@@ -338,7 +341,11 @@ const DataProduk = () => {
                   </div>
                 </Col>
               );
-            })}
+            }):
+            <div>
+              <LoadingData/>
+            </div>
+            }
           </Row>
         </Container>
       </div>

@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Col, Container, Form, Modal, Row, Table, Button } from "react-bootstrap";
+import {Bars} from '@agney/react-loading';
 
 const SelesaiProduksi = () => {
   const [LgShowUpdate, setLgShowUpdate] = useState(false);
   const [LgShowDell, setLgShowDell] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [productAssignmentData, setproductAssignmentData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     axios.get("/api/product_assignments").then((res) => {
       setproductAssignmentData(res.data);
-      console.log(res.data);
+      setLoading(true); 
       // const timProduksi = res.data.id
       // axios.get('/api/users')
     });
@@ -137,10 +139,10 @@ const SelesaiProduksi = () => {
                 </tr>
               </thead>
               <tbody>
-                {productAssignmentData.map((paData) => {
+                {loading ? productAssignmentData.map((paData, index) => {
                   return (
                     <tr key={paData.id}>
-                      <td>{paData.id}</td>
+                      <td>{index + 1}</td>
                       <td style={{textAlign:'start'}}>{paData.products.name}</td>
                       <td>{paData.amount}</td>
                       <td>{paData.cost}</td>
@@ -166,7 +168,11 @@ const SelesaiProduksi = () => {
                       </td>
                     </tr>
                   );
-                })}
+                }):
+                <div>
+                  <Bars width="50" color="#2f89e4" style={{marginLeft:'700%', marginTop:'20px'}}/>
+                </div>
+                }
               </tbody>
             </Table>
           </div>
@@ -188,10 +194,10 @@ const SelesaiProduksi = () => {
                 </tr>
               </thead>
               <tbody>
-                {productAssignmentData.map((paData) => {
+                {loading ? productAssignmentData.map((paData, index) => {
                   return (
                     <tr key={paData.id}>
-                      <td>{paData.id}</td>
+                      <td>{index + 1}</td>
                       <td style={{textAlign:'start'}}>{paData.products.name}</td>
                       <td>{paData.amount}</td>
                       <td>{paData.cost}</td>
@@ -199,7 +205,11 @@ const SelesaiProduksi = () => {
                       {/* // untuk if else status */}
                     </tr>
                   );
-                })}
+                }):
+                <div>
+                  <Bars width="50" color="#2f89e4" style={{marginLeft:'635%', marginTop:'20px'}}/>
+                </div>
+                }
               </tbody>
             </Table>
           </div>

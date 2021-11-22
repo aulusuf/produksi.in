@@ -59,11 +59,13 @@ const TambahProduk = () => {
                           Kategori Produk
                         </Form.Label>
                         <Col sm="4">
-                          <Form.Select defaultValue="Pilih Produk...">
+                          <Form.Select defaultValue="Pilih Kategori..." style={{cursor:'pointer'}}>
                             <option>Pilih Kategori...</option>
+                            <option>Aksesoris</option>
                             <option>Tas</option>
-                            <option>Sepatu</option>
-                            <option>Baju</option>
+                            <option>Atasan</option>
+                            <option>Bawahan</option>
+                            <option>Alas Kaki</option>
                           </Form.Select>
                         </Col>
                       </Form.Group>
@@ -103,11 +105,18 @@ const TambahProduk = () => {
                   </div>
                 </div>
                 <div className="mt-4 m-2">
-                  <Form.Select defaultValue="Pilih Produk...">
+                  <Form.Select defaultValue="Pilih Material..." style={{cursor:'pointer'}}>
                     <option>Material...</option>
-                    <option>Tas</option>
-                    <option>Sepatu</option>
-                    <option>Baju</option>
+                    <option>Resleting</option>
+                    <option>Benang</option>
+                    <option>Denim</option>
+                    <option>Pengait</option>
+                    <option>Kulit</option>
+                    <option>Kancing</option>
+                    <option>Lem</option>
+                    <option>Katun</option>
+                    <option>Karet</option>
+                    <option>Sol</option>
                   </Form.Select>
                   <Form.Control className="mt-3" type="number" placeholder="Jumlah..." />
                 </div>
@@ -119,11 +128,18 @@ const TambahProduk = () => {
                   </div>
                 </div>
                 <div className="mt-4 m-2">
-                  <Form.Select defaultValue="Pilih Produk...">
+                  <Form.Select defaultValue="Pilih Produk..." style={{cursor:'pointer'}}>
                     <option>Material...</option>
-                    <option>Tas</option>
-                    <option>Sepatu</option>
-                    <option>Baju</option>
+                    <option>Resleting</option>
+                    <option>Benang</option>
+                    <option>Denim</option>
+                    <option>Pengait</option>
+                    <option>Kulit</option>
+                    <option>Kancing</option>
+                    <option>Lem</option>
+                    <option>Katun</option>
+                    <option>Karet</option>
+                    <option>Sol</option>
                   </Form.Select>
                   <Form.Control className="mt-3" type="number" placeholder="Jumlah..." />
                 </div>
@@ -135,11 +151,18 @@ const TambahProduk = () => {
                   </div>
                 </div>
                 <div className="mt-4 m-2">
-                  <Form.Select defaultValue="Pilih Produk...">
+                  <Form.Select defaultValue="Pilih Produk..." style={{cursor:'pointer'}}>
                     <option>Material...</option>
-                    <option>Tas</option>
-                    <option>Sepatu</option>
-                    <option>Baju</option>
+                    <option>Resleting</option>
+                    <option>Benang</option>
+                    <option>Denim</option>
+                    <option>Pengait</option>
+                    <option>Kulit</option>
+                    <option>Kancing</option>
+                    <option>Lem</option>
+                    <option>Katun</option>
+                    <option>Karet</option>
+                    <option>Sol</option>
                   </Form.Select>
                   <Form.Control className="mt-3" type="number" placeholder="Jumlah..." />
                 </div>
@@ -151,11 +174,18 @@ const TambahProduk = () => {
                   </div>
                 </div>
                 <div className="mt-4 m-2">
-                  <Form.Select defaultValue="Pilih Produk...">
+                  <Form.Select defaultValue="Pilih Produk..." style={{cursor:'pointer'}}>
                     <option>Material...</option>
-                    <option>Tas</option>
-                    <option>Sepatu</option>
-                    <option>Baju</option>
+                    <option>Resleting</option>
+                    <option>Benang</option>
+                    <option>Denim</option>
+                    <option>Pengait</option>
+                    <option>Kulit</option>
+                    <option>Kancing</option>
+                    <option>Lem</option>
+                    <option>Katun</option>
+                    <option>Karet</option>
+                    <option>Sol</option>
                   </Form.Select>
                   <Form.Control className="mt-3" type="number" placeholder="Jumlah..." />
                 </div>
@@ -167,11 +197,18 @@ const TambahProduk = () => {
                   </div>
                 </div>
                 <div className="mt-4 m-2">
-                  <Form.Select defaultValue="Pilih Produk...">
+                  <Form.Select defaultValue="Pilih Produk..." style={{cursor:'pointer'}}>
                     <option>Material...</option>
-                    <option>Tas</option>
-                    <option>Sepatu</option>
-                    <option>Baju</option>
+                    <option>Resleting</option>
+                    <option>Benang</option>
+                    <option>Denim</option>
+                    <option>Pengait</option>
+                    <option>Kulit</option>
+                    <option>Kancing</option>
+                    <option>Lem</option>
+                    <option>Katun</option>
+                    <option>Karet</option>
+                    <option>Sol</option>
                   </Form.Select>
                   <Form.Control className="mt-3" type="number" placeholder="Jumlah..." />
                 </div>
@@ -183,11 +220,18 @@ const TambahProduk = () => {
                   </div>
                 </div>
                 <div className="mt-4 m-2">
-                  <Form.Select defaultValue="Pilih Produk...">
+                  <Form.Select defaultValue="Pilih Produk..." style={{cursor:'pointer'}}>
                     <option>Material...</option>
-                    <option>Tas</option>
-                    <option>Sepatu</option>
-                    <option>Baju</option>
+                    <option>Resleting</option>
+                    <option>Benang</option>
+                    <option>Denim</option>
+                    <option>Pengait</option>
+                    <option>Kulit</option>
+                    <option>Kancing</option>
+                    <option>Lem</option>
+                    <option>Katun</option>
+                    <option>Karet</option>
+                    <option>Sol</option>
                   </Form.Select>
                   <Form.Control className="mt-3" type="number" placeholder="Jumlah..." />
                 </div>

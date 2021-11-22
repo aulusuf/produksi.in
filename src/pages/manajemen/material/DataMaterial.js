@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Col, Container, Form, Image, Modal, Row, Button } from "react-bootstrap";
+import LoadingData from "../../../Components/LoadingProduct";
 
 const DataMaterial = () => {
   const [lgShow, setLgShow] = useState(false);
@@ -10,12 +11,14 @@ const DataMaterial = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const [materialData, setMaterialData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     axios
       .get("/api/materials")
       .then((res) => {
         setMaterialData(res.data);
+        setLoading(true); 
       })
       .catch((err) => {
         console.log(err);
@@ -91,11 +94,15 @@ const DataMaterial = () => {
                     Tipe
                   </Form.Label>
                   <Col sm="6">
-                    <Form.Select defaultValue="Pilih Produk...">
+                    <Form.Select defaultValue="Pilih Produk..."  style={{cursor:'pointer'}}>
                       <option>Pilih Tipe...</option>
-                      <option>Tipe1</option>
-                      <option>Tipe2</option>
-                      <option>Tipe3</option>
+                      <option>Alat & Bahan</option>
+                      <option>Pernik</option>
+                      <option>Bahan keras</option>
+                      <option>Kuningan</option>
+                      <option>Kuningan</option>
+                      <option>Kuningan</option>
+                      <option>Kuningan</option>
                     </Form.Select>
                   </Col>
                 </Form.Group>
@@ -319,11 +326,15 @@ const DataMaterial = () => {
                     Tipe
                   </Form.Label>
                   <Col sm="6">
-                    <Form.Select defaultValue="Pilih Produk...">
+                    <Form.Select defaultValue="Pilih Produk..." style={{cursor:'pointer'}}>
                       <option>Pilih Tipe...</option>
-                      <option>Tipe1</option>
-                      <option>Tipe2</option>
-                      <option>Tipe3</option>
+                      <option>Alat & Bahan</option>
+                      <option>Pernik</option>
+                      <option>Bahan keras</option>
+                      <option>Kuningan</option>
+                      <option>Kuningan</option>
+                      <option>Kuningan</option>
+                      <option>Kuningan</option>
                     </Form.Select>
                   </Col>
                 </Form.Group>
@@ -388,7 +399,7 @@ const DataMaterial = () => {
         <Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
           <h3>Data Material</h3>
           <Row>
-            {materialData.map((material) => {
+            {loading ? materialData.map((material) => {
               return (
                 <Col sm="3">
                   <div
@@ -407,7 +418,11 @@ const DataMaterial = () => {
                   </div>
                 </Col>
               );
-            })}
+            }):
+            <div>
+              <LoadingData/>
+            </div>
+            }
           </Row>
         </Container>
       </div>

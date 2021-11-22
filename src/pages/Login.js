@@ -80,8 +80,8 @@ const Login = () => {
                         <div>
                           <button className="btn btn-primary">Masuk</button>
                         </div>
-                        <div>
-                          <Link to="/manajemen/" className="py-3">
+                        <div className="mt-3">
+                          <Link to="/">
                             Lupa password?
                           </Link>
                         </div>

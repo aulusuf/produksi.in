@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Table, Button } from "react-bootstrap";
 import axios from "axios";
+import {Bars} from '@agney/react-loading';
 
 export default function MaterialRequestTable(props) {
   const [matReqData, setMatReqData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleKirim = (props) => {
-    console.log(props);
     axios
       .put("/api/material_request/" + props.id, { statusId: 2 })
       .then((res) => {
@@ -17,6 +18,7 @@ export default function MaterialRequestTable(props) {
   useEffect(() => {
     axios.get("/api/material_requests").then((res) => {
       setMatReqData(res.data);
+      setLoading(true); 
     });
   });
 
@@ -33,7 +35,7 @@ export default function MaterialRequestTable(props) {
         </tr>
       </thead>
       <tbody>
-        {matReqData.map((reqMat) => {
+        {loading ? matReqData.map((reqMat) => {
           return (
             <tr key={reqMat.id} data={reqMat}>
               <td style={{textAlign:'center'}}>{reqMat.id}</td>
@@ -75,7 +77,11 @@ export default function MaterialRequestTable(props) {
               </td>
             </tr>
           );
-        })}
+        }):
+        <div>
+          <Bars width="50" color="#2f89e4" style={{marginLeft:'600%', marginTop:'20px'}}/>
+        </div>
+        }
       </tbody>
     </Table>
   );

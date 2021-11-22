@@ -19,6 +19,7 @@ import * as BsIcons from "react-icons/bs";
 import Button from "@restart/ui/esm/Button";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import {Bars} from '@agney/react-loading';
 
 const Dashboard = () => {
   let history = useHistory();
@@ -31,20 +32,16 @@ const Dashboard = () => {
 
   const userName = localStorage.getItem("name");
   const userRole = localStorage.getItem("roleName");
-  console.log(userName);
+  const [loading, setLoading] = useState(false);
 
 
   useEffect(() => {
     axios.get("/api/product_assignments").then((res) => {
       setproductAssignmentData(res.data);
-      console.log(res.data);
-      // const timProduksi = res.data.id
-      // axios.get('/api/users')
+      setLoading(true); 
     });
   }, []);
   const getUserData = () => {
-    // event.preventDefault();
-    // setLgShowProfil(true);
     const params = localStorage.getItem("id");
     console.log(params);
     axios
@@ -396,7 +393,7 @@ const Dashboard = () => {
                       <div className="d-flex justify-content-center">
                         <Image style={{height:'135px', width:'140px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
                       </div>
-                      <p style={{textAlign:'center'}}>Tas</p>
+                      <p style={{textAlign:'center'}}>Aksesoris</p>
                     </div>
                   </Col>
                   <Col sm='5'>
@@ -450,7 +447,7 @@ const Dashboard = () => {
                       <div className="d-flex justify-content-center">
                         <Image style={{height:'135px', width:'140px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
                       </div>
-                      <p style={{textAlign:'center'}}>Tas</p>
+                      <p style={{textAlign:'center'}}>Tas Punggung</p>
                     </div>
                   </Col>
                   <Col sm='5'>
@@ -458,7 +455,7 @@ const Dashboard = () => {
                       <div className="d-flex justify-content-center">
                         <Image style={{height:'135px', width:'140px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
                       </div>
-                      <p style={{textAlign:'center'}}>Tas</p>
+                      <p style={{textAlign:'center'}}>Tas Jinjing</p>
                     </div>
                   </Col>
                 </Row>
@@ -488,10 +485,10 @@ const Dashboard = () => {
                 </tr>
               </thead>
               <tbody>
-                {productAssignmentData.map((paData) => {
+                {loading ? productAssignmentData.map((paData, index) => {
                   return (
                     <tr key={paData.id}>
-                      <td width="50">{paData.id}</td>
+                      <td width="50">{index + 1}</td>
                       <td width="300" style={{textAlign:'start'}}>{paData.products.name}</td>
                       <td width="120">{paData.amount}</td>
                       <td width="150">{paData.cost}</td>
@@ -499,7 +496,11 @@ const Dashboard = () => {
                       {/* // untuk if else status */}
                     </tr>
                   );
-                })}
+                }):
+                <div>
+                  <Bars width="50" color="#2f89e4" style={{marginLeft:'750%', marginTop:'20px'}}/>
+                </div>
+                }
               </tbody>
             </Table>
           </div>
