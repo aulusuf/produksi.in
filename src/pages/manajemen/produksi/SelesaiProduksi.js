@@ -1,18 +1,19 @@
-import Button from "@restart/ui/esm/Button";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Col, Container, Form, Modal, Row, Table } from "react-bootstrap";
+import { Col, Container, Form, Modal, Row, Table, Button } from "react-bootstrap";
+import {Bars} from '@agney/react-loading';
 
 const SelesaiProduksi = () => {
   const [LgShowUpdate, setLgShowUpdate] = useState(false);
   const [LgShowDell, setLgShowDell] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [productAssignmentData, setproductAssignmentData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     axios.get("/api/product_assignments").then((res) => {
       setproductAssignmentData(res.data);
-      console.log(res.data);
+      setLoading(true); 
       // const timProduksi = res.data.id
       // axios.get('/api/users')
     });
@@ -126,23 +127,23 @@ const SelesaiProduksi = () => {
             </Col>
           </Row>
           <div style={{ marginTop: "2%" }}>
-            <Table striped bordered hover>
+            <Table striped bordered hover style={{textAlign:'center'}}>
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Produk</th>
-                  <th>Jumlah</th>
-                  <th>Biaya</th>
-                  <th>Tim Produksi</th>
-                  <th>Action</th>
+                  <th width="50">#</th>
+                  <th width="250">Produk</th>
+                  <th width="100">Jumlah</th>
+                  <th width="120">Biaya</th>
+                  <th width="120">Tim Produksi</th>
+                  <th width="120">Action</th>
                 </tr>
               </thead>
               <tbody>
-                {productAssignmentData.map((paData) => {
+                {loading ? productAssignmentData.map((paData, index) => {
                   return (
                     <tr key={paData.id}>
-                      <td>{paData.id}</td>
-                      <td>{paData.productId}</td>
+                      <td>{index + 1}</td>
+                      <td style={{textAlign:'start'}}>{paData.products.name}</td>
                       <td>{paData.amount}</td>
                       <td>{paData.cost}</td>
                       <td>{paData.assignmentId}</td>
@@ -167,7 +168,11 @@ const SelesaiProduksi = () => {
                       </td>
                     </tr>
                   );
-                })}
+                }):
+                <div>
+                  <Bars width="50" color="#2f89e4" style={{marginLeft:'700%', marginTop:'20px'}}/>
+                </div>
+                }
               </tbody>
             </Table>
           </div>
@@ -178,29 +183,33 @@ const SelesaiProduksi = () => {
         <Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
           <h3>Riwayat Prosuksi</h3>
           <div style={{ marginTop: "5%" }}>
-            <Table striped bordered hover>
+            <Table striped bordered hover style={{textAlign:'center'}}>
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Produk</th>
-                  <th>Jumlah</th>
-                  <th>Biaya</th>
-                  <th>Tim Produksi</th>
+                  <th width="50">#</th>
+                  <th width="250">Produk</th>
+                  <th width="100">Jumlah</th>
+                  <th width="150">Biaya</th>
+                  <th width="120">Tim Produksi</th>
                 </tr>
               </thead>
               <tbody>
-                {productAssignmentData.map((paData) => {
+                {loading ? productAssignmentData.map((paData, index) => {
                   return (
                     <tr key={paData.id}>
-                      <td>{paData.id}</td>
-                      <td>{paData.productId}</td>
+                      <td>{index + 1}</td>
+                      <td style={{textAlign:'start'}}>{paData.products.name}</td>
                       <td>{paData.amount}</td>
                       <td>{paData.cost}</td>
                       <td>{paData.assignmentId}</td>
                       {/* // untuk if else status */}
                     </tr>
                   );
-                })}
+                }):
+                <div>
+                  <Bars width="50" color="#2f89e4" style={{marginLeft:'635%', marginTop:'20px'}}/>
+                </div>
+                }
               </tbody>
             </Table>
           </div>

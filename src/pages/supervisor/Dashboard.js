@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Col, Container, Row, Image, Table, Modal, Form } from 'react-bootstrap';
+import { Col, Container, Row, Image, Table, Modal, Form, Button } from 'react-bootstrap';
 import "./styles/all.css";
 import * as BiIcons from 'react-icons/bi';
 import * as FaIcons from 'react-icons/fa';
 import * as MdIcons from 'react-icons/md';
 import * as BsIcons from 'react-icons/bs';
-import Button from '@restart/ui/esm/Button';
 import { useHistory } from 'react-router-dom';
 
 const Dashboard = () => {
@@ -320,11 +319,11 @@ const Dashboard = () => {
           <div class="shadow-sm p-3 mt-3 bg-body rounded">
             <Container>
               <h3>Produk</h3>
-              <Row>
+              <Row className="d-flex justify-content-center">
                 <Col sm='5'>
                   <div class="shadow-sm bg-body rounded">
                     <div className="d-flex justify-content-center">
-                      <Image style={{height:'150px', width:'150px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
+                      <Image style={{height:'135px', width:'140px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
                     </div>
                     <p style={{textAlign:'center'}}>Tas</p>
                   </div>
@@ -332,17 +331,18 @@ const Dashboard = () => {
                 <Col sm='5'>
                   <div class="shadow-sm bg-body rounded">
                     <div className="d-flex justify-content-center">
-                      <Image style={{height:'150px', width:'150px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
+                      <Image style={{height:'135px', width:'140px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
                     </div>
                     <p style={{textAlign:'center'}}>Tas</p>
-                  </div>
-                </Col>
-                <Col className="cursor" onClick={() => history.push(`/supervisor/produksi/data-produk`)}>
-                  <div className="d-flex justify-content-center">
-                    <text style={{textAlign:'center'}}>Lihat Semua</text>
                   </div>
                 </Col>
               </Row>
+              
+              <Col className="cursor" onClick={() => history.push(`/supervisor/produksi/produk`)}>
+                <div className="d-flex justify-content-center">
+                  <text style={{textAlign:'center'}}>Lihat Semua</text>
+                </div>
+              </Col>
             </Container>
           </div>
         </Col>

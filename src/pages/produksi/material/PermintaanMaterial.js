@@ -1,6 +1,5 @@
-import Button from '@restart/ui/esm/Button';
 import React, { useState } from 'react';
-import { Col, Container,  Form,  Image,  Modal, Row, Table } from 'react-bootstrap';
+import { Col, Container,  Form,  Image,  Modal, Row, Table, Button } from 'react-bootstrap';
 
 const PermintaanMaterial = () => {
   const [LgShowUpdate, setLgShowUpdate] = useState(false);

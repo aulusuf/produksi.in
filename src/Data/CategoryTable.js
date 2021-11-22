@@ -2,13 +2,16 @@ import React, { useState, useEffect } from "react";
 import { Table, Button } from "react-bootstrap";
 import axios from "axios";
 import CategoryTableData from "./CategoryTableData";
+import {Bars} from '@agney/react-loading';
 
 export default function CategoryTable(props) {
   const [categoryData, setCategoryData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     axios.get("/api/categories").then((res) => {
       setCategoryData(res.data);
+      setLoading(true); 
       // console.log(res.data);
     });
   }, []);
@@ -16,14 +19,14 @@ export default function CategoryTable(props) {
   return (
     <Table striped bordered hover>
       <thead>
-        <tr>
-          <th>#</th>
-          <th>Kategori</th>
-          <th>Action</th>
+        <tr style={{textAlign:'center'}}>
+          <th width="50">#</th>
+          <th width="450">Kategori</th>
+          <th width="150">Action</th>
         </tr>
       </thead>
       <tbody>
-        {categoryData.map((category) => {
+        {loading ? categoryData.map((category) => {
           return (
             <CategoryTableData key={category.id} data={category}>
               <div className="d-flex justify-content-center">
@@ -44,7 +47,10 @@ export default function CategoryTable(props) {
               </div>
             </CategoryTableData>
           );
-        })}
+        }):
+        <div>
+          <Bars width="50" color="#2f89e4" style={{marginLeft:'600%', marginTop:'20px'}}/>
+        </div>}
       </tbody>
     </Table>
   );

@@ -1,6 +1,5 @@
-import Button from "@restart/ui/esm/Button";
 import React, { useState } from "react";
-import { Container, Table, Row, Col, Modal } from "react-bootstrap";
+import { Container, Table, Row, Col, Modal, Button } from "react-bootstrap";
 import "../styles/produksi.css";
 import { MDBDataTable } from "mdbreact";
 

@@ -1,6 +1,5 @@
-import Button from '@restart/ui/esm/Button';
 import React, { useState } from 'react';
-import { Container, Modal, Table } from 'react-bootstrap';
+import { Container, Modal, Table, Button } from 'react-bootstrap';
 import "../styles/produksi.css";
 
 const BuatPermintaan = () => {

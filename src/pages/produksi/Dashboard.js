@@ -226,10 +226,10 @@ const Dashboard = () => {
               </Row>
               
               <Col className="cursor" onClick={() => history.push(`/tim_produksi/data-produk`)}>
-                  <div className="d-flex justify-content-center">
-                    <text style={{textAlign:'center'}}>Lihat Semua</text>
-                  </div>
-                </Col>
+                <div className="d-flex justify-content-center">
+                  <text style={{textAlign:'center'}}>Lihat Semua</text>
+                </div>
+              </Col>
             </Container>
           </div>
         </Col>

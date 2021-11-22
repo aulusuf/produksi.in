@@ -1,4 +1,3 @@
-import Button from "@restart/ui/esm/Button";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import StockMaterialTable from "../../../Data/StockMaterial.table";
@@ -10,7 +9,8 @@ import {
   Image,
   Modal,
   Row,
-  Table,
+  Table, 
+  Button
 } from "react-bootstrap";
 
 const StokMaterial = () => {
