@@ -20,23 +20,23 @@ export default function StockMaterialTable(props) {
   return (
     <Table striped bordered hover>
       <thead>
-        <tr>
-          <th>#</th>
-          <th>Produk</th>
-          <th>Kategori</th>
-          <th>Stok</th>
-          <th>Action</th>
+        <tr style={{textAlign:'center'}}>
+          <th width="50">#</th>
+          <th width="250">Produk</th>
+          <th width="180">Kategori</th>
+          <th width="100">Stok</th>
+          <th width="100">Action</th>
         </tr>
       </thead>
       <tbody>
         {stokProduct.map((product) => {
           return (
             <tr key={product.id}>
-              <td>{product.id}</td>
+              <td style={{textAlign:'center'}}>{product.id}</td>
               <td>{product.name}</td>
               <td>{product.categories.name}</td>
-              <td>{product.stock}</td>
-              <td>{props.children}</td>
+              <td style={{textAlign:'center'}}>{product.stock}</td>
+              <td className="d-flex justify-content-center">{props.children}</td>
             </tr>
           );
         })}

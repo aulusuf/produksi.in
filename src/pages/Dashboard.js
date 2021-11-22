@@ -401,7 +401,7 @@ const Dashboard = () => {
             <div class="mt-3 rounded">
               <div
                 className="button-dashboard"
-                onClick={() => history.push(`/manajemen/produksi/permintaan`)}
+                onClick={() => history.push(`/manajemen/produksi`)}
               >
                 <h3 style={{ textAlign: "center", fontSize: "22px" }}>
                   Buat Permintaan Produksi

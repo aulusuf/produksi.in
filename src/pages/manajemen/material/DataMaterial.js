@@ -149,7 +149,7 @@ const DataMaterial = () => {
         <Modal.Body>
           <Row>
             <Col sm="4">
-              <div className="d-flex justify-content-center">
+              <div className="d-flex mb-3 justify-content-center">
                 <Image
                   style={{ height: "150px", width: "150px" }}
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
@@ -398,12 +398,12 @@ const DataMaterial = () => {
                   >
                     <div className="d-flex justify-content-center">
                       <Image
-                        style={{ height: "170px", width: "170px" }}
+                        style={{ height: "150px", width: "150px" }}
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
                         rounded
                       />
                     </div>
-                    <p style={{ textAlign: "center" }}>{material.name}</p>
+                    <p className="d-flex pb-3 justify-content-center">{material.name}</p>
                   </div>
                 </Col>
               );

@@ -27,11 +27,21 @@ const Dashboard = () => {
   const [LgShowProfilEdit, setLgShowProfilEdit] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [userData, setUserData] = useState({});
+  const [productAssignmentData, setproductAssignmentData] = useState([]);
 
   const userName = localStorage.getItem("name");
   const userRole = localStorage.getItem("roleName");
   console.log(userName);
 
+
+  useEffect(() => {
+    axios.get("/api/product_assignments").then((res) => {
+      setproductAssignmentData(res.data);
+      console.log(res.data);
+      // const timProduksi = res.data.id
+      // axios.get('/api/users')
+    });
+  }, []);
   const getUserData = () => {
     // event.preventDefault();
     // setLgShowProfil(true);
@@ -290,7 +300,7 @@ const Dashboard = () => {
         <Row>
           <Col>
             <div class="shadow-sm p-3 mt-3 bg-body rounded">
-              <Container style={{ paddingBottom: "30px" }}>
+              <Container style={{ paddingBottom: "37px" }}>
                 <h3>Statistik</h3>
                 <Row className="padding-statistik">
                   <Col>
@@ -347,7 +357,7 @@ const Dashboard = () => {
                         </text>
                         <Col>
                           <text style={{ fontSize: "10px", color: "grey" }}>
-                            Kategori Produk
+                            Kategori
                           </text>
                         </Col>
                       </Col>
@@ -380,40 +390,30 @@ const Dashboard = () => {
             <div class="shadow-sm p-3 mt-3 bg-body rounded">
               <Container>
                 <h3>Kategori Produk</h3>
-                <Row>
-                  <Col sm="5">
+                <Row className="d-flex justify-content-center">
+                  <Col sm='5'>
                     <div class="shadow-sm bg-body rounded">
                       <div className="d-flex justify-content-center">
-                        <Image
-                          className="image-data"
-                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
-                          rounded
-                        />
+                        <Image style={{height:'135px', width:'140px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
                       </div>
-                      <p style={{ textAlign: "center" }}>Tas</p>
+                      <p style={{textAlign:'center'}}>Tas</p>
                     </div>
                   </Col>
-                  <Col sm="5">
+                  <Col sm='5'>
                     <div class="shadow-sm bg-body rounded">
                       <div className="d-flex justify-content-center">
-                        <Image
-                          className="image-data"
-                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
-                          rounded
-                        />
+                        <Image style={{height:'135px', width:'140px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
                       </div>
-                      <p style={{ textAlign: "center" }}>Tas</p>
-                    </div>
-                  </Col>
-                  <Col
-                    className="cursor"
-                    onClick={() => history.push(`/manajemen/kategori`)}
-                  >
-                    <div className="d-flex justify-content-center">
-                      <text style={{ textAlign: "center" }}>Lihat Semua</text>
+                      <p style={{textAlign:'center'}}>Tas</p>
                     </div>
                   </Col>
                 </Row>
+                
+                <Col className="cursor" onClick={() => history.push(`/manajemen/produk/kategori`)}>
+                  <div className="d-flex justify-content-center">
+                    <text style={{textAlign:'center'}}>Lihat Semua</text>
+                  </div>
+                </Col>
               </Container>
             </div>
           </Col>
@@ -424,7 +424,7 @@ const Dashboard = () => {
             <div class="mt-3 rounded">
               <div
                 className="button-dashboard"
-                onClick={() => history.push(`/manajemen/produksi/permintaan`)}
+                onClick={() => history.push(`/manajemen/produksi`)}
               >
                 <h3 style={{ textAlign: "center", fontSize: "22px" }}>
                   Buat Permintaan Produksi
@@ -444,87 +444,66 @@ const Dashboard = () => {
             <div class="shadow-sm p-3 mt-3 bg-body rounded">
               <Container>
                 <h3>Produk</h3>
-                <Row>
-                  <Col sm="5">
+                <Row className="d-flex justify-content-center">
+                  <Col sm='5'>
                     <div class="shadow-sm bg-body rounded">
                       <div className="d-flex justify-content-center">
-                        <Image
-                          style={{ height: "150px", width: "150px" }}
-                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
-                          rounded
-                        />
+                        <Image style={{height:'135px', width:'140px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
                       </div>
-                      <p style={{ textAlign: "center" }}>Tas</p>
+                      <p style={{textAlign:'center'}}>Tas</p>
                     </div>
                   </Col>
-                  <Col sm="5">
+                  <Col sm='5'>
                     <div class="shadow-sm bg-body rounded">
                       <div className="d-flex justify-content-center">
-                        <Image
-                          style={{ height: "150px", width: "150px" }}
-                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
-                          rounded
-                        />
+                        <Image style={{height:'135px', width:'140px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
                       </div>
-                      <p style={{ textAlign: "center" }}>Tas</p>
-                    </div>
-                  </Col>
-                  <Col
-                    className="cursor"
-                    onClick={() =>
-                      history.push(`/manajemen/produk-data-produk`)
-                    }
-                  >
-                    <div className="d-flex justify-content-center">
-                      <text style={{ textAlign: "center" }}>Lihat Semua</text>
+                      <p style={{textAlign:'center'}}>Tas</p>
                     </div>
                   </Col>
                 </Row>
+                
+                <Col className="cursor" onClick={() => history.push(`/manajemen/produk/data-produk`)}>
+                  <div className="d-flex justify-content-center">
+                    <text style={{textAlign:'center'}}>Lihat Semua</text>
+                  </div>
+                </Col>
               </Container>
             </div>
           </Col>
         </Row>
 
         <div class="shadow-sm p-3 bg-body rounded">
-          <Container>
-            <h3>Riwayat Produksi</h3>
-            <Table striped bordered hover>
+        <Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
+          <h3>Riwayat Prosuksi</h3>
+          <div style={{ marginTop: "5%" }}>
+            <Table striped bordered hover style={{textAlign:'center'}}>
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Username</th>
+                  <th>Produk</th>
+                  <th>Jumlah</th>
+                  <th>Biaya</th>
+                  <th>Tim Produksi</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
+                {productAssignmentData.map((paData) => {
+                  return (
+                    <tr key={paData.id}>
+                      <td width="50">{paData.id}</td>
+                      <td width="300" style={{textAlign:'start'}}>{paData.products.name}</td>
+                      <td width="120">{paData.amount}</td>
+                      <td width="150">{paData.cost}</td>
+                      <td width="180">{paData.assignmentId}</td>
+                      {/* // untuk if else status */}
+                    </tr>
+                  );
+                })}
               </tbody>
             </Table>
-          </Container>
+          </div>
+        </Container>
         </div>
       </div>
     </div>

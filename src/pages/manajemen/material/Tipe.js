@@ -197,7 +197,7 @@ const Tipe = () => {
           <div style={{ marginTop: "2%" }}>
             <Table striped bordered hover>
               <thead>
-                <tr>
+                <tr style={{textAlign:'center'}}>
                   <th>#</th>
                   <th>Nama Tipe</th>
                   <th>Action</th>
@@ -207,9 +207,9 @@ const Tipe = () => {
                 {typeData.map((type) => {
                   return (
                     <tr key={type.id} data={type}>
-                      <td>{type.id}</td>
-                      <td>{type.name}</td>
-                      <td>
+                      <td width="80" style={{textAlign:'center'}}>{type.id}</td>
+                      <td width="550">{type.name}</td>
+                      <td className="d-flex justify-content-center">
                         <Button
                           // as="input"
                           // type="submit"

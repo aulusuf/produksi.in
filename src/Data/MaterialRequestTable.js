@@ -14,24 +14,24 @@ export default function MaterialRequestTable(props) {
 
   return (
     <Table striped bordered hover>
-      <thead>
+      <thead style={{textAlign:'center'}}>
         <tr>
-          <th>#</th>
-          <th>Produk</th>
-          <th>Material</th>
-          <th>Jumlah</th>
-          <th>Dari</th>
-          <th>Status</th>
+          <th width="50">#</th>
+          <th width="150">Produk</th>
+          <th width="150">Material</th>
+          <th width="80">Jumlah</th>
+          <th width="120">Dari</th>
+          <th width="50">Status</th>
         </tr>
       </thead>
       <tbody>
         {matReqData.map((reqMat) => {
           return (
             <tr key={reqMat.id} data={reqMat}>
-              <td>{reqMat.id}</td>
+              <td style={{textAlign:'center'}}>{reqMat.id}</td>
               <td>{reqMat.products.name}</td>
               <td>{reqMat.materials.name}</td>
-              <td>{reqMat.amount}</td>
+              <td style={{textAlign:'center'}}>{reqMat.amount}</td>
               <td>{reqMat.users.name}</td>
               {/* ditambahkan if else untuk status material request */}
               <td>

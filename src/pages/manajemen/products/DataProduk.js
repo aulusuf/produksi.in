@@ -302,7 +302,7 @@ const DataProduk = () => {
         <Col>
           <div
             className="d-flex justify-content-end"
-            style={{ marginRight: "7%" }}
+            style={{ marginBottom:'10px' }}
           >
             <Button
               as="input"
@@ -329,12 +329,12 @@ const DataProduk = () => {
                   >
                     <div className="d-flex justify-content-center">
                       <Image
-                        style={{ height: "170px", width: "170px" }}
+                        style={{ height: "150px", width: "150px" }}
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
                         rounded
                       />
                     </div>
-                    <p style={{ textAlign: "center" }}>{product.name}</p>
+                    <p className="d-flex pb-3 justify-content-center">{product.name}</p>
                   </div>
                 </Col>
               );

@@ -492,20 +492,20 @@ const DataPegawai = () => {
           <div style={{ marginTop: "2%" }}>
             <Table striped bordered hover>
               <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Nama</th>
-                  <th>Email</th>
-                  <th>Role</th>
-                  <th>Username</th>
-                  <th>Action</th>
+                <tr style={{textAlign:'center'}}>
+                  <th width="50">#</th>
+                  <th width="220">Nama</th>
+                  <th width="200">Email</th>
+                  <th width="120">Role</th>
+                  <th width="120">Username</th>
+                  <th width="120">Action</th>
                 </tr>
               </thead>
               <tbody>
                 {userData.map((user) => {
                   return (
                     <tr key={user.id} data={user}>
-                      <td>{user.id}</td>
+                      <td style={{textAlign:'center'}}>{user.id}</td>
                       <td>{user.name}</td>
                       <td>{user.email}</td>
                       <td>{user.roles.name}</td>

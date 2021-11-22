@@ -16,10 +16,10 @@ export default function CategoryTable(props) {
   return (
     <Table striped bordered hover>
       <thead>
-        <tr>
-          <th>#</th>
-          <th>Kategori</th>
-          <th>Action</th>
+        <tr style={{textAlign:'center'}}>
+          <th width="50">#</th>
+          <th width="450">Kategori</th>
+          <th width="150">Action</th>
         </tr>
       </thead>
       <tbody>

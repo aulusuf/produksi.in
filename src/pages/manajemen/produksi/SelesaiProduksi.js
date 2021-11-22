@@ -125,15 +125,15 @@ const SelesaiProduksi = () => {
             </Col>
           </Row>
           <div style={{ marginTop: "2%" }}>
-            <Table striped bordered hover>
+            <Table striped bordered hover style={{textAlign:'center'}}>
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Produk</th>
-                  <th>Jumlah</th>
-                  <th>Biaya</th>
-                  <th>Tim Produksi</th>
-                  <th>Action</th>
+                  <th width="50">#</th>
+                  <th width="250">Produk</th>
+                  <th width="100">Jumlah</th>
+                  <th width="120">Biaya</th>
+                  <th width="120">Tim Produksi</th>
+                  <th width="120">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -141,7 +141,7 @@ const SelesaiProduksi = () => {
                   return (
                     <tr key={paData.id}>
                       <td>{paData.id}</td>
-                      <td>{paData.productId}</td>
+                      <td style={{textAlign:'start'}}>{paData.products.name}</td>
                       <td>{paData.amount}</td>
                       <td>{paData.cost}</td>
                       <td>{paData.assignmentId}</td>
@@ -177,14 +177,14 @@ const SelesaiProduksi = () => {
         <Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
           <h3>Riwayat Prosuksi</h3>
           <div style={{ marginTop: "5%" }}>
-            <Table striped bordered hover>
+            <Table striped bordered hover style={{textAlign:'center'}}>
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Produk</th>
-                  <th>Jumlah</th>
-                  <th>Biaya</th>
-                  <th>Tim Produksi</th>
+                  <th width="50">#</th>
+                  <th width="250">Produk</th>
+                  <th width="100">Jumlah</th>
+                  <th width="150">Biaya</th>
+                  <th width="120">Tim Produksi</th>
                 </tr>
               </thead>
               <tbody>
@@ -192,7 +192,7 @@ const SelesaiProduksi = () => {
                   return (
                     <tr key={paData.id}>
                       <td>{paData.id}</td>
-                      <td>{paData.productId}</td>
+                      <td style={{textAlign:'start'}}>{paData.products.name}</td>
                       <td>{paData.amount}</td>
                       <td>{paData.cost}</td>
                       <td>{paData.assignmentId}</td>
