@@ -18,12 +18,16 @@ const Login = () => {
       .post("api/signin", user)
       .then((res) => {
         console.log(res);
+        localStorage["id"] = res.data.id;
         localStorage["name"] = res.data.name;
+        localStorage["username"] = res.data.username;
         localStorage["role"] = res.data.role[0];
-        localStorage["token"] = res.data.token;
+        localStorage["token"] = res.data.accessToken;
+        localStorage["roleName"] = res.data.role[1];
         // const roleNumber = JSON.parse(localStorage["role"]);
         // console.log(roleNumber);
-        // console.log(localStorage);
+        console.log(localStorage);
+        console.log(res.data);
         if (JSON.parse(localStorage["role"]) === 1) {
           history.push("/manajemen");
         } else if (JSON.parse(localStorage["role"]) === 2) {

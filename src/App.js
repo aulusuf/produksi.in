@@ -8,7 +8,7 @@ import "./Styles/Container.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Login from "./Pages/Login";
-import Dashboard from "./Pages/Dashboard";
+import Dashboard from "./Pages/manajemen/Dashboard";
 import BuatPermintaan from "./Pages/manajemen/produksi/PermintaanProduksi";
 import SelesaiProduksi from "./Pages/manajemen/produksi/SelesaiProduksi";
 import TambahProduk from "./Pages/manajemen/products/TambahProduk";

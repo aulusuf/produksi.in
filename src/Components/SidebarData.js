@@ -69,12 +69,12 @@ export const SidebarDataManajemen = [
         label: "Tipe",
         path: "/manajemen/material/tipe",
       },
-      {
-        MenuitemIcon: <GiIcons.GiMaterialsScience />,
-        label: "Stok",
-        path: "/manajemen/material/stok",
-      },
     ],
+  },
+  {
+    MenuitemIcon: <GiIcons.GiMaterialsScience />,
+    label: "Stok",
+    path: "/manajemen/material/stok",
   },
   {
     MenuitemIcon: <BiIcons.BiGroup />,
@@ -169,81 +169,81 @@ export const SidebarDataTimProduksi = [
 ];
 
 const Menuitem = styled(MenuItem)`
-    :hover {
-      margin-left: 3px;
-      margin-right: 5px;
-      background-color: #006ebd;
-      border-radius: 8px;
-    }
-  `;
-  const Submenu = styled(SubMenu)`
-    :hover {
-      margin-left: 3px;
-      margin-right: 5px;
-      background-color: #006ebd;
-      border-radius: 8px;
-      color: white;
-      text-decoration: none;
-    }
-  `;
+  :hover {
+    margin-left: 3px;
+    margin-right: 5px;
+    background-color: #006ebd;
+    border-radius: 8px;
+  }
+`;
+const Submenu = styled(SubMenu)`
+  :hover {
+    margin-left: 3px;
+    margin-right: 5px;
+    background-color: #006ebd;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+  }
+`;
 
 export const SidebarManajemen = () => {
   <SidebarContent>
     <Menu>
-      <Menuitem icon={<AiIcons.AiOutlineDashboard />}> 
+      <Menuitem icon={<AiIcons.AiOutlineDashboard />}>
         Dashboard
-        <Link to='/manajemen' />
+        <Link to="/manajemen" />
       </Menuitem>
 
       <Submenu title="Produksi" icon={<GiIcons.GiGearHammer />}>
         <Menuitem icon={<GiIcons.GiGearHammer />}>
           Buat Permintaan
-          <Link to='/manajemen/produksi' />
+          <Link to="/manajemen/produksi" />
         </Menuitem>
         <Menuitem icon={<GiIcons.GiGearHammer />}>
           Selesai
-          <Link to='/manajemen/produksi/selesai' />
+          <Link to="/manajemen/produksi/selesai" />
         </Menuitem>
       </Submenu>
 
       <Submenu title="Produk" icon={<MdIcons.MdProductionQuantityLimits />}>
         <Menuitem icon={<MdIcons.MdProductionQuantityLimits />}>
           Tambah Produk
-          <Link to='/manajemen/produk' />
+          <Link to="/manajemen/produk" />
         </Menuitem>
         <Menuitem icon={<MdIcons.MdProductionQuantityLimits />}>
           Data Produk
-          <Link to='/manajemen/produk/data-produk' />
+          <Link to="/manajemen/produk/data-produk" />
         </Menuitem>
         <Menuitem icon={<MdIcons.MdProductionQuantityLimits />}>
           Kategori
-          <Link to='/manajemen/produk/kategori' />
+          <Link to="/manajemen/produk/kategori" />
         </Menuitem>
       </Submenu>
 
       <Submenu title="Material" icon={<GiIcons.GiMaterialsScience />}>
         <Menuitem icon={<GiIcons.GiMaterialsScience />}>
           Permintaan
-          <Link to='/manajemen/material' />
+          <Link to="/manajemen/material" />
         </Menuitem>
         <Menuitem icon={<GiIcons.GiMaterialsScience />}>
           Data Material
-          <Link to='/manajemen/material/data-material' />
+          <Link to="/manajemen/material/data-material" />
         </Menuitem>
         <Menuitem icon={<GiIcons.GiMaterialsScience />}>
           Tipe
-          <Link to='/manajemen/material/tipe' />
+          <Link to="/manajemen/material/tipe" />
         </Menuitem>
         <Menuitem icon={<GiIcons.GiMaterialsScience />}>
           Stok
-          <Link to='/manajemen/material/stok' />
+          <Link to="/manajemen/material/stok" />
         </Menuitem>
       </Submenu>
 
       <Menuitem icon={<BiIcons.BiGroup />}>
         Pegawai
-        <Link to='/manajemen/pegawai' />
+        <Link to="/manajemen/pegawai" />
       </Menuitem>
     </Menu>
   </SidebarContent>;
-}
+};
