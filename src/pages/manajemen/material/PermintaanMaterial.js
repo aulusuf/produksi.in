@@ -1,6 +1,5 @@
-import Button from "@restart/ui/esm/Button";
 import React from "react";
-import { Container } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 import MaterialRequestTable from "../../../Data/MaterialRequestTable";
 
 const PermintaanMaterial = () => {

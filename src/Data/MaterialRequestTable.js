@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table } from "react-bootstrap";
-import Button from "@restart/ui/esm/Button";
+import { Table, Button } from "react-bootstrap";
 import axios from "axios";
 
 export default function MaterialRequestTable(props) {

@@ -1,4 +1,3 @@
-import Button from "@restart/ui/esm/Button";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import {
@@ -8,7 +7,7 @@ import {
   Modal,
   Row,
   Table,
-  // Button,
+  Button,
 } from "react-bootstrap";
 // import TypeTable from "../../../Data/TypeTable";
 

@@ -1,6 +1,5 @@
-import Button from '@restart/ui/esm/Button';
 import React, { useState } from 'react';
-import { Col, Container, FloatingLabel, Form, Image, Row } from 'react-bootstrap';
+import { Col, Container, FloatingLabel, Form, Image, Row, Button } from 'react-bootstrap';
 
 const TambahProduk = () => {
   const [selectedImage, setSelectedImage] = useState(null);

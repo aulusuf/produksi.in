@@ -17,6 +17,7 @@ export default function StockMaterialTable(props) {
       });
   }, []);
   // console.log(userData);
+  
   return (
     <Table striped bordered hover>
       <thead>

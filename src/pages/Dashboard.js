@@ -40,7 +40,7 @@ const Dashboard = () => {
     <div className="marginBody">
       <div className="bg-login">
         <Modal
-          size=""
+          size="" 
           show={LgShowProfil}
           onHide={() => setLgShowProfil(false)}
           aria-labelledby="example-modal-sizes-title-lg"

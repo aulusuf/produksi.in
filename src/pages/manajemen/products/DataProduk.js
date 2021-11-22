@@ -1,4 +1,3 @@
-import Button from "@restart/ui/esm/Button";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
@@ -9,6 +8,7 @@ import {
   Modal,
   Row,
   Table,
+  Button
 } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 

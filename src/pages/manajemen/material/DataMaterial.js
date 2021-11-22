@@ -1,7 +1,6 @@
-import Button from "@restart/ui/esm/Button";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { Col, Container, Form, Image, Modal, Row } from "react-bootstrap";
+import { Col, Container, Form, Image, Modal, Row, Button } from "react-bootstrap";
 
 const DataMaterial = () => {
   const [lgShow, setLgShow] = useState(false);
@@ -372,7 +371,7 @@ const DataMaterial = () => {
         <Col>
           <div
             className="d-flex justify-content-end"
-            style={{ marginRight: "7%" }}
+            style={{ marginBottom:"10px" }}
           >
             <Button
               as="input"

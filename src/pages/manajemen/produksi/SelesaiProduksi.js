@@ -1,7 +1,6 @@
-import Button from "@restart/ui/esm/Button";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Col, Container, Form, Modal, Row, Table } from "react-bootstrap";
+import { Col, Container, Form, Modal, Row, Table, Button } from "react-bootstrap";
 
 const SelesaiProduksi = () => {
   const [LgShowUpdate, setLgShowUpdate] = useState(false);
