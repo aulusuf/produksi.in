@@ -91,7 +91,6 @@ const Tipe = () => {
                     <Form.Control
                       type="text"
                       placeholder="Nama..."
-                      name="name"
                       defaultValue={oldType.name}
                       onChange={(e) => setUpdatedType(e.target.value)}
                     />

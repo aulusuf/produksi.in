@@ -11,7 +11,7 @@ export default function UserTable(props) {
       setUserData(res.data);
       // console.log(res.data);
     });
-  }, []);
+  });
   // console.log(userData);
   return (
     <Table striped bordered hover>
@@ -28,25 +28,32 @@ export default function UserTable(props) {
       <tbody>
         {userData.map((user) => {
           return (
-            <UserTableData key={user.id} data={user}>
-              <div className="d-flex justify-content-center">
-                <Button
-                  as="input"
-                  variant="primary"
-                  value="Lihat"
-                  type="button"
-                  className="me-3"
-                  onClick={props.lihat}
-                />
-                <Button
-                  as="input"
-                  variant="warning"
-                  value="Ubah"
-                  type="button"
-                  onClick={props.ubah}
-                />
-              </div>
-            </UserTableData>
+            <tr key={user.id} data={user}>
+              <td>{user.id}</td>
+              <td>{user.name}</td>
+              <td>{user.email}</td>
+              <td>{user.roles.name}</td>
+              <td>{user.username}</td>
+              <td>
+                <div className="d-flex justify-content-center">
+                  <Button
+                    as="input"
+                    variant="primary"
+                    value="Lihat"
+                    type="button"
+                    className="me-3"
+                    onClick={props.lihat}
+                  />
+                  <Button
+                    as="input"
+                    variant="warning"
+                    value="Ubah"
+                    type="button"
+                    onClick={props.ubah}
+                  />
+                </div>
+              </td>
+            </tr>
           );
         })}
       </tbody>

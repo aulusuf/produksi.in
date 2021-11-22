@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Col, Container, Form, Image, Modal, Row } from "react-bootstrap";
+import {
+  Table,
+  Col,
+  Container,
+  Form,
+  Image,
+  Modal,
+  Row,
+  Button,
+} from "react-bootstrap";
 import axios from "axios";
-import { FaLastfmSquare } from "react-icons/fa";
-import UserTable from "../../../Data/UserTable";
-import { Button } from "react-bootstrap";
 
 const DataPegawai = () => {
   const [lgShow, setLgShow] = useState(false);
@@ -16,23 +22,51 @@ const DataPegawai = () => {
   const [roleId, setRoleId] = useState();
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
-  const [userData, setUserData] = useState();
+  const [userData, setUserData] = useState([]);
+  const [selectedUser, setSelectedUser] = useState([]);
+  const [oldSelectedUser, setOldSelectedUser] = useState([]);
 
-  const [tableHead, setTableHead] = useState({});
+  const [updaterUser, setUpdaterUser] = useState({
+    name: "",
+    email: "",
+    roleId: "",
+    username: "",
+    password: "",
+  });
 
-  // useEffect(() => {
-  //   axios
-  //     .get("/api/users")
-  //     .then((res) => {
-  //       const column = res.data[0] && Object.keys(res.data[0]);
-  //       setTableHead(column);
-  //       console.log(tableHead);
-  //       console.log(tableHead[0]);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err.message);
-  //     });
-  // }, [userData]);
+  const handleModalLihat = (props) => {
+    setSelectedUser(props);
+    // setSelectedUserRole(props.roles.name);
+    console.log(props);
+    if (selectedUser.roles) {
+      return "ada";
+    } else {
+      return "tida ada";
+    }
+    setLgShowProfil(true);
+  };
+
+  const handleModalUbah = (props) => {
+    setLgShowPegawaiEdit(true);
+    setUpdaterUser({
+      name: props.name,
+      email: props.email,
+      roleId: props.roleId,
+      username: props.username,
+      password: "",
+    });
+    setOldSelectedUser(props);
+    console.log(props);
+  };
+
+  const handleUbah = () => {
+    console.log(oldSelectedUser.name);
+    console.log(updaterUser);
+    axios.put("/api/user/" + oldSelectedUser.id, updaterUser).then((res) => {
+      setLgShowPegawaiEdit(false);
+      console.log(res.data);
+    });
+  };
 
   const handleSubmit = (e) => {
     const newUser = { name, email, roleId, username, password };
@@ -42,11 +76,14 @@ const DataPegawai = () => {
       window.location.reload();
     });
     setLgShow(false);
-
-    // axios.get("/api/users");
   };
 
-  // console.log(userData);
+  useEffect(() => {
+    axios.get("/api/users").then((res) => {
+      setUserData(res.data);
+      // console.log(res.data);
+    });
+  });
   return (
     <div className="marginBody">
       <Modal
@@ -212,34 +249,26 @@ const DataPegawai = () => {
             <Col sm={8}>
               <Row className="mb-2">
                 <Col sm="3">Nama</Col>
-                <Col>Farhan Ismail</Col>
+                <Col>{selectedUser.name}</Col>
               </Row>
               <Row className="mb-2">
                 <Col sm="3">Email</Col>
-                <Col>farhanismail@mail.com</Col>
+                <Col>{selectedUser.email}</Col>
               </Row>
               <Row className="mb-2">
                 <Col sm="3">Jabatan</Col>
                 <Col>
-                  <strong>Manajemen</strong>
+                  {/* <strong>{selectedUser.roleId}</strong> */}
+                  <strong>
+                    {selectedUser.roles ? selectedUser.roles.name : null}
+                    {/* cek roles apakah ada jika ada lempar roles.name */}
+                  </strong>
                 </Col>
               </Row>
               <Row className="mb-2">
                 <Col sm="3">Username</Col>
-                <Col>Hannn</Col>
+                <Col>{selectedUser.username}</Col>
               </Row>
-            </Col>
-            <Col>
-              <div className="d-flex justify-content-center">
-                <Button
-                  onClick={() => setLgShowPegawaiEdit(true)}
-                  as="input"
-                  type="submit"
-                  value="Edit"
-                  className="button-edit-produk"
-                  style={{ paddingLeft: "20px", paddingRight: "20px" }}
-                />
-              </div>
             </Col>
           </Row>
         </Modal.Body>
@@ -296,7 +325,14 @@ const DataPegawai = () => {
                     Nama
                   </Form.Label>
                   <Col>
-                    <Form.Control type="text" placeholder="Nama..." />
+                    <Form.Control
+                      type="text"
+                      placeholder="Nama..."
+                      defaultValue={oldSelectedUser.name}
+                      onChange={(e) =>
+                        setUpdaterUser({ ...updaterUser, name: e.target.value })
+                      }
+                    />
                   </Col>
                 </Form.Group>
               </Row>
@@ -306,7 +342,18 @@ const DataPegawai = () => {
                     Email
                   </Form.Label>
                   <Col>
-                    <Form.Control type="email" placeholder="Email..." />
+                    <Form.Control
+                      type="email"
+                      placeholder="Email..."
+                      defaultValue={oldSelectedUser.email}
+                      // onChange={(e) => setUpdatedUserEmail(e.target.value)}
+                      onChange={(e) =>
+                        setUpdaterUser({
+                          ...updaterUser,
+                          email: e.target.value,
+                        })
+                      }
+                    />
                   </Col>
                 </Form.Group>
               </Row>
@@ -316,7 +363,18 @@ const DataPegawai = () => {
                     Jabatan
                   </Form.Label>
                   <Col>
-                    <Form.Control type="text" placeholder="Jabatan..." />
+                    <Form.Control
+                      type="number"
+                      placeholder="Jabatan..."
+                      defaultValue={oldSelectedUser.roleId}
+                      // onChange={(e) => setUpdatedUserRole(e.target.value)}
+                      onChange={(e) =>
+                        setUpdaterUser({
+                          ...updaterUser,
+                          roleId: e.target.value,
+                        })
+                      }
+                    />
                   </Col>
                 </Form.Group>
               </Row>
@@ -326,7 +384,18 @@ const DataPegawai = () => {
                     Username
                   </Form.Label>
                   <Col>
-                    <Form.Control type="text" placeholder="Username..." />
+                    <Form.Control
+                      type="text"
+                      placeholder="Username..."
+                      defaultValue={oldSelectedUser.username}
+                      // onChange={(e) => setUpdatedUserUsername(e.target.value)}
+                      onChange={(e) =>
+                        setUpdaterUser({
+                          ...updaterUser,
+                          username: e.target.value,
+                        })
+                      }
+                    />
                   </Col>
                 </Form.Group>
               </Row>
@@ -336,7 +405,17 @@ const DataPegawai = () => {
                     Password
                   </Form.Label>
                   <Col>
-                    <Form.Control type="text" placeholder="Password..." />
+                    <Form.Control
+                      type="password"
+                      placeholder="Password..."
+                      // onChange={(e) => setUpdatedUserPassword(e.target.value)}
+                      onChange={(e) =>
+                        setUpdaterUser({
+                          ...updaterUser,
+                          password: e.target.value,
+                        })
+                      }
+                    />
                   </Col>
                 </Form.Group>
               </Row>
@@ -348,6 +427,9 @@ const DataPegawai = () => {
                   type="submit"
                   value="Ubah"
                   className="button-submit-prosuksi"
+                  onClick={() => {
+                    handleUbah();
+                  }}
                 />
                 <Button
                   as="input"
@@ -408,10 +490,51 @@ const DataPegawai = () => {
             </Col>
           </Row>
           <div style={{ marginTop: "2%" }}>
-            <UserTable
-              lihat={() => setLgShowProfil(true)}
-              ubah={() => setLgShowPegawaiEdit(true)}
-            />
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Nama</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Username</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {userData.map((user) => {
+                  return (
+                    <tr key={user.id} data={user}>
+                      <td>{user.id}</td>
+                      <td>{user.name}</td>
+                      <td>{user.email}</td>
+                      <td>{user.roles.name}</td>
+                      <td>{user.username}</td>
+                      <td>
+                        <div className="d-flex justify-content-center">
+                          <Button
+                            as="input"
+                            variant="primary"
+                            value="Lihat"
+                            type="button"
+                            className="button-submit-prosuksi"
+                            onClick={() => handleModalLihat(user)}
+                          />
+                          <Button
+                            as="input"
+                            variant="warning"
+                            value="Ubah"
+                            type="button"
+                            className="button-edit-produk"
+                            onClick={() => handleModalUbah(user)}
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </Table>
           </div>
         </Container>
       </div>

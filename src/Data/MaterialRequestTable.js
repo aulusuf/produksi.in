@@ -8,7 +8,7 @@ export default function MaterialRequestTable(props) {
   useEffect(() => {
     axios.get("/api/material_requests").then((res) => {
       setMatReqData(res.data);
-      // console.log(res.data);
+      console.log(res.data);
     });
   }, []);
 
@@ -29,10 +29,10 @@ export default function MaterialRequestTable(props) {
           return (
             <tr key={reqMat.id} data={reqMat}>
               <td>{reqMat.id}</td>
-              <td>{reqMat.productId}</td>
-              <td>{reqMat.materialId}</td>
+              <td>{reqMat.products.name}</td>
+              <td>{reqMat.materials.name}</td>
               <td>{reqMat.amount}</td>
-              <td>{reqMat.userId}</td>
+              <td>{reqMat.users.name}</td>
               {/* ditambahkan if else untuk status material request */}
               <td>
                 {" "}
