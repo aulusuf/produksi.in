@@ -21,7 +21,7 @@ const SelesaiProduksi = () => {
   return (
     <div className="marginBody">
       <Modal
-        size=""
+        size="sm"
         show={LgShowUpdate}
         onHide={() => setLgShowUpdate(false)}
         aria-labelledby="example-modal-sizes-title-lg"
@@ -33,7 +33,7 @@ const SelesaiProduksi = () => {
         </Modal.Header>
         <Modal.Body>
           <Row style={{ marginTop: "2%" }}>
-            <Col sm={3}>
+            {/* <Col sm={3}>
               <div className="d-flex justify-content-center">
                 <div>
                   <div>
@@ -64,20 +64,20 @@ const SelesaiProduksi = () => {
                   }}
                 />
               </div>
-            </Col>
-            <Col sm={9}>
+            </Col> */}
+            <Col>
               <Row>
                 <Form.Group as={Row} className="mb-2" controlId="formJumlah">
                   <Form.Label column sm="3">
-                    Nama
+                    Jumlah
                   </Form.Label>
                   <Col>
-                    <Form.Control type="text" placeholder="Nama..." />
+                    <Form.Control type="number" placeholder="Jumlah..." />
                   </Col>
                 </Form.Group>
               </Row>
               <Col>
-                <div className="d-flex mt-5 justify-content-center">
+                <div className="d-flex mt-2 justify-content-center">
                   <Button
                     as="input"
                     type="submit"
