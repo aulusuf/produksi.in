@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
-import { Col, Container, Image, Modal, Row, Table, Button } from 'react-bootstrap';
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import {
+  Col,
+  Container,
+  Image,
+  Modal,
+  Row,
+  Table,
+  Button,
+} from "react-bootstrap";
 
 const DataProduk = () => {
   const [lgShow, setLgShow] = useState(false);
 
   return (
     <div className="marginAll">
-
       <Modal
         size="lg"
         show={lgShow}
@@ -15,42 +23,70 @@ const DataProduk = () => {
         centered
       >
         <Modal.Header closeButton>
-          <Modal.Title id="modal-detail-produk">
-            Detail Produk
-          </Modal.Title>
+          <Modal.Title id="modal-detail-produk">Detail Produk</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Row>
-            <Col sm='5'>
+            <Col sm="5">
               <div>
                 <div className="d-flex justify-content-center">
-                  <Image style={{height:'170px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
+                  <Image
+                    style={{ height: "170px" }}
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
+                    rounded
+                  />
                 </div>
-                <div style={{textAlign:'center'}}>
+                <div style={{ textAlign: "center" }}>
                   <h4>Tas</h4>
                   <p>Kategori Produk</p>
                   <div className="d-flex justify-content-center">
-                    <Container  style={{backgroundColor:'rgb(201, 197, 197)', marginLeft:'20px', padding:'5px', borderRadius:'10px'}}>
+                    <Container
+                      style={{
+                        backgroundColor: "rgb(201, 197, 197)",
+                        marginLeft: "20px",
+                        padding: "5px",
+                        borderRadius: "10px",
+                      }}
+                    >
                       Aksesoris
                     </Container>
-                    <Container  style={{backgroundColor:'rgb(201, 197, 197)', marginLeft:'10px',  padding:'5px', borderRadius:'10px'}}>
+                    <Container
+                      style={{
+                        backgroundColor: "rgb(201, 197, 197)",
+                        marginLeft: "10px",
+                        padding: "5px",
+                        borderRadius: "10px",
+                      }}
+                    >
                       Gaya Hidup
                     </Container>
                   </div>
                   <text>Biaya Produksi Satuan</text>
-                  <h5>Rp. <text>200.000.000</text></h5>
+                  <h5>
+                    Rp. <text>200.000.000</text>
+                  </h5>
                   <div className="d-flex justify-content-center">
-                    <Button as="input" type="submit" value="Ubah Produk" className="button-edit-produk"/>
-                    <Button as="input" type="submit" value="Hapus" className="button-cencel-prosuksi"/>
+                    <Button
+                      as="input"
+                      type="submit"
+                      value="Ubah Produk"
+                      className="button-edit-produk"
+                    />
+                    <Button
+                      as="input"
+                      type="submit"
+                      value="Hapus"
+                      className="button-cencel-prosuksi"
+                    />
                   </div>
                 </div>
               </div>
             </Col>
             <Col>
-              <Container style={{paddingTop:'20px', paddingBottom:'20px'}}>
+              <Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
                 <h5>Material</h5>
                 <text>Data Material yang digunakan</text>
-                <div style={{marginTop:'5%'}}>
+                <div style={{ marginTop: "5%" }}>
                   <Table striped bordered hover>
                     <thead>
                       <tr>
@@ -61,12 +97,6 @@ const DataProduk = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
                       <tr>
                         <td>2</td>
                         <td>Jacob</td>
@@ -88,7 +118,7 @@ const DataProduk = () => {
                     </tbody>
                   </Table>
                 </div>
-              </Container> 
+              </Container>
             </Col>
           </Row>
         </Modal.Body>
@@ -97,124 +127,236 @@ const DataProduk = () => {
       <h1>Produksi</h1>
 
       <div class="shadow-sm p-3 bg-body rounded">
-          <Container style={{paddingTop:'20px', paddingBottom:'20px'}}>
-            <h3>Data Produk</h3>
-            <Row>
-              <Col sm='3' style={{cursor:'pointer'}} onClick={() => setLgShow(true)}>
-                <div className="d-flex justify-content-center">
-                  <div class="shadow-sm m-2 bg-body rounded">
-                    <Image style={{height:'170px', width:'170px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
-                    <p style={{textAlign:'center'}}>Tas</p>
-                  </div>
+        <Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
+          <h3>Data Produk</h3>
+          <Row>
+            <Col
+              sm="3"
+              style={{ cursor: "pointer" }}
+              onClick={() => setLgShow(true)}
+            >
+              <div className="d-flex justify-content-center">
+                <div class="shadow-sm m-2 bg-body rounded">
+                  <Image
+                    style={{ height: "170px", width: "170px" }}
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
+                    rounded
+                  />
+                  <p style={{ textAlign: "center" }}>Tas</p>
                 </div>
-              </Col>
-              <Col sm='3' style={{cursor:'pointer'}} onClick={() => setLgShow(true)}>
-                <div className="d-flex justify-content-center">
-                  <div class="shadow-sm m-2 bg-body rounded">
-                    <Image style={{height:'170px', width:'170px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
-                    <p style={{textAlign:'center'}}>Tas</p>
-                  </div>
+              </div>
+            </Col>
+            <Col
+              sm="3"
+              style={{ cursor: "pointer" }}
+              onClick={() => setLgShow(true)}
+            >
+              <div className="d-flex justify-content-center">
+                <div class="shadow-sm m-2 bg-body rounded">
+                  <Image
+                    style={{ height: "170px", width: "170px" }}
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
+                    rounded
+                  />
+                  <p style={{ textAlign: "center" }}>Tas</p>
                 </div>
-              </Col>
-              <Col sm='3' style={{cursor:'pointer'}} onClick={() => setLgShow(true)}>
-                <div className="d-flex justify-content-center">
-                  <div class="shadow-sm m-2 bg-body rounded">
-                    <Image style={{height:'170px', width:'170px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
-                    <p style={{textAlign:'center'}}>Tas</p>
-                  </div>
+              </div>
+            </Col>
+            <Col
+              sm="3"
+              style={{ cursor: "pointer" }}
+              onClick={() => setLgShow(true)}
+            >
+              <div className="d-flex justify-content-center">
+                <div class="shadow-sm m-2 bg-body rounded">
+                  <Image
+                    style={{ height: "170px", width: "170px" }}
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
+                    rounded
+                  />
+                  <p style={{ textAlign: "center" }}>Tas</p>
                 </div>
-              </Col>
-              <Col sm='3' style={{cursor:'pointer'}} onClick={() => setLgShow(true)}>
-                <div className="d-flex justify-content-center">
-                  <div class="shadow-sm m-2 bg-body rounded">
-                    <Image style={{height:'170px', width:'170px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
-                    <p style={{textAlign:'center'}}>Tas</p>
-                  </div>
+              </div>
+            </Col>
+            <Col
+              sm="3"
+              style={{ cursor: "pointer" }}
+              onClick={() => setLgShow(true)}
+            >
+              <div className="d-flex justify-content-center">
+                <div class="shadow-sm m-2 bg-body rounded">
+                  <Image
+                    style={{ height: "170px", width: "170px" }}
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
+                    rounded
+                  />
+                  <p style={{ textAlign: "center" }}>Tas</p>
                 </div>
-              </Col>
-              <Col sm='3' style={{cursor:'pointer'}} onClick={() => setLgShow(true)}>
-                <div className="d-flex justify-content-center">
-                  <div class="shadow-sm m-2 bg-body rounded">
-                    <Image style={{height:'170px', width:'170px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
-                    <p style={{textAlign:'center'}}>Tas</p>
-                  </div>
+              </div>
+            </Col>
+            <Col
+              sm="3"
+              style={{ cursor: "pointer" }}
+              onClick={() => setLgShow(true)}
+            >
+              <div className="d-flex justify-content-center">
+                <div class="shadow-sm m-2 bg-body rounded">
+                  <Image
+                    style={{ height: "170px", width: "170px" }}
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
+                    rounded
+                  />
+                  <p style={{ textAlign: "center" }}>Tas</p>
                 </div>
-              </Col>
-              <Col sm='3' style={{cursor:'pointer'}} onClick={() => setLgShow(true)}>
-                <div className="d-flex justify-content-center">
-                  <div class="shadow-sm m-2 bg-body rounded">
-                    <Image style={{height:'170px', width:'170px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
-                    <p style={{textAlign:'center'}}>Tas</p>
-                  </div>
+              </div>
+            </Col>
+            <Col
+              sm="3"
+              style={{ cursor: "pointer" }}
+              onClick={() => setLgShow(true)}
+            >
+              <div className="d-flex justify-content-center">
+                <div class="shadow-sm m-2 bg-body rounded">
+                  <Image
+                    style={{ height: "170px", width: "170px" }}
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
+                    rounded
+                  />
+                  <p style={{ textAlign: "center" }}>Tas</p>
                 </div>
-              </Col>
-              <Col sm='3' style={{cursor:'pointer'}} onClick={() => setLgShow(true)}>
-                <div className="d-flex justify-content-center">
-                  <div class="shadow-sm m-2 bg-body rounded">
-                    <Image style={{height:'170px', width:'170px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
-                    <p style={{textAlign:'center'}}>Tas</p>
-                  </div>
+              </div>
+            </Col>
+            <Col
+              sm="3"
+              style={{ cursor: "pointer" }}
+              onClick={() => setLgShow(true)}
+            >
+              <div className="d-flex justify-content-center">
+                <div class="shadow-sm m-2 bg-body rounded">
+                  <Image
+                    style={{ height: "170px", width: "170px" }}
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
+                    rounded
+                  />
+                  <p style={{ textAlign: "center" }}>Tas</p>
                 </div>
-              </Col>
-              <Col sm='3' style={{cursor:'pointer'}} onClick={() => setLgShow(true)}>
-                <div className="d-flex justify-content-center">
-                  <div class="shadow-sm m-2 bg-body rounded">
-                    <Image style={{height:'170px', width:'170px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
-                    <p style={{textAlign:'center'}}>Tas</p>
-                  </div>
+              </div>
+            </Col>
+            <Col
+              sm="3"
+              style={{ cursor: "pointer" }}
+              onClick={() => setLgShow(true)}
+            >
+              <div className="d-flex justify-content-center">
+                <div class="shadow-sm m-2 bg-body rounded">
+                  <Image
+                    style={{ height: "170px", width: "170px" }}
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
+                    rounded
+                  />
+                  <p style={{ textAlign: "center" }}>Tas</p>
                 </div>
-              </Col>
-              <Col sm='3' style={{cursor:'pointer'}} onClick={() => setLgShow(true)}>
-                <div className="d-flex justify-content-center">
-                  <div class="shadow-sm m-2 bg-body rounded">
-                    <Image style={{height:'170px', width:'170px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
-                    <p style={{textAlign:'center'}}>Tas</p>
-                  </div>
+              </div>
+            </Col>
+            <Col
+              sm="3"
+              style={{ cursor: "pointer" }}
+              onClick={() => setLgShow(true)}
+            >
+              <div className="d-flex justify-content-center">
+                <div class="shadow-sm m-2 bg-body rounded">
+                  <Image
+                    style={{ height: "170px", width: "170px" }}
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
+                    rounded
+                  />
+                  <p style={{ textAlign: "center" }}>Tas</p>
                 </div>
-              </Col>
-              <Col sm='3' style={{cursor:'pointer'}} onClick={() => setLgShow(true)}>
-                <div className="d-flex justify-content-center">
-                  <div class="shadow-sm m-2 bg-body rounded">
-                    <Image style={{height:'170px', width:'170px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
-                    <p style={{textAlign:'center'}}>Tas</p>
-                  </div>
+              </div>
+            </Col>
+            <Col
+              sm="3"
+              style={{ cursor: "pointer" }}
+              onClick={() => setLgShow(true)}
+            >
+              <div className="d-flex justify-content-center">
+                <div class="shadow-sm m-2 bg-body rounded">
+                  <Image
+                    style={{ height: "170px", width: "170px" }}
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
+                    rounded
+                  />
+                  <p style={{ textAlign: "center" }}>Tas</p>
                 </div>
-              </Col>
-              <Col sm='3' style={{cursor:'pointer'}} onClick={() => setLgShow(true)}>
-                <div className="d-flex justify-content-center">
-                  <div class="shadow-sm m-2 bg-body rounded">
-                    <Image style={{height:'170px', width:'170px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
-                    <p style={{textAlign:'center'}}>Tas</p>
-                  </div>
+              </div>
+            </Col>
+            <Col
+              sm="3"
+              style={{ cursor: "pointer" }}
+              onClick={() => setLgShow(true)}
+            >
+              <div className="d-flex justify-content-center">
+                <div class="shadow-sm m-2 bg-body rounded">
+                  <Image
+                    style={{ height: "170px", width: "170px" }}
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
+                    rounded
+                  />
+                  <p style={{ textAlign: "center" }}>Tas</p>
                 </div>
-              </Col>
-              <Col sm='3' style={{cursor:'pointer'}} onClick={() => setLgShow(true)}>
-                <div className="d-flex justify-content-center">
-                  <div class="shadow-sm m-2 bg-body rounded">
-                    <Image style={{height:'170px', width:'170px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
-                    <p style={{textAlign:'center'}}>Tas</p>
-                  </div>
+              </div>
+            </Col>
+            <Col
+              sm="3"
+              style={{ cursor: "pointer" }}
+              onClick={() => setLgShow(true)}
+            >
+              <div className="d-flex justify-content-center">
+                <div class="shadow-sm m-2 bg-body rounded">
+                  <Image
+                    style={{ height: "170px", width: "170px" }}
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
+                    rounded
+                  />
+                  <p style={{ textAlign: "center" }}>Tas</p>
                 </div>
-              </Col>
-              <Col sm='3' style={{cursor:'pointer'}} onClick={() => setLgShow(true)}>
-                <div className="d-flex justify-content-center">
-                  <div class="shadow-sm m-2 bg-body rounded">
-                    <Image style={{height:'170px', width:'170px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
-                    <p style={{textAlign:'center'}}>Tas</p>
-                  </div>
+              </div>
+            </Col>
+            <Col
+              sm="3"
+              style={{ cursor: "pointer" }}
+              onClick={() => setLgShow(true)}
+            >
+              <div className="d-flex justify-content-center">
+                <div class="shadow-sm m-2 bg-body rounded">
+                  <Image
+                    style={{ height: "170px", width: "170px" }}
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
+                    rounded
+                  />
+                  <p style={{ textAlign: "center" }}>Tas</p>
                 </div>
-              </Col>
-              <Col sm='3' style={{cursor:'pointer'}} onClick={() => setLgShow(true)}>
-                <div className="d-flex justify-content-center">
-                  <div class="shadow-sm m-2 bg-body rounded">
-                    <Image style={{height:'170px', width:'170px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
-                    <p style={{textAlign:'center'}}>Tas</p>
-                  </div>
+              </div>
+            </Col>
+            <Col
+              sm="3"
+              style={{ cursor: "pointer" }}
+              onClick={() => setLgShow(true)}
+            >
+              <div className="d-flex justify-content-center">
+                <div class="shadow-sm m-2 bg-body rounded">
+                  <Image
+                    style={{ height: "170px", width: "170px" }}
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
+                    rounded
+                  />
+                  <p style={{ textAlign: "center" }}>Tas</p>
                 </div>
-              </Col>
-            </Row>
-          </Container>  
-        </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </div>
   );
 };

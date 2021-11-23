@@ -13,7 +13,6 @@ import {
 import "../styles/produksi.css";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-// import { product } from "../../../../../server/app/models";
 
 const BuatPermintaan = () => {
   const history = useHistory();
@@ -26,6 +25,7 @@ const BuatPermintaan = () => {
   const [description, setDescription] = useState();
   const [newData, setNewData] = useState();
   const [materialUsed, setMaterialUsed] = useState([]);
+  // const [remainingAmount, setRemainingAmount] = useState();
 
   const handleBuatPermintaan = (event) => {
     event.preventDefault();
@@ -37,9 +37,15 @@ const BuatPermintaan = () => {
     });
   };
 
+  const changeStock = (props) => {
+    // let subtraction = (props.amount * amount)
+    console.log(props);
+  };
+
   const countAmount = (props) => {
-    // console.log("halooo", props.amount);
+    // console.log(props);
     let jumlah = props.amount * amount;
+    // setRemainingAmount(jumlah);
     return jumlah;
   };
 
@@ -49,13 +55,13 @@ const BuatPermintaan = () => {
     axios.get("api/product_material/product/" + props).then((res) => {
       setMaterialUsed(res.data);
       console.log(res.data);
-    }, []);
+    });
   };
   useEffect(() => {
     axios.get("/api/products").then((res) => {
       setPilihProduk(res.data);
     });
-  });
+  }, []);
 
   return (
     <div className="marginBody">
@@ -103,6 +109,7 @@ const BuatPermintaan = () => {
                         value={productId}
                         onChange={(event) => handleDropdown(event.target.value)}
                       >
+                        <option selected> Pilih Produk </option>
                         {pilihProduk.map((produk) => {
                           return (
                             <>
@@ -174,6 +181,7 @@ const BuatPermintaan = () => {
                 <th width="350">Material</th>
                 <th width="150">Stok</th>
                 <th width="150">Jumlah dibutuhkan</th>
+                <th width="150">Stok sisa</th>
               </tr>
             </thead>
             <tbody>
@@ -189,6 +197,10 @@ const BuatPermintaan = () => {
                     </td>
                     <td style={{ textAlign: "center" }}>
                       {countAmount(material)}
+                    </td>
+                    <td style={{ textAlign: "center" }}>
+                      {(material.material ? material.material.stock : null) -
+                        countAmount(material)}
                     </td>
                   </tr>
                 );
