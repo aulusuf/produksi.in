@@ -33,7 +33,7 @@ const BuatPermintaan = () => {
   const selesai = () => {
     console.log(assignmentId);
     axios
-      .put("/api/product_assignment/" + assignmentId, { statusId: 3 })
+      .put("/api/product_assignment/" + assignmentId, { statusId: 4 })
       .then((res) => {
         console.log(res.data);
         setlgShowDone(false);
@@ -41,14 +41,14 @@ const BuatPermintaan = () => {
   };
 
   useEffect(() => {
-    axios.get("/api/product_assignments").then((res) => {
-      setproductAssignmentData(res.data);
-      setLoading(true);
-    });
+    // axios.get("/api/product_assignments").then((res) => {
+    //   setproductAssignmentData(res.data);
+    //   setLoading(true);
+    // });
     axios.get("/api/product_assignment/status/1").then((res) => {
       setAssignmentPending(res.data);
     });
-    axios.get("/api/product_assignment/status/2").then((res) => {
+    axios.get("/api/product_assignment/status/3").then((res) => {
       setAssignmentOngoing(res.data);
     });
   });

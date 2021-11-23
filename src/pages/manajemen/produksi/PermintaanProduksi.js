@@ -13,7 +13,6 @@ import {
 import "../styles/produksi.css";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-// import { product } from "../../../../../server/app/models";
 
 const BuatPermintaan = () => {
   const history = useHistory();

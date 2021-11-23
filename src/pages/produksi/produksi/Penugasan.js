@@ -8,17 +8,31 @@ const Penugasan = () => {
   const [lgShowDone, setlgShowDone] = useState(false);
   const [lgShowAccept, setlgShowAccept] = useState(false);
 
-  const [productId, setProductId] = useState();
+  const [assignmentId, setAssignmentId] = useState();
   const [newAssignment, setNewAssignment] = useState([]);
   const [assignmentHistory, setAssignmentHistory] = useState([]);
 
-  // const modalTerima
+  const modalSelesaikan = (props) => {
+    setlgShowDone(true);
+    console.log(props);
+    setAssignmentId(props.id);
+  };
+
+  const selesaikan = () => {
+    console.log(assignmentId);
+    axios
+      .put("/api/product_assignment/" + assignmentId, { statusId: 3 })
+      .then((res) => {
+        console.log(res.data);
+        setlgShowDone(false);
+      });
+  };
 
   useEffect(() => {
-    axios.get("/api/product_assignment/status/3").then((res) => {
+    axios.get("/api/product_assignment/status/2").then((res) => {
       setNewAssignment(res.data);
     });
-    axios.get("/api/product_assignment/status/4").then((res) => {
+    axios.get("/api/product_assignment/status/3").then((res) => {
       setAssignmentHistory(res.data);
     });
   });
@@ -50,7 +64,7 @@ const Penugasan = () => {
               variant="primary"
               className="button-selesai-material"
               style={{ paddingLeft: "10px", paddingRight: "10px" }}
-              onClick={() => setlgShowDone(false)}
+              onClick={() => selesaikan()}
             >
               Selesaikan
             </Button>
@@ -141,7 +155,7 @@ const Penugasan = () => {
                               variant="primary"
                               className="button-selesai-material"
                               style={{ cursor: "pointer" }}
-                              onClick={() => setlgShowDone(true)}
+                              onClick={() => modalSelesaikan(assignment)}
                             >
                               Selesaikan
                             </Button>
@@ -275,7 +289,7 @@ const Penugasan = () => {
                       </tr>
                     );
                   })}
-                  <tr>
+                  {/* <tr>
                     <td style={{ textAlign: "center" }}>2</td>
                     <td>Jaket</td>
                     <td style={{ textAlign: "center" }}>50</td>
@@ -289,7 +303,7 @@ const Penugasan = () => {
                     <td style={{ textAlign: "center" }}>4</td>
                     <td>Kemeja</td>
                     <td style={{ textAlign: "center" }}>45</td>
-                  </tr>
+                  </tr> */}
                 </tbody>
               </Table>
             </div>
