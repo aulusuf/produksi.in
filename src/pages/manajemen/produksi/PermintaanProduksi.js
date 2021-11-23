@@ -25,15 +25,31 @@ const BuatPermintaan = () => {
   const [amount, setAmount] = useState();
   const [description, setDescription] = useState();
   const [newData, setNewData] = useState();
+  const [materialUsed, setMaterialUsed] = useState([]);
 
   const handleBuatPermintaan = (event) => {
-    // event.preventDefault();
-    const input = { productId, amount, description };
+    event.preventDefault();
+    const input = { productId, amount, description, statusId: 1 };
     console.log(input);
-    // axios.post('/api/product_request/create', input).then(res=>{
-    //   console.log(res.data)
-    //   history.replace('/')
-    // })
+    axios.post("/api/product_assignment/create", input).then((res) => {
+      console.log(res.data);
+      history.replace("/manajemen/produksi/selesai");
+    });
+  };
+
+  const countAmount = (props) => {
+    // console.log("halooo", props.amount);
+    let jumlah = props.amount * amount;
+    return jumlah;
+  };
+
+  const handleDropdown = (props) => {
+    setProductId(props);
+    console.log(props);
+    axios.get("api/product_material/product/" + props).then((res) => {
+      setMaterialUsed(res.data);
+      console.log(res.data);
+    }, []);
   };
   useEffect(() => {
     axios.get("/api/products").then((res) => {
@@ -84,15 +100,13 @@ const BuatPermintaan = () => {
                     </Form.Label>
                     <Col sm="7">
                       <Form.Select
-                        defaultValue="Pilih Produk..."
                         value={productId}
+                        onChange={(event) => handleDropdown(event.target.value)}
                       >
                         {pilihProduk.map((produk) => {
                           return (
                             <>
-                              <option key={produk.id} value={produk.id}>
-                                {produk.name}
-                              </option>
+                              <option value={produk.id}>{produk.name}</option>
                             </>
                           );
                         })}
@@ -111,6 +125,7 @@ const BuatPermintaan = () => {
                     <Form.Control
                       type="number"
                       placeholder="Jumlah yang ingin diproduksi"
+                      defaultValue={1}
                       value={jumlahProduksi}
                       onChange={(event) => setAmount(event.target.value)}
                     />
@@ -143,6 +158,7 @@ const BuatPermintaan = () => {
                 type="submit"
                 value="Buat permintaan"
                 className="button-submit-prosuksi"
+                onClick={handleBuatPermintaan}
                 style={{ paddingLeft: "20px", paddingRight: "20px" }}
               />
             </div>
@@ -156,35 +172,51 @@ const BuatPermintaan = () => {
               <tr style={{ textAlign: "center" }}>
                 <th width="50">#</th>
                 <th width="350">Material</th>
-                <th width="250">Tipe</th>
                 <th width="150">Stok</th>
+                <th width="150">Jumlah dibutuhkan</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              {materialUsed.map((material) => {
+                return (
+                  <tr>
+                    <td style={{ textAlign: "center" }}>{material.id}</td>
+                    <td>
+                      {material.materialId ? material.material.name : null}
+                    </td>
+                    <td style={{ textAlign: "center" }}>
+                      {material.material ? material.material.stock : null}
+                    </td>
+                    <td style={{ textAlign: "center" }}>
+                      {countAmount(material)}
+                    </td>
+                  </tr>
+                );
+              })}
+              {/* <tr>
                 <td style={{ textAlign: "center" }}>1</td>
                 <td>Resleting</td>
-                <td>Pernik</td>
                 <td style={{ textAlign: "center" }}>2000</td>
+                <td style={{ textAlign: "center" }}>3</td>
               </tr>
               <tr>
                 <td style={{ textAlign: "center" }}>2</td>
                 <td>Denim</td>
-                <td>Kain</td>
                 <td style={{ textAlign: "center" }}>1000</td>
+                <td style={{ textAlign: "center" }}>10</td>
               </tr>
               <tr>
                 <td style={{ textAlign: "center" }}>3</td>
                 <td>Lem</td>
-                <td>Alat & Bahan</td>
                 <td style={{ textAlign: "center" }}>30</td>
+                <td style={{ textAlign: "center" }}>32</td>
               </tr>
               <tr>
                 <td style={{ textAlign: "center" }}>4</td>
                 <td>Pengait</td>
-                <td>Pernik</td>
                 <td style={{ textAlign: "center" }}>200</td>
-              </tr>
+                <td style={{ textAlign: "center" }}>249</td>
+              </tr> */}
             </tbody>
           </Table>
         </Container>

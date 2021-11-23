@@ -1,23 +1,51 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Col, Container, Form, Modal, Row, Table, Button } from "react-bootstrap";
-import {Bars} from '@agney/react-loading';
+import {
+  Col,
+  Container,
+  Form,
+  Modal,
+  Row,
+  Table,
+  Button,
+} from "react-bootstrap";
+import { Bars } from "@agney/react-loading";
 
 const SelesaiProduksi = () => {
   const [LgShowUpdate, setLgShowUpdate] = useState(false);
   const [LgShowDell, setLgShowDell] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [productAssignmentData, setproductAssignmentData] = useState([]);
+  const [assignmentPending, setAssignmentPending] = useState(null);
+  const [assignmentData, setAssignmentData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [assignmentId, setAssignmentId] = useState();
+
+  const modalBatal = (props) => {
+    setAssignmentId(props.id);
+    console.log(props);
+    setLgShowDell(true);
+  };
+
+  const batal = () => {
+    console.log(assignmentId);
+    axios.delete("/api/product_assignment/" + assignmentId).then((res) => {
+      console.log(res);
+      setLgShowDell(false);
+    });
+  };
 
   useEffect(() => {
-    axios.get("/api/product_assignments").then((res) => {
-      setproductAssignmentData(res.data);
-      setLoading(true); 
+    axios.get("/api/product_assignment/status/1").then((res) => {
+      setAssignmentPending(res.data);
+      setLoading(true);
       // const timProduksi = res.data.id
       // axios.get('/api/users')
     });
-  }, []);
+    axios.get("/api/product_assignments").then((res) => {
+      setAssignmentData(res.data);
+      setLoading(true);
+    });
+  });
   return (
     <div className="marginBody">
       <Modal
@@ -111,7 +139,7 @@ const SelesaiProduksi = () => {
               value="Batal"
               className="button-cencel-prosuksi"
               style={{ paddingLeft: "20px", paddingRight: "20px" }}
-              onClick={() => setLgShowDell(false)}
+              onClick={() => batal()}
             />
           </div>
         </Modal.Body>
@@ -127,52 +155,60 @@ const SelesaiProduksi = () => {
             </Col>
           </Row>
           <div style={{ marginTop: "2%" }}>
-            <Table striped bordered hover style={{textAlign:'center'}}>
+            <Table striped bordered hover style={{ textAlign: "center" }}>
               <thead>
                 <tr>
                   <th width="50">#</th>
                   <th width="250">Produk</th>
                   <th width="100">Jumlah</th>
-                  <th width="120">Biaya</th>
-                  <th width="120">Tim Produksi</th>
+                  {/* <th width="120">Biaya</th> */}
+                  {/* <th width="120">Tim Produksi</th> */}
                   <th width="120">Action</th>
                 </tr>
               </thead>
               <tbody>
-                {loading ? productAssignmentData.map((paData, index) => {
-                  return (
-                    <tr key={paData.id}>
-                      <td>{index + 1}</td>
-                      <td style={{textAlign:'start'}}>{paData.products.name}</td>
-                      <td>{paData.amount}</td>
-                      <td>{paData.cost}</td>
-                      <td>{paData.assignmentId}</td>
-                      {/* // untuk if else status */}
-                      <td>
-                        <div className="d-flex justify-content-center">
-                          <Button
-                            as="input"
-                            type="submit"
-                            value="Ubah"
-                            className="button-edit-produk"
-                            onClick={() => setLgShowUpdate(true)}
-                          />
-                          <Button
-                            as="input"
-                            type="submit"
-                            value="Batal"
-                            className="button-cencel-prosuksi"
-                            onClick={() => setLgShowDell(true)}
-                          />
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                }):
-                <div>
-                  <Bars width="50" color="#2f89e4" style={{marginLeft:'700%', marginTop:'20px'}}/>
-                </div>
-                }
+                {loading ? (
+                  assignmentPending.map((paData, index) => {
+                    return (
+                      <tr key={paData.id}>
+                        <td>{index + 1}</td>
+                        <td style={{ textAlign: "start" }}>
+                          {paData.products.name}
+                        </td>
+                        <td>{paData.amount}</td>
+                        {/* <td>{paData.cost}</td> */}
+                        {/* <td>{paData.assignmentId}</td> */}
+                        {/* // untuk if else status */}
+                        <td>
+                          <div className="d-flex justify-content-center">
+                            <Button
+                              as="input"
+                              type="submit"
+                              value="Ubah"
+                              className="button-edit-produk"
+                              onClick={() => setLgShowUpdate(true)}
+                            />
+                            <Button
+                              as="input"
+                              type="submit"
+                              value="Batal"
+                              className="button-cencel-prosuksi"
+                              onClick={() => modalBatal(paData)}
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <div>
+                    <Bars
+                      width="50"
+                      color="#2f89e4"
+                      style={{ marginLeft: "700%", marginTop: "20px" }}
+                    />
+                  </div>
+                )}
               </tbody>
             </Table>
           </div>
@@ -183,33 +219,42 @@ const SelesaiProduksi = () => {
         <Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
           <h3>Riwayat Prosuksi</h3>
           <div style={{ marginTop: "5%" }}>
-            <Table striped bordered hover style={{textAlign:'center'}}>
+            <Table striped bordered hover style={{ textAlign: "center" }}>
               <thead>
                 <tr>
                   <th width="50">#</th>
                   <th width="250">Produk</th>
                   <th width="100">Jumlah</th>
-                  <th width="150">Biaya</th>
-                  <th width="120">Tim Produksi</th>
+                  <th width="150">Status</th>
                 </tr>
               </thead>
               <tbody>
-                {loading ? productAssignmentData.map((paData, index) => {
-                  return (
-                    <tr key={paData.id}>
-                      <td>{index + 1}</td>
-                      <td style={{textAlign:'start'}}>{paData.products.name}</td>
-                      <td>{paData.amount}</td>
-                      <td>{paData.cost}</td>
-                      <td>{paData.assignmentId}</td>
-                      {/* // untuk if else status */}
-                    </tr>
-                  );
-                }):
-                <div>
-                  <Bars width="50" color="#2f89e4" style={{marginLeft:'635%', marginTop:'20px'}}/>
-                </div>
-                }
+                {loading ? (
+                  assignmentData.map((assignmentDone, index) => {
+                    return (
+                      <tr key={assignmentDone.id}>
+                        <td>{index + 1}</td>
+                        <td style={{ textAlign: "start" }}>
+                          {assignmentDone.products.name}
+                        </td>
+                        <td>{assignmentDone.amount}</td>
+                        <td>
+                          {assignmentDone.statusId
+                            ? assignmentDone.status.name
+                            : null}
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <div>
+                    <Bars
+                      width="50"
+                      color="#2f89e4"
+                      style={{ marginLeft: "635%", marginTop: "20px" }}
+                    />
+                  </div>
+                )}
               </tbody>
             </Table>
           </div>
