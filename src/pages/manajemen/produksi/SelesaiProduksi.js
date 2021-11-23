@@ -15,17 +15,37 @@ const SelesaiProduksi = () => {
   const [LgShowUpdate, setLgShowUpdate] = useState(false);
   const [LgShowDell, setLgShowDell] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [productAssignmentData, setproductAssignmentData] = useState([]);
+  const [assignmentPending, setAssignmentPending] = useState(null);
+  const [assignmentData, setAssignmentData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [assignmentId, setAssignmentId] = useState();
+
+  const modalBatal = (props) => {
+    setAssignmentId(props.id);
+    console.log(props);
+    setLgShowDell(true);
+  };
+
+  const batal = () => {
+    console.log(assignmentId);
+    axios.delete("/api/product_assignment/" + assignmentId).then((res) => {
+      console.log(res);
+      setLgShowDell(false);
+    });
+  };
 
   useEffect(() => {
-    axios.get("/api/product_assignments").then((res) => {
-      setproductAssignmentData(res.data);
+    axios.get("/api/product_assignment/status/1").then((res) => {
+      setAssignmentPending(res.data);
       setLoading(true);
       // const timProduksi = res.data.id
       // axios.get('/api/users')
     });
-  }, []);
+    axios.get("/api/product_assignments").then((res) => {
+      setAssignmentData(res.data);
+      setLoading(true);
+    });
+  });
   return (
     <div className="marginBody">
       <Modal
@@ -119,7 +139,7 @@ const SelesaiProduksi = () => {
               value="Batal"
               className="button-cencel-prosuksi"
               style={{ paddingLeft: "20px", paddingRight: "20px" }}
-              onClick={() => setLgShowDell(false)}
+              onClick={() => batal()}
             />
           </div>
         </Modal.Body>
@@ -148,7 +168,7 @@ const SelesaiProduksi = () => {
               </thead>
               <tbody>
                 {loading ? (
-                  productAssignmentData.map((paData, index) => {
+                  assignmentPending.map((paData, index) => {
                     return (
                       <tr key={paData.id}>
                         <td>{index + 1}</td>
@@ -173,7 +193,7 @@ const SelesaiProduksi = () => {
                               type="submit"
                               value="Batal"
                               className="button-cencel-prosuksi"
-                              onClick={() => setLgShowDell(true)}
+                              onClick={() => modalBatal(paData)}
                             />
                           </div>
                         </td>
@@ -205,23 +225,24 @@ const SelesaiProduksi = () => {
                   <th width="50">#</th>
                   <th width="250">Produk</th>
                   <th width="100">Jumlah</th>
-                  <th width="150">Biaya</th>
-                  <th width="120">Tim Produksi</th>
+                  <th width="150">Status</th>
                 </tr>
               </thead>
               <tbody>
                 {loading ? (
-                  productAssignmentData.map((paData, index) => {
+                  assignmentData.map((assignmentDone, index) => {
                     return (
-                      <tr key={paData.id}>
+                      <tr key={assignmentDone.id}>
                         <td>{index + 1}</td>
                         <td style={{ textAlign: "start" }}>
-                          {paData.products.name}
+                          {assignmentDone.products.name}
                         </td>
-                        <td>{paData.amount}</td>
-                        <td>{paData.cost}</td>
-                        <td>{paData.assignmentId}</td>
-                        {/* // untuk if else status */}
+                        <td>{assignmentDone.amount}</td>
+                        <td>
+                          {assignmentDone.statusId
+                            ? assignmentDone.status.name
+                            : null}
+                        </td>
                       </tr>
                     );
                   })

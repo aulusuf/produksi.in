@@ -25,6 +25,7 @@ const BuatPermintaan = () => {
   const [amount, setAmount] = useState();
   const [description, setDescription] = useState();
   const [newData, setNewData] = useState();
+  const [materialUsed, setMaterialUsed] = useState([]);
 
   const handleBuatPermintaan = (event) => {
     event.preventDefault();
@@ -34,6 +35,21 @@ const BuatPermintaan = () => {
       console.log(res.data);
       history.replace("/manajemen/produksi/selesai");
     });
+  };
+
+  const countAmount = (props) => {
+    // console.log("halooo", props.amount);
+    let jumlah = props.amount * amount;
+    return jumlah;
+  };
+
+  const handleDropdown = (props) => {
+    setProductId(props);
+    console.log(props);
+    axios.get("api/product_material/product/" + props).then((res) => {
+      setMaterialUsed(res.data);
+      console.log(res.data);
+    }, []);
   };
   useEffect(() => {
     axios.get("/api/products").then((res) => {
@@ -85,10 +101,9 @@ const BuatPermintaan = () => {
                     <Col sm="7">
                       <Form.Select
                         value={productId}
-                        onChange={(event) => setProductId(event.target.value)}
+                        onChange={(event) => handleDropdown(event.target.value)}
                       >
                         {pilihProduk.map((produk) => {
-                          /* console.log(produk.id); */
                           return (
                             <>
                               <option value={produk.id}>{produk.name}</option>
@@ -110,6 +125,7 @@ const BuatPermintaan = () => {
                     <Form.Control
                       type="number"
                       placeholder="Jumlah yang ingin diproduksi"
+                      defaultValue={1}
                       value={jumlahProduksi}
                       onChange={(event) => setAmount(event.target.value)}
                     />
@@ -161,7 +177,23 @@ const BuatPermintaan = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
+              {materialUsed.map((material) => {
+                return (
+                  <tr>
+                    <td style={{ textAlign: "center" }}>{material.id}</td>
+                    <td>
+                      {material.materialId ? material.material.name : null}
+                    </td>
+                    <td style={{ textAlign: "center" }}>
+                      {material.material ? material.material.stock : null}
+                    </td>
+                    <td style={{ textAlign: "center" }}>
+                      {countAmount(material)}
+                    </td>
+                  </tr>
+                );
+              })}
+              {/* <tr>
                 <td style={{ textAlign: "center" }}>1</td>
                 <td>Resleting</td>
                 <td style={{ textAlign: "center" }}>2000</td>
@@ -184,7 +216,7 @@ const BuatPermintaan = () => {
                 <td>Pengait</td>
                 <td style={{ textAlign: "center" }}>200</td>
                 <td style={{ textAlign: "center" }}>249</td>
-              </tr>
+              </tr> */}
             </tbody>
           </Table>
         </Container>
