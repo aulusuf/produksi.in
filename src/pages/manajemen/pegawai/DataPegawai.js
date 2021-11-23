@@ -10,7 +10,7 @@ import {
   Button,
 } from "react-bootstrap";
 import axios from "axios";
-import {Bars} from '@agney/react-loading';
+import { Bars } from "@agney/react-loading";
 
 const DataPegawai = () => {
   const [lgShow, setLgShow] = useState(false);
@@ -35,8 +35,6 @@ const DataPegawai = () => {
     username: "",
     password: "",
   });
-
-  
 
   const handleModalLihat = (props) => {
     setSelectedUser(props);
@@ -85,7 +83,7 @@ const DataPegawai = () => {
   useEffect(() => {
     axios.get("/api/users").then((res) => {
       setUserData(res.data);
-      setLoading(true); 
+      setLoading(true);
       // console.log(res.data);
     });
   });
@@ -497,7 +495,7 @@ const DataPegawai = () => {
           <div style={{ marginTop: "2%" }}>
             <Table striped bordered hover>
               <thead>
-                <tr style={{textAlign:'center'}}>
+                <tr style={{ textAlign: "center" }}>
                   <th width="50">#</th>
                   <th width="220">Nama</th>
                   <th width="200">Email</th>
@@ -507,41 +505,47 @@ const DataPegawai = () => {
                 </tr>
               </thead>
               <tbody>
-                {loading ? userData.map((user, index) => {
-                  return (
-                    <tr key={user.id} data={user}>
-                      <td style={{textAlign:'center'}}>{index + 1}</td>
-                      <td>{user.name}</td>
-                      <td>{user.email}</td>
-                      <td>{user.roles.name}</td>
-                      <td>{user.username}</td>
-                      <td>
-                        <div className="d-flex justify-content-center">
-                          <Button
-                            as="input"
-                            variant="primary"
-                            value="Lihat"
-                            type="button"
-                            className="button-submit-prosuksi"
-                            onClick={() => handleModalLihat(user)}
-                          />
-                          <Button
-                            as="input"
-                            variant="warning"
-                            value="Ubah"
-                            type="button"
-                            className="button-edit-produk"
-                            onClick={() => handleModalUbah(user)}
-                          />
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                }):
-                <div>
-                  <Bars width="50" color="#2f89e4" style={{marginLeft:'750%', marginTop:'20px'}}/>
-                </div>
-                }
+                {loading ? (
+                  userData.map((user, index) => {
+                    return (
+                      <tr key={user.id} data={user}>
+                        <td style={{ textAlign: "center" }}>{index + 1}</td>
+                        <td>{user.name}</td>
+                        <td>{user.email}</td>
+                        <td>{user.roles.name}</td>
+                        <td>{user.username}</td>
+                        <td>
+                          <div className="d-flex justify-content-center">
+                            <Button
+                              as="input"
+                              variant="primary"
+                              value="Lihat"
+                              type="button"
+                              className="button-submit-prosuksi"
+                              onClick={() => handleModalLihat(user)}
+                            />
+                            <Button
+                              as="input"
+                              variant="warning"
+                              value="Ubah"
+                              type="button"
+                              className="button-edit-produk"
+                              onClick={() => handleModalUbah(user)}
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <div>
+                    <Bars
+                      width="50"
+                      color="#2f89e4"
+                      style={{ marginLeft: "750%", marginTop: "20px" }}
+                    />
+                  </div>
+                )}
               </tbody>
             </Table>
           </div>
