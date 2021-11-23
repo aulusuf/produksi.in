@@ -142,7 +142,7 @@ const SelesaiProduksi = () => {
                   <th width="250">Produk</th>
                   <th width="100">Jumlah</th>
                   {/* <th width="120">Biaya</th> */}
-                  <th width="120">Tim Produksi</th>
+                  {/* <th width="120">Tim Produksi</th> */}
                   <th width="120">Action</th>
                 </tr>
               </thead>
@@ -157,7 +157,7 @@ const SelesaiProduksi = () => {
                         </td>
                         <td>{paData.amount}</td>
                         {/* <td>{paData.cost}</td> */}
-                        <td>{paData.assignmentId}</td>
+                        {/* <td>{paData.assignmentId}</td> */}
                         {/* // untuk if else status */}
                         <td>
                           <div className="d-flex justify-content-center">
