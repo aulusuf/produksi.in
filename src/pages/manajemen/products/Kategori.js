@@ -1,6 +1,5 @@
-import Button from "@restart/ui/esm/Button";
 import React, { useState } from "react";
-import { Col, Container, Form, Modal, Row, Table } from "react-bootstrap";
+import { Col, Container, Form, Modal, Row, Table, Button } from "react-bootstrap";
 import CategoryTable from "../../../Data/CategoryTable";
 
 const Kategori = () => {

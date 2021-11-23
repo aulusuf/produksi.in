@@ -1,4 +1,3 @@
-import Button from "@restart/ui/esm/Button";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import {
@@ -8,9 +7,9 @@ import {
   Modal,
   Row,
   Table,
-  // Button,
+  Button,
 } from "react-bootstrap";
-// import TypeTable from "../../../Data/TypeTable";
+import {Bars} from '@agney/react-loading';
 
 const Tipe = () => {
   const [LgShowAdd, setLgShowAdd] = useState(false);
@@ -21,6 +20,7 @@ const Tipe = () => {
   const [typeData, setTypeData] = useState([]);
   const [oldType, setOldType] = useState([]);
   const [updatedType, setUpdatedType] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleModalUbah = (props) => {
     console.log(props);
@@ -64,6 +64,7 @@ const Tipe = () => {
   useEffect(() => {
     axios.get("/api/types").then((res) => {
       setTypeData(res.data);
+      setLoading(true); 
     });
   });
 
@@ -198,19 +199,19 @@ const Tipe = () => {
           <div style={{ marginTop: "2%" }}>
             <Table striped bordered hover>
               <thead>
-                <tr>
+                <tr style={{textAlign:'center'}}>
                   <th>#</th>
                   <th>Nama Tipe</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                {typeData.map((type) => {
+                {loading ? typeData.map((type, index) => {
                   return (
                     <tr key={type.id} data={type}>
-                      <td>{type.id}</td>
-                      <td>{type.name}</td>
-                      <td>
+                      <td width="80" style={{textAlign:'center'}}>{index + 1}</td>
+                      <td width="550">{type.name}</td>
+                      <td className="d-flex justify-content-center">
                         <Button
                           // as="input"
                           // type="submit"
@@ -231,7 +232,11 @@ const Tipe = () => {
                       </td>
                     </tr>
                   );
-                })}
+                }):
+                <div>
+                  <Bars width="50" color="#2f89e4" style={{marginLeft:'200%', marginTop:'20px'}}/>
+                </div>
+                }
               </tbody>
             </Table>
           </div>

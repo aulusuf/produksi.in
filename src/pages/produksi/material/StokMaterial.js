@@ -1,4 +1,4 @@
-import Button from "@restart/ui/esm/Button";
+// import Button from "@restart/ui/esm/Button";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import {
@@ -9,6 +9,7 @@ import {
   Modal,
   Row,
   Table,
+  Button,
 } from "react-bootstrap";
 
 const StokMaterial = () => {

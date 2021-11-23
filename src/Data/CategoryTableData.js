@@ -4,7 +4,7 @@ import React from "react";
 const CategoryTableData = (props) => {
   return (
     <tr>
-      <td>{props.data.id}</td>
+      <td style={{textAlign:'center'}}>{props.data.id}</td>
       <td>{props.data.name}</td>
       <td>{props.children}</td>
     </tr>

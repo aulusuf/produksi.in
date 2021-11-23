@@ -20,7 +20,7 @@ export const SidebarDataManajemen = [
       {
         MenuitemIcon: <GiIcons.GiGearHammer />,
         label: "Buat Permintaan",
-        path: "/manajemen/produksi/permintaan",
+        path: "/manajemen/produksi",
       },
       {
         MenuitemIcon: <GiIcons.GiGearHammer />,
@@ -41,12 +41,12 @@ export const SidebarDataManajemen = [
       {
         MenuitemIcon: <MdIcons.MdProductionQuantityLimits />,
         label: "Data Produk",
-        path: "/manajemen/produksi/data-produk",
+        path: "/manajemen/produk/data-produk",
       },
       {
         MenuitemIcon: <MdIcons.MdProductionQuantityLimits />,
         label: "Kategori",
-        path: "/manajemen/produksi/kategori",
+        path: "/manajemen/produk/kategori",
       },
     ],
   },

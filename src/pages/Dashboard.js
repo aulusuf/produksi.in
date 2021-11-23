@@ -40,7 +40,7 @@ const Dashboard = () => {
     <div className="marginBody">
       <div className="bg-login">
         <Modal
-          size=""
+          size="" 
           show={LgShowProfil}
           onHide={() => setLgShowProfil(false)}
           aria-labelledby="example-modal-sizes-title-lg"
@@ -401,7 +401,7 @@ const Dashboard = () => {
             <div class="mt-3 rounded">
               <div
                 className="button-dashboard"
-                onClick={() => history.push(`/manajemen/produksi/permintaan`)}
+                onClick={() => history.push(`/manajemen/produksi`)}
               >
                 <h3 style={{ textAlign: "center", fontSize: "22px" }}>
                   Buat Permintaan Produksi

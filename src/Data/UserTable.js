@@ -17,12 +17,12 @@ export default function UserTable(props) {
     <Table striped bordered hover>
       <thead>
         <tr>
-          <th>#</th>
-          <th>Nama</th>
-          <th>Email</th>
-          <th>Role</th>
-          <th>Username</th>
-          <th>Action</th>
+          <th width="50">#</th>
+          <th width="250">Nama</th>
+          <th width="250">Email</th>
+          <th width="80">Role</th>
+          <th width="150">Username</th>
+          <th width="100">Action</th>
         </tr>
       </thead>
       <tbody>

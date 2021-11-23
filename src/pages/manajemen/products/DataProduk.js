@@ -1,4 +1,3 @@
-import Button from "@restart/ui/esm/Button";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
@@ -9,8 +8,10 @@ import {
   Modal,
   Row,
   Table,
+  Button
 } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import LoadingData from "../../../Components/LoadingProduct";
 
 const DataProduk = () => {
   let history = useHistory();
@@ -20,6 +21,7 @@ const DataProduk = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const [productData, setProductData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const [productName, setProductName] = useState([]);
   const [productId, setProductId] = useState([]);
@@ -50,6 +52,7 @@ const DataProduk = () => {
       .get("/api/products")
       .then((res) => {
         setProductData(res.data);
+        setLoading(true); 
       })
       .catch((err) => {
         console.log(err);
@@ -318,7 +321,7 @@ const DataProduk = () => {
         <Col>
           <div
             className="d-flex justify-content-end"
-            style={{ marginRight: "7%" }}
+            style={{ marginBottom:'10px' }}
           >
             <Button
               as="input"
@@ -335,7 +338,7 @@ const DataProduk = () => {
         <Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
           <h3>Data Produk</h3>
           <Row>
-            {productData.map((product) => {
+            {loading ? productData.map((product) => {
               return (
                 <Col sm="3">
                   <div
@@ -345,16 +348,20 @@ const DataProduk = () => {
                   >
                     <div className="d-flex justify-content-center">
                       <Image
-                        style={{ height: "170px", width: "170px" }}
+                        style={{ height: "150px", width: "150px" }}
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
                         rounded
                       />
                     </div>
-                    <p style={{ textAlign: "center" }}>{product.name}</p>
+                    <p className="d-flex pb-3 justify-content-center">{product.name}</p>
                   </div>
                 </Col>
               );
-            })}
+            }):
+            <div>
+              <LoadingData/>
+            </div>
+            }
           </Row>
         </Container>
       </div>

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Table } from "react-bootstrap";
-import Button from "@restart/ui/esm/Button";
+import { Table, Button } from "react-bootstrap";
 import axios from "axios";
+import {Bars} from '@agney/react-loading';
 
 export default function MaterialRequestTable(props) {
   const [matReqData, setMatReqData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleKirim = (props) => {
-    console.log(props);
     axios
       .put("/api/material_request/" + props.id, { statusId: 2 })
       .then((res) => {
@@ -18,29 +18,30 @@ export default function MaterialRequestTable(props) {
   useEffect(() => {
     axios.get("/api/material_requests").then((res) => {
       setMatReqData(res.data);
+      setLoading(true); 
     });
   });
 
   return (
     <Table striped bordered hover>
-      <thead>
+      <thead style={{textAlign:'center'}}>
         <tr>
-          <th>#</th>
-          <th>Produk</th>
-          <th>Material</th>
-          <th>Jumlah</th>
-          <th>Dari</th>
-          <th>Status</th>
+          <th width="50">#</th>
+          <th width="150">Produk</th>
+          <th width="150">Material</th>
+          <th width="80">Jumlah</th>
+          <th width="120">Dari</th>
+          <th width="50">Status</th>
         </tr>
       </thead>
       <tbody>
-        {matReqData.map((reqMat) => {
+        {loading ? matReqData.map((reqMat) => {
           return (
             <tr key={reqMat.id} data={reqMat}>
-              <td>{reqMat.id}</td>
+              <td style={{textAlign:'center'}}>{reqMat.id}</td>
               <td>{reqMat.products.name}</td>
               <td>{reqMat.materials.name}</td>
-              <td>{reqMat.amount}</td>
+              <td style={{textAlign:'center'}}>{reqMat.amount}</td>
               <td>{reqMat.users.name}</td>
               {/* ditambahkan if else untuk status material request */}
               <td>
@@ -76,7 +77,11 @@ export default function MaterialRequestTable(props) {
               </td>
             </tr>
           );
-        })}
+        }):
+        <div>
+          <Bars width="50" color="#2f89e4" style={{marginLeft:'600%', marginTop:'20px'}}/>
+        </div>
+        }
       </tbody>
     </Table>
   );
