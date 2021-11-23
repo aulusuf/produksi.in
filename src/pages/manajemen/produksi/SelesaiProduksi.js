@@ -15,7 +15,7 @@ const SelesaiProduksi = () => {
   const [LgShowUpdate, setLgShowUpdate] = useState(false);
   const [LgShowDell, setLgShowDell] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [assignmentPending, setAssignmentPending] = useState(null);
+  const [assignmentPending, setAssignmentPending] = useState([]);
   const [assignmentData, setAssignmentData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [assignmentId, setAssignmentId] = useState();
@@ -198,7 +198,7 @@ const SelesaiProduksi = () => {
                       <tr key={paData.id}>
                         <td>{index + 1}</td>
                         <td style={{ textAlign: "start" }}>
-                          {paData.products.name}
+                          {paData.productId ? paData.products.name : null}
                         </td>
                         <td>{paData.amount}</td>
                         {/* <td>{paData.cost}</td> */}
