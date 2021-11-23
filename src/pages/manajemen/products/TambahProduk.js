@@ -1,4 +1,3 @@
-import Button from "@restart/ui/esm/Button";
 import React, { useState } from "react";
 import {
   Col,
@@ -7,6 +6,7 @@ import {
   Form,
   Image,
   Row,
+  Button
 } from "react-bootstrap";
 
 const TambahProduk = () => {
@@ -180,7 +180,7 @@ const TambahProduk = () => {
               </div>
               <div className="mt-4 m-2">
                 <Form.Select
-                  defaultValue="Pilih Produk..."
+                  defaultValue="Pilih Material..."
                   style={{ cursor: "pointer" }}
                 >
                   <option>Material...</option>
@@ -214,7 +214,7 @@ const TambahProduk = () => {
               </div>
               <div className="mt-4 m-2">
                 <Form.Select
-                  defaultValue="Pilih Produk..."
+                  defaultValue="Pilih Material..."
                   style={{ cursor: "pointer" }}
                 >
                   <option>Material...</option>
@@ -248,7 +248,7 @@ const TambahProduk = () => {
               </div>
               <div className="mt-4 m-2">
                 <Form.Select
-                  defaultValue="Pilih Produk..."
+                  defaultValue="Pilih Material..."
                   style={{ cursor: "pointer" }}
                 >
                   <option>Material...</option>
@@ -269,13 +269,33 @@ const TambahProduk = () => {
                   placeholder="Jumlah..."
                 />
               </div>
-              {/* </div> */}
+            </Col>
+            <Col sm="3">
+              <div className="d-flex mt-2 justify-content-center">
+                <div class="shadow-sm bg-body rounded">
+                  <Image
+                    style={{ height: "150px", width: "150px" }}
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
+                    rounded
+                  />
+                </div>
+              </div>
               <div className="mt-4 m-2">
-                <Form.Select defaultValue="Pilih Produk...">
+                <Form.Select
+                  defaultValue="Pilih Material..."
+                  style={{ cursor: "pointer" }}
+                >
                   <option>Material...</option>
-                  <option>Tas</option>
-                  <option>Sepatu</option>
-                  <option>Baju</option>
+                  <option>Resleting</option>
+                  <option>Benang</option>
+                  <option>Denim</option>
+                  <option>Pengait</option>
+                  <option>Kulit</option>
+                  <option>Kancing</option>
+                  <option>Lem</option>
+                  <option>Katun</option>
+                  <option>Karet</option>
+                  <option>Sol</option>
                 </Form.Select>
                 <Form.Control
                   className="mt-3"
@@ -293,83 +313,23 @@ const TambahProduk = () => {
                     rounded
                   />
                 </div>
-                <div className="mt-4 m-2">
-                  <Form.Select
-                    defaultValue="Pilih Produk..."
-                    style={{ cursor: "pointer" }}
-                  >
-                    <option>Material...</option>
-                    <option>Resleting</option>
-                    <option>Benang</option>
-                    <option>Denim</option>
-                    <option>Pengait</option>
-                    <option>Kulit</option>
-                    <option>Kancing</option>
-                    <option>Lem</option>
-                    <option>Katun</option>
-                    <option>Karet</option>
-                    <option>Sol</option>
-                  </Form.Select>
-                  <Form.Control
-                    className="mt-3"
-                    type="number"
-                    placeholder="Jumlah..."
-                  />
-                </div>
               </div>
               <div className="mt-4 m-2">
-                <Form.Select defaultValue="Pilih Produk...">
+                <Form.Select
+                  defaultValue="Pilih Material..."
+                  style={{ cursor: "pointer" }}
+                >
                   <option>Material...</option>
-                  <option>Tas</option>
-                  <option>Sepatu</option>
-                  <option>Baju</option>
-                </Form.Select>
-                <Form.Control
-                  className="mt-3"
-                  type="number"
-                  placeholder="Jumlah..."
-                />
-              </div>
-            </Col>
-            <Col sm="3">
-              <div className="d-flex mt-3 justify-content-center">
-                <div class="shadow-sm bg-body rounded">
-                  <Image
-                    style={{ height: "150px", width: "150px" }}
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
-                    rounded
-                  />
-                </div>
-                <div className="mt-4 m-2">
-                  <Form.Select
-                    defaultValue="Pilih Produk..."
-                    style={{ cursor: "pointer" }}
-                  >
-                    <option>Material...</option>
-                    <option>Resleting</option>
-                    <option>Benang</option>
-                    <option>Denim</option>
-                    <option>Pengait</option>
-                    <option>Kulit</option>
-                    <option>Kancing</option>
-                    <option>Lem</option>
-                    <option>Katun</option>
-                    <option>Karet</option>
-                    <option>Sol</option>
-                  </Form.Select>
-                  <Form.Control
-                    className="mt-3"
-                    type="number"
-                    placeholder="Jumlah..."
-                  />
-                </div>
-              </div>
-              <div className="mt-4 m-2">
-                <Form.Select defaultValue="Pilih Produk...">
-                  <option>Material...</option>
-                  <option>Tas</option>
-                  <option>Sepatu</option>
-                  <option>Baju</option>
+                  <option>Resleting</option>
+                  <option>Benang</option>
+                  <option>Denim</option>
+                  <option>Pengait</option>
+                  <option>Kulit</option>
+                  <option>Kancing</option>
+                  <option>Lem</option>
+                  <option>Katun</option>
+                  <option>Karet</option>
+                  <option>Sol</option>
                 </Form.Select>
                 <Form.Control
                   className="mt-3"
