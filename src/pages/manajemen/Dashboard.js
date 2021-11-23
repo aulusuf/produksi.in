@@ -472,7 +472,7 @@ const Dashboard = () => {
 
         <div class="shadow-sm p-3 bg-body rounded">
           <Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
-            <h3>Riwayat Prosuksi</h3>
+            <h3>Riwayat Produksi</h3>
             <div style={{ marginTop: "5%" }}>
               <Table striped bordered hover style={{textAlign:'center'}}>
                 <thead>

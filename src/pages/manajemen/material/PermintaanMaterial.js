@@ -64,8 +64,8 @@ const PermintaanMaterial = () => {
                               />
                             </div>
                           ) : reqMat.statusId === 2 ? (
-                            <div className="d-flex justify-content-center">
-                              <p>Telah Dikirim</p>
+                            <div className="d-flex justify-content-center" style={{fontStyle:'italic', color:'#2479F9'}}>
+                              <text>Telah Dikirim</text>
                             </div>
                           ) : (
                             <div className="d-flex justify-content-center">
@@ -86,7 +86,7 @@ const PermintaanMaterial = () => {
                     <Bars
                       width="50"
                       color="#2f89e4"
-                      style={{ marginLeft: "600%", marginTop: "20px" }}
+                      style={{ marginLeft: "470%", marginTop: "20px" }}
                     />
                   </div>
                 )}

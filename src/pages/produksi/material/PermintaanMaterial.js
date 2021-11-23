@@ -417,11 +417,11 @@ const PermintaanMaterial = () => {
                         </td>
                         <td className="text-center">
                           {request.statusId === 1
-                            ? "Pending"
+                            ? <text style={{fontStyle:'italic', color:'#f99d24'}}>Pending</text>
                             : request.statusId === 2
-                            ? "Sedang dikirim"
+                            ? <text style={{fontStyle:'italic', color:'#2479F9'}}>Sedang dikirim</text>
                             : request.statusId === 3
-                            ? "Selesai"
+                            ? <text style={{fontStyle:'italic', color:'#00b62d'}}>Selesai</text>
                             : null}
                         </td>
                       </tr>
@@ -432,7 +432,7 @@ const PermintaanMaterial = () => {
                     <Bars
                       width="50"
                       color="#2f89e4"
-                      style={{ marginLeft: "570%", marginTop: "20px" }}
+                      style={{ marginLeft: "650%", marginTop: "20px" }}
                     />
                   </div>
                 )}

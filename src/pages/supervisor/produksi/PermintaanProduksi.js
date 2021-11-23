@@ -8,6 +8,7 @@ const BuatPermintaan = () => {
   const [lgShowDone, setlgShowDone] = useState(false);
   const [loading, setLoading] = useState(false);
   const [productAssignmentData, setproductAssignmentData] = useState([]);
+  const [assignmentData, setAssignmentData] = useState([]);
 
   const [lgShow, setLgShow] = useState(false);
   const [assignmentPending, setAssignmentPending] = useState([]);
@@ -47,9 +48,15 @@ const BuatPermintaan = () => {
     // });
     axios.get("/api/product_assignment/status/1").then((res) => {
       setAssignmentPending(res.data);
+      setLoading(true);
     });
     axios.get("/api/product_assignment/status/3").then((res) => {
       setAssignmentOngoing(res.data);
+      setLoading(true);
+    });
+    axios.get("/api/product_assignments").then((res) => {
+      setAssignmentData(res.data);
+      setLoading(true);
     });
   });
 
@@ -78,7 +85,6 @@ const BuatPermintaan = () => {
           <div className="d-flex mt-2 mb-2 justify-content-center">
             <Button
               variant="primary"
-              size="lg"
               className="button-selesai-material"
               style={{ paddingLeft: "10px", paddingRight: "10px" }}
               onClick={() => selesai()}
@@ -108,14 +114,14 @@ const BuatPermintaan = () => {
                   <th width="50">#</th>
                   <th width="300">Produk</th>
                   <th width="120">Jumlah</th>
-                  <th>Action</th>
+                  <th width="100">Action</th>
                 </tr>
               </thead>
               <tbody>
-                {assignmentPending.map((pendingData) => {
+                {loading ? ( assignmentPending.map((pendingData, index) => {
                   return (
                     <tr key={pendingData.id} data={pendingData}>
-                      <td>{pendingData.id}</td>
+                      <td>{index + 1}</td>
                       <td>
                         {pendingData.productId
                           ? pendingData.products.name
@@ -135,7 +141,15 @@ const BuatPermintaan = () => {
                       </td>
                     </tr>
                   );
-                })}
+                })):
+                <div>
+                  <Bars
+                    width="50"
+                    color="#2f89e4"
+                    style={{ marginLeft: "535%", marginTop: "20px" }}
+                  />
+                </div>
+                }
               </tbody>
             </Table>
           </div>
@@ -151,14 +165,14 @@ const BuatPermintaan = () => {
                   <th width="50">#</th>
                   <th width="300">Produk</th>
                   <th width="120">Jumlah</th>
-                  <th>Action</th>
+                  <th width="100">Action</th>
                 </tr>
               </thead>
               <tbody>
-                {assignmentOngoing.map((ongoingData) => {
+                {loading ? ( assignmentOngoing.map((ongoingData, index) => {
                   return (
                     <tr key={ongoingData.id} data={ongoingData}>
-                      <td>{ongoingData.id}</td>
+                      <td>{index + 1}</td>
                       <td>
                         {ongoingData.productId
                           ? ongoingData.products.name
@@ -178,7 +192,15 @@ const BuatPermintaan = () => {
                       </td>
                     </tr>
                   );
-                })}
+                })):
+                <div>
+                  <Bars
+                    width="50"
+                    color="#2f89e4"
+                    style={{ marginLeft: "535%", marginTop: "20px" }}
+                  />
+                </div>
+                }
               </tbody>
             </Table>
           </div>
@@ -189,36 +211,40 @@ const BuatPermintaan = () => {
         <Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
           <h3>Riwayat</h3>
           <div style={{ marginTop: "5%" }}>
-            <Table striped bordered hover style={{ textAlign: "center" }}>
+          <Table striped bordered hover style={{ textAlign: "center" }}>
               <thead>
                 <tr>
                   <th width="50">#</th>
-                  <th width="300">Produk</th>
+                  <th width="250">Produk</th>
                   <th width="120">Jumlah</th>
+                  <th width="120">Status</th>
                 </tr>
               </thead>
               <tbody>
-                {loading ? (
-                  productAssignmentData.map((paData, index) => {
+                {loading ? assignmentData.map((assignmentDone, index) => {
                     return (
-                      <tr key={paData.id}>
+                      <tr key={assignmentDone.id}>
                         <td>{index + 1}</td>
                         <td style={{ textAlign: "start" }}>
-                          {paData.products.name}
+                          {assignmentDone.products.name}
                         </td>
-                        <td>{paData.amount}</td>
+                        <td>{assignmentDone.amount}</td>
+                        <td style={{fontStyle:'italic', color:'#2479F9'}}>
+                          {assignmentDone.statusId
+                            ? assignmentDone.status.name
+                            : null}
+                        </td>
                       </tr>
                     );
-                  })
-                ) : (
+                  }):
                   <div>
                     <Bars
                       width="50"
                       color="#2f89e4"
-                      style={{ marginLeft: "750%", marginTop: "20px" }}
+                      style={{ marginLeft: "510%", marginTop: "20px" }}
                     />
                   </div>
-                )}
+                }
               </tbody>
             </Table>
           </div>

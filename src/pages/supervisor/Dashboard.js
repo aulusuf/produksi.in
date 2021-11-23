@@ -397,7 +397,7 @@ const Dashboard = () => {
                   );
                 }):
                 <div>
-                  <Bars width="50" color="#2f89e4" style={{marginLeft:'350%', marginTop:'20px'}}/>
+                  <Bars width="50" color="#2f89e4" style={{marginLeft:'750%', marginTop:'20px'}}/>
                 </div>
                 }
               </tbody>

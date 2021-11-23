@@ -8,7 +8,7 @@ const LoadingData = () => {
             <Row>
               <Col sm='3'>
                 <div className="d-flex justify-content-center">
-                    <div className="shadow-sm m-3 bg-body rounded" style={{height:'170px', width:'170px'}}>
+                    <div className="shadow-sm m-3 bg-body rounded" style={{height:'170px', width:'170px', cursor:'wait'}}>
                         <div className="d-flex justify-content-center">
                             <div className="shadow-sm bg-body rounded" style={{height:'120px', width:'100px'}}>
                                 <Circles width="50" color="#2f89e4" style={{marginLeft:'28%', marginTop:'40px'}}/>
@@ -22,7 +22,7 @@ const LoadingData = () => {
               </Col>
               <Col sm='3'>
                 <div className="d-flex justify-content-center">
-                    <div className="shadow-sm m-3 bg-body rounded" style={{height:'170px', width:'170px'}}>
+                    <div className="shadow-sm m-3 bg-body rounded" style={{height:'170px', width:'170px', cursor:'wait'}}>
                         <div className="d-flex justify-content-center">
                             <div className="shadow-sm bg-body rounded" style={{height:'120px', width:'100px'}}>
                                 <Circles width="50" color="#2f89e4" style={{marginLeft:'28%', marginTop:'40px'}}/>
@@ -36,7 +36,7 @@ const LoadingData = () => {
               </Col>
               <Col sm='3'>
                 <div className="d-flex justify-content-center">
-                    <div className="shadow-sm m-3 bg-body rounded" style={{height:'170px', width:'170px'}}>
+                    <div className="shadow-sm m-3 bg-body rounded" style={{height:'170px', width:'170px', cursor:'wait'}}>
                         <div className="d-flex justify-content-center">
                             <div className="shadow-sm bg-body rounded" style={{height:'120px', width:'100px'}}>
                                 <Circles width="50" color="#2f89e4" style={{marginLeft:'28%', marginTop:'40px'}}/>
@@ -50,7 +50,7 @@ const LoadingData = () => {
               </Col>
               <Col sm='3'>
                 <div className="d-flex justify-content-center">
-                    <div className="shadow-sm m-3 bg-body rounded" style={{height:'170px', width:'170px'}}>
+                    <div className="shadow-sm m-3 bg-body rounded" style={{height:'170px', width:'170px', cursor:'wait'}}>
                         <div className="d-flex justify-content-center">
                             <div className="shadow-sm bg-body rounded" style={{height:'120px', width:'100px'}}>
                                 <Circles width="50" color="#2f89e4" style={{marginLeft:'28%', marginTop:'40px'}}/>
@@ -64,7 +64,7 @@ const LoadingData = () => {
               </Col>
               <Col sm='3'>
                 <div className="d-flex justify-content-center">
-                    <div className="shadow-sm m-3 bg-body rounded" style={{height:'170px', width:'170px'}}>
+                    <div className="shadow-sm m-3 bg-body rounded" style={{height:'170px', width:'170px', cursor:'wait'}}>
                         <div className="d-flex justify-content-center">
                             <div className="shadow-sm bg-body rounded" style={{height:'120px', width:'100px'}}>
                                 <Circles width="50" color="#2f89e4" style={{marginLeft:'28%', marginTop:'40px'}}/>
@@ -78,7 +78,7 @@ const LoadingData = () => {
               </Col>
               <Col sm='3'>
                 <div className="d-flex justify-content-center">
-                    <div className="shadow-sm m-3 bg-body rounded" style={{height:'170px', width:'170px'}}>
+                    <div className="shadow-sm m-3 bg-body rounded" style={{height:'170px', width:'170px', cursor:'wait'}}>
                         <div className="d-flex justify-content-center">
                             <div className="shadow-sm bg-body rounded" style={{height:'120px', width:'100px'}}>
                                 <Circles width="50" color="#2f89e4" style={{marginLeft:'28%', marginTop:'40px'}}/>
@@ -92,7 +92,7 @@ const LoadingData = () => {
               </Col>
               <Col sm='3'>
                 <div className="d-flex justify-content-center">
-                    <div className="shadow-sm m-3 bg-body rounded" style={{height:'170px', width:'170px'}}>
+                    <div className="shadow-sm m-3 bg-body rounded" style={{height:'170px', width:'170px', cursor:'wait'}}>
                         <div className="d-flex justify-content-center">
                             <div className="shadow-sm bg-body rounded" style={{height:'120px', width:'100px'}}>
                                 <Circles width="50" color="#2f89e4" style={{marginLeft:'28%', marginTop:'40px'}}/>
@@ -106,7 +106,7 @@ const LoadingData = () => {
               </Col>
               <Col sm='3'>
                 <div className="d-flex justify-content-center">
-                    <div className="shadow-sm m-3 bg-body rounded" style={{height:'170px', width:'170px'}}>
+                    <div className="shadow-sm m-3 bg-body rounded" style={{height:'170px', width:'170px', cursor:'wait'}}>
                         <div className="d-flex justify-content-center">
                             <div className="shadow-sm bg-body rounded" style={{height:'120px', width:'100px'}}>
                                 <Circles width="50" color="#2f89e4" style={{marginLeft:'28%', marginTop:'40px'}}/>

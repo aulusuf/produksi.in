@@ -15,12 +15,10 @@ const SelesaiProduksi = () => {
   const [LgShowUpdate, setLgShowUpdate] = useState(false);
   const [LgShowDell, setLgShowDell] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [assignmentPending, setAssignmentPending] = useState([]);
+  const [assignmentPending, setAssignmentPending] = useState(null);
   const [assignmentData, setAssignmentData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [assignmentId, setAssignmentId] = useState();
-  const [oldData, setOldData] = useState();
-  const [newData, setNewData] = useState();
 
   const modalBatal = (props) => {
     setAssignmentId(props.id);
@@ -31,40 +29,22 @@ const SelesaiProduksi = () => {
   const batal = () => {
     console.log(assignmentId);
     axios.delete("/api/product_assignment/" + assignmentId).then((res) => {
-      // console.log(res);
+      console.log(res);
       setLgShowDell(false);
     });
-  };
-
-  const modalUbah = (props) => {
-    setAssignmentId(props.id);
-    setOldData(props.amount);
-    console.log(props.amount);
-    setLgShowUpdate(true);
-  };
-
-  const ubah = () => {
-    console.log(assignmentId, "halo");
-    console.log(newData);
-    axios
-      .put("/api/product_assignment/" + assignmentId, { amount: newData })
-      .then((res) => {
-        setLgShowUpdate(false);
-      });
   };
 
   useEffect(() => {
     axios.get("/api/product_assignment/status/1").then((res) => {
       setAssignmentPending(res.data);
       setLoading(true);
-      // const timProduksi = res.data.id
-      // axios.get('/api/users')
     });
-    axios.get("/api/product_assignment/status/4").then((res) => {
+    axios.get("/api/product_assignments").then((res) => {
       setAssignmentData(res.data);
       setLoading(true);
     });
   });
+
   return (
     <div className="marginBody">
       <Modal
@@ -119,12 +99,7 @@ const SelesaiProduksi = () => {
                     Jumlah
                   </Form.Label>
                   <Col>
-                    <Form.Control
-                      type="number"
-                      placeholder="Jumlah..."
-                      defaultValue={oldData}
-                      onChange={(e) => setNewData(e.target.value)}
-                    />
+                    <Form.Control type="number" placeholder="Jumlah..." />
                   </Col>
                 </Form.Group>
               </Row>
@@ -136,7 +111,6 @@ const SelesaiProduksi = () => {
                     value="Selesai"
                     className="button-submit-prosuksi"
                     style={{ paddingLeft: "20px", paddingRight: "20px" }}
-                    onClick={() => ubah()}
                   />
                 </div>
               </Col>
@@ -157,6 +131,7 @@ const SelesaiProduksi = () => {
           <Modal.Title id="modal-detail-produk">Batalkan ?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          <p>Yakin ingin membatalkan produksi?</p>
           <div className="d-flex mt-2 justify-content-end">
             <Button
               as="input"
@@ -179,62 +154,109 @@ const SelesaiProduksi = () => {
               <h3>Dalam Proses</h3>
             </Col>
           </Row>
-          <div style={{ marginTop: "2%" }}>
-            <Table striped bordered hover style={{ textAlign: "center" }}>
+            <div style={{ marginTop: "5%" }}>
+              <Table striped bordered hover style={{ textAlign: "center" }}>
+                <thead>
+                  <tr>
+                    <th width="40">#</th>
+                    <th width="250">Produk</th>
+                    <th width="80">ID</th>
+                    <th width="100">Jumlah</th>
+                    <th width="120">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {loading ? assignmentPending.map((paData, index) => {
+                      return (
+                        <tr key={paData.id} data={paData}>
+                          <td>{index + 1}</td>
+                          <td style={{ textAlign: "start" }}>
+                            {paData.products.name}
+                          </td>
+                          <td>{paData.id}</td>
+                          <td>{paData.amount}</td>
+                          <td>
+                            <div className="d-flex justify-content-center">
+                              <Button
+                                as="input"
+                                type="submit"
+                                value="Ubah"
+                                className="button-edit-produk"
+                                onClick={() => setLgShowUpdate(true)}
+                              />
+                              <Button
+                                as="input"
+                                type="submit"
+                                value="Batal"
+                                className="button-cencel-prosuksi"
+                                onClick={() => modalBatal(paData)}
+                              />
+                            </div>
+                          </td>
+                        </tr>
+                      );
+                    }):
+                    <div>
+                      <Bars
+                        width="50"
+                        color="#2f89e4"
+                        style={{ marginLeft: "580%", marginTop: "20px" }}
+                      />
+                    </div>
+                  }
+                </tbody>
+              </Table>
+            </div>
+          {/* <div style={{ marginTop: "5%" }}>
+            <Table striped bordered hover style={{textAlign:'center'}}>
               <thead>
                 <tr>
-                  <th width="50">#</th>
+                  <th width="40">#</th>
                   <th width="250">Produk</th>
+                  <th width="80">ID</th>
                   <th width="100">Jumlah</th>
-                  {/* <th width="120">Biaya</th> */}
-                  {/* <th width="120">Tim Produksi</th> */}
                   <th width="120">Action</th>
                 </tr>
               </thead>
               <tbody>
-                {loading ? assignmentPending.map((paData, index) => {
-                    return (
-                      <tr key={paData.id}>
-                        <td>{index + 1}</td>
-                        <td style={{ textAlign: "start" }}>
-                          {paData.productId ? paData.products.name : null}
-                        </td>
-                        <td>{paData.amount}</td>
-                        {/* <td>{paData.cost}</td> */}
-                        {/* <td>{paData.assignmentId}</td> */}
-                        {/* // untuk if else status */}
-                        <td>
-                          <div className="d-flex justify-content-center">
-                            <Button
-                              as="input"
-                              type="submit"
-                              value="Ubah"
-                              className="button-edit-produk"
-                              onClick={() => modalUbah(paData)}
-                            />
-                            <Button
-                              as="input"
-                              type="submit"
-                              value="Batal"
-                              className="button-cencel-prosuksi"
-                              onClick={() => modalBatal(paData)}
-                            />
-                          </div>
-                        </td>
-                      </tr>
-                    );
-                  }):
-                  <div>
-                    <Bars
-                      width="50"
-                      color="#2f89e4"
-                      style={{ marginLeft: "500%", marginTop: "20px" }}
-                    />
-                  </div>
-                }
+                {loading ? ( assignmentPending.map((paData, index) => {
+                  return (
+                    <tr key={paData.id} data={paData}>
+                      <td>{index + 1}</td>
+                      <td style={{ textAlign: "start" }}>
+                        {paData.products.name}
+                      </td>
+                      <td>{paData.id}</td>
+                      <td>{paData.amount}</td>
+                      <td>
+                        <div className="d-flex justify-content-center">
+                          <Button
+                            as="input"
+                            type="submit"
+                            value="Ubah"
+                            className="button-edit-produk"
+                            onClick={() => setLgShowUpdate(true)}
+                          />
+                          <Button
+                            as="input"
+                            type="submit"
+                            value="Batal"
+                            className="button-cencel-prosuksi"
+                            onClick={() => modalBatal(paData)}
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })
+                ):(
+                <div>
+                  <Bars width="50" color="#2f89e4" style={{marginLeft:'580%', marginTop:'20px'}}/>
+                </div>
+                )}
               </tbody>
             </Table>
-          </div>
+          </div> */}
         </Container>
       </div>
 
@@ -245,10 +267,11 @@ const SelesaiProduksi = () => {
             <Table striped bordered hover style={{ textAlign: "center" }}>
               <thead>
                 <tr>
-                  <th width="50">#</th>
+                  <th width="40">#</th>
                   <th width="250">Produk</th>
+                  <th width="80">ID</th>
                   <th width="100">Jumlah</th>
-                  <th width="150">Status</th>
+                  <th width="120">Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -259,11 +282,20 @@ const SelesaiProduksi = () => {
                         <td style={{ textAlign: "start" }}>
                           {assignmentDone.products.name}
                         </td>
+                        <td>{assignmentDone.id}</td>
                         <td>{assignmentDone.amount}</td>
-                        <td style={{fontStyle:'italic', color:'#2479F9'}}>
-                          {assignmentDone.statusId
-                            ? assignmentDone.status.name
-                            : null}
+                        <td>
+                          {assignmentDone.statusId === 1 ? (
+                            <text style={{fontStyle:'italic', color:'#f99d24'}}>{assignmentDone.status.name}</text>
+                          ) : assignmentDone.statusId === 2 ? (
+                            <text style={{fontStyle:'italic', color:'#00b62d'}}>{assignmentDone.status.name}</text>
+                          ) : assignmentDone.statusId === 3 ? (
+                            <text style={{fontStyle:'italic', color:'#2479F9'}}>{assignmentDone.status.name}</text>
+                          ) : assignmentDone.statusId === 4 ? (
+                            <text style={{fontStyle:'italic', color:'#2479F9'}}>{assignmentDone.status.name}</text>
+                          ) : assignmentDone.statusId === 5 ? (
+                            <text style={{fontStyle:'italic', color:'#00b62d'}}>{assignmentDone.status.name}</text>
+                          ) : null}
                         </td>
                       </tr>
                     );
@@ -272,7 +304,7 @@ const SelesaiProduksi = () => {
                     <Bars
                       width="50"
                       color="#2f89e4"
-                      style={{ marginLeft: "535%", marginTop: "20px" }}
+                      style={{ marginLeft: "580%", marginTop: "20px" }}
                     />
                   </div>
                 }

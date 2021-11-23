@@ -1,16 +1,19 @@
+import { Bars } from "@agney/react-loading";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Container, Table, Row, Col, Modal, Button } from "react-bootstrap";
 import "../styles/produksi.css";
-// import { MDBDataTable } from "mdbreact";
 
 const Penugasan = () => {
   const [lgShowDone, setlgShowDone] = useState(false);
   const [lgShowAccept, setlgShowAccept] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [assignmentId, setAssignmentId] = useState();
   const [newAssignment, setNewAssignment] = useState([]);
   const [assignmentHistory, setAssignmentHistory] = useState([]);
+
+
 
   const modalSelesaikan = (props) => {
     setlgShowDone(true);
@@ -31,9 +34,11 @@ const Penugasan = () => {
   useEffect(() => {
     axios.get("/api/product_assignment/status/2").then((res) => {
       setNewAssignment(res.data);
+      setLoading(true);
     });
     axios.get("/api/product_assignment/status/3").then((res) => {
       setAssignmentHistory(res.data);
+      setLoading(true);
     });
   });
 
@@ -77,7 +82,7 @@ const Penugasan = () => {
               onClick={() => setlgShowDone(false)}
             />
           </div>
-        </Modal.Body>
+        </Modal.Body> 
       </Modal>
 
       <Modal
@@ -137,10 +142,10 @@ const Penugasan = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {newAssignment.map((assignment) => {
+                  {loading ? ( newAssignment.map((assignment, index) => {
                     return (
                       <tr>
-                        <td style={{ textAlign: "center" }}>{assignment.id}</td>
+                        <td style={{ textAlign: "center" }}>{index + 1}</td>
                         <td>
                           {assignment.productId
                             ? assignment.products.name
@@ -163,7 +168,14 @@ const Penugasan = () => {
                         </td>
                       </tr>
                     );
-                  })}
+                  })):
+                  <div>
+                    <Bars
+                      width="50"
+                      color="#2f89e4"
+                      style={{ marginLeft: "535%", marginTop: "20px" }}
+                    />
+                  </div>}
                 </tbody>
               </Table>
             </div>
@@ -276,10 +288,10 @@ const Penugasan = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {assignmentHistory.map((history) => {
+                  {loading ? ( assignmentHistory.map((history, index) => {
                     return (
                       <tr key={history.id} data={history}>
-                        <td style={{ textAlign: "center" }}>{history.id}</td>
+                        <td style={{ textAlign: "center" }}>{index + 1}</td>
                         <td>
                           {history.productId ? history.products.name : null}
                         </td>
@@ -288,7 +300,15 @@ const Penugasan = () => {
                         </td>
                       </tr>
                     );
-                  })}
+                  })):
+                  <div>
+                    <Bars
+                      width="50"
+                      color="#2f89e4"
+                      style={{ marginLeft: "460%", marginTop: "20px" }}
+                    />
+                  </div>
+                  }
                   {/* <tr>
                     <td style={{ textAlign: "center" }}>2</td>
                     <td>Jaket</td>

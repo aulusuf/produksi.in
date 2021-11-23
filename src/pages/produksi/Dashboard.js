@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import {
   Col,
@@ -19,9 +19,27 @@ const Dashboard = () => {
   const [LgShowProfil, setLgShowProfil] = useState(false);
   const [LgShowProfilEdit, setLgShowProfilEdit] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [userData, setUserData] = useState({});
 
   const userName = localStorage.getItem("name");
   const userRole = localStorage.getItem("roleName");
+
+  const getUserData = () => {
+    const params = localStorage.getItem("id");
+    console.log(params);
+    axios
+      .get("/api/user/" + params)
+      .then((res) => {
+        setUserData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getUserData();
+  }, []);
 
   
   return (
@@ -35,49 +53,42 @@ const Dashboard = () => {
         centered
       >
         <Modal.Header closeButton>
-          <Modal.Title id="modal-detail-produk">Profil</Modal.Title>
+          <Modal.Title id="modal-detail-produk">
+            Profil
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body className="modal-body">
-          <Row style={{ marginTop: "2%" }}>
+          <Row style={{marginTop:'2%'}}>
             <Col sm={4}>
               <div className="d-flex justify-content-center">
-                <Image
-                  className="image-dashboard"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU"
-                  rounded
-                />
+                <Image className="image-dashboard" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
               </div>
             </Col>
             <Col sm={8}>
-              <Row className="mb-2">
-                <Col sm="3">Nama</Col>
-                <Col>Farhan Ismail</Col>
-              </Row>
-              <Row className="mb-2">
-                <Col sm="3">Email</Col>
-                <Col>farhanismail@mail.com</Col>
-              </Row>
-              <Row className="mb-2">
-                <Col sm="3">Jabatan</Col>
-                <Col>
-                  <strong>Produksi</strong>
-                </Col>
-              </Row>
-              <Row className="mb-2">
-                <Col sm="3">Username</Col>
-                <Col>Hannn</Col>
-              </Row>
-            </Col>
+                {/* PROFILE CONTENT */}
+                <Row className="mb-2">
+                  <Col sm="3">Nama</Col>
+                  <Col>{userData.name}</Col>
+                  {/* <Col>Farhan Ismail</Col> */}
+                </Row>
+                <Row className="mb-2">
+                  <Col sm="3">Email</Col>
+                  <Col>{userData.email}</Col>
+                </Row>
+                <Row className="mb-2">
+                  <Col sm="3">Jabatan</Col>
+                  <Col>
+                    <strong>{userRole}</strong>
+                  </Col>
+                </Row>
+                <Row className="mb-2">
+                  <Col sm="3">Username</Col>
+                  <Col>{userData.username}</Col>
+                </Row>
+              </Col>
             <Col>
               <div className="d-flex justify-content-center">
-                <Button
-                  onClick={() => setLgShowProfilEdit(true)}
-                  as="input"
-                  type="submit"
-                  value="Ubah"
-                  className="button-edit-produk"
-                  style={{ paddingLeft: "20px", paddingRight: "20px" }}
-                />
+                <Button onClick={()=>setLgShowProfilEdit(true)} as="input" type="submit" value="Ubah" className="button-edit-produk" style={{paddingLeft:'20px', paddingRight:'20px'}}/>
               </div>
             </Col>
           </Row>
@@ -275,6 +286,21 @@ const Dashboard = () => {
       </Row>
 
       <Row className="mt-4">
+        <Col>
+          <div className="col-12">
+            <div
+              className="button-dashboard-produksi"
+              onClick={() => history.push(`/tim_produksi/penugasan`)}
+            >
+              <h3 style={{ textAlign: "center", fontSize: "22px" }}>
+                Buka Penugasan
+              </h3>
+            </div>
+          </div>
+        </Col>
+      </Row>
+
+      <Row>
         <Col>
           <div className="col-12">
             <div
