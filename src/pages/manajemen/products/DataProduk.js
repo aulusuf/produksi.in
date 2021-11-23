@@ -21,6 +21,30 @@ const DataProduk = () => {
 
   const [productData, setProductData] = useState([]);
 
+  const [productName, setProductName] = useState([]);
+  const [productId, setProductId] = useState([]);
+  const [productCategory, setProductCategory] = useState([]);
+  const [productCost, setProductCost] = useState([]);
+  const [materialList, setMaterialList] = useState([]);
+
+  const handleModalDetail = (props) => {
+    setLgShowDetail(true);
+    setProductName(props.name);
+    setProductCategory(props);
+    setProductCost(props.cost);
+    console.log(props);
+    console.log(materialList);
+    // renderMaterialList(props);
+  };
+  // const renderMaterialList = (props) => {
+  //   // setProductId(props.id);
+  //   axios.get("/api/product/" + props.id).then((res) => {
+  //     setMaterialList(res.data);
+  //     console.log("rendered", res.data);
+  //   });
+  //   console.log(props.id);
+  // };
+
   useEffect(() => {
     axios
       .get("/api/products")
@@ -30,7 +54,7 @@ const DataProduk = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  });
 
   return (
     <div
@@ -59,8 +83,8 @@ const DataProduk = () => {
                   />
                 </div>
                 <div style={{ textAlign: "center" }}>
-                  <h4>Tas</h4>
-                  <p>Kategori Produk</p>
+                  <h4>{productName}</h4>
+                  {/* <p>Kategori Produk</p> */}
                   <div className="d-flex justify-content-center">
                     <Container
                       style={{
@@ -70,22 +94,14 @@ const DataProduk = () => {
                         borderRadius: "10px",
                       }}
                     >
-                      Aksesoris
-                    </Container>
-                    <Container
-                      style={{
-                        backgroundColor: "rgb(201, 197, 197)",
-                        marginLeft: "10px",
-                        padding: "5px",
-                        borderRadius: "10px",
-                      }}
-                    >
-                      Gaya Hidup
+                      {productCategory.categoryId
+                        ? productCategory.categories.name
+                        : null}
                     </Container>
                   </div>
                   <text>Biaya Produksi Satuan</text>
                   <h5>
-                    Rp. <text>200.000.000</text>
+                    Rp. <text>{productCost}</text>
                   </h5>
                   <div className="d-flex justify-content-center">
                     <Button
@@ -114,36 +130,36 @@ const DataProduk = () => {
                   <Table striped bordered hover>
                     <thead>
                       <tr>
-                        <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
+                        <th>Material</th>
+                        <th>Jumlah</th>
                       </tr>
                     </thead>
                     <tbody>
+                      {/* {materialList.map((data) => {
+                        return (
+                          <tr key={data.id} data={data}>
+                            <td>{data.materials.name}</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                          </tr>
+                        );
+                      })} */}
+
                       <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td>Kain</td>
+                        <td>3 meter</td>
                       </tr>
                       <tr>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
+                        <td>Denim</td>
+                        <td>1 meter</td>
                       </tr>
                       <tr>
-                        <td>3</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
+                        <td>Pengait</td>
+                        <td>2 pcs</td>
                       </tr>
                       <tr>
-                        <td>4</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
+                        <td>Resleting</td>
+                        <td>4 pcs</td>
                       </tr>
                     </tbody>
                   </Table>
@@ -325,7 +341,7 @@ const DataProduk = () => {
                   <div
                     class="shadow-sm m-3 bg-body rounded"
                     style={{ cursor: "pointer" }}
-                    onClick={() => setLgShowDetail(true)}
+                    onClick={() => handleModalDetail(product)}
                   >
                     <div className="d-flex justify-content-center">
                       <Image

@@ -121,17 +121,6 @@ const Kategori = () => {
                   </div>
                 </div>
               </div>
-              <div
-                className="d-flex justify-content-end"
-                style={{ marginTop: "20px" }}
-              >
-                <input
-                  type="file"
-                  onChange={(event) => {
-                    setSelectedImage(event.target.files[0]);
-                  }}
-                />
-              </div>
             </Col>
             <Col sm={9}>
               <Row>
