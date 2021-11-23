@@ -19,6 +19,8 @@ const SelesaiProduksi = () => {
   const [assignmentData, setAssignmentData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [assignmentId, setAssignmentId] = useState();
+  const [oldData, setOldData] = useState();
+  const [newData, setNewData] = useState();
 
   const modalBatal = (props) => {
     setAssignmentId(props.id);
@@ -29,9 +31,26 @@ const SelesaiProduksi = () => {
   const batal = () => {
     console.log(assignmentId);
     axios.delete("/api/product_assignment/" + assignmentId).then((res) => {
-      console.log(res);
+      // console.log(res);
       setLgShowDell(false);
     });
+  };
+
+  const modalUbah = (props) => {
+    setAssignmentId(props.id);
+    setOldData(props.amount);
+    console.log(props.amount);
+    setLgShowUpdate(true);
+  };
+
+  const ubah = () => {
+    console.log(assignmentId, "halo");
+    console.log(newData);
+    axios
+      .put("/api/product_assignment/" + assignmentId, { amount: newData })
+      .then((res) => {
+        setLgShowUpdate(false);
+      });
   };
 
   useEffect(() => {
@@ -100,7 +119,12 @@ const SelesaiProduksi = () => {
                     Jumlah
                   </Form.Label>
                   <Col>
-                    <Form.Control type="number" placeholder="Jumlah..." />
+                    <Form.Control
+                      type="number"
+                      placeholder="Jumlah..."
+                      defaultValue={oldData}
+                      onChange={(e) => setNewData(e.target.value)}
+                    />
                   </Col>
                 </Form.Group>
               </Row>
@@ -112,6 +136,7 @@ const SelesaiProduksi = () => {
                     value="Selesai"
                     className="button-submit-prosuksi"
                     style={{ paddingLeft: "20px", paddingRight: "20px" }}
+                    onClick={() => ubah()}
                   />
                 </div>
               </Col>
@@ -186,7 +211,7 @@ const SelesaiProduksi = () => {
                               type="submit"
                               value="Ubah"
                               className="button-edit-produk"
-                              onClick={() => setLgShowUpdate(true)}
+                              onClick={() => modalUbah(paData)}
                             />
                             <Button
                               as="input"
