@@ -35,10 +35,10 @@ export default function MaterialRequestTable(props) {
         </tr>
       </thead>
       <tbody>
-        {loading ? matReqData.map((reqMat) => {
+        {loading ? matReqData.map((reqMat, index) => {
           return (
             <tr key={reqMat.id} data={reqMat}>
-              <td style={{textAlign:'center'}}>{reqMat.id}</td>
+              <td style={{textAlign:'center'}}>{index + 1}</td>
               <td>{reqMat.products.name}</td>
               <td>{reqMat.materials.name}</td>
               <td style={{textAlign:'center'}}>{reqMat.amount}</td>

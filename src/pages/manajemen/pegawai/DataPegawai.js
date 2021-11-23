@@ -519,14 +519,6 @@ const DataPegawai = () => {
                         <div className="d-flex justify-content-center">
                           <Button
                             as="input"
-                            variant="primary"
-                            value="Lihat"
-                            type="button"
-                            className="button-submit-prosuksi"
-                            onClick={() => handleModalLihat(user)}
-                          />
-                          <Button
-                            as="input"
                             variant="warning"
                             value="Ubah"
                             type="button"

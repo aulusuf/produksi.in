@@ -1,14 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Container, Form, Image, Modal, Row, Table, Button } from 'react-bootstrap';
+import axios from "axios";
+import {Bars} from '@agney/react-loading';
 
-const StokMaterial = () => {
+const StokMaterial = (props) => {
   const [LgShowUpdate, setLgShowUpdate] = useState(false);
   const [LgShowDell, setLgShowDell] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [stokMaterial, setStokMaterial] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    axios
+      .get("/api/materials")
+      .then((res) => {
+        setStokMaterial(res.data);
+        setLoading(true); 
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <div className="marginBody">
-
-<Modal
+      <Modal
         size="lg"
         show={LgShowUpdate}
         onHide={() => setLgShowUpdate(false)}
@@ -135,20 +151,20 @@ const StokMaterial = () => {
           <div style={{marginTop:'2%'}}>
             <Table striped bordered hover>
               <thead>
-                <tr>
-                  <th>#</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Username</th>
-                  <th>Action</th>
+                <tr style={{textAlign:'center'}}>
+                  <th width="50">#</th>
+                  <th width="250">Material</th>
+                  <th width="180">Tipe</th>
+                  <th width="100">Stok</th>
+                  <th width="100">Action</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>1</td>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
+                  <td style={{textAlign:'center'}}>1</td>
+                  <td>Denim</td>
+                  <td>Kain</td>
+                  <td style={{textAlign:'center'}}>150</td>
                   <td>
                     <div className="d-flex justify-content-center">
                       <Button as="input" type="submit" value="Ubah" className="button-edit-produk" onClick={() => setLgShowUpdate(true)}/>
@@ -157,10 +173,10 @@ const StokMaterial = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td>2</td>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
+                  <td style={{textAlign:'center'}}>2</td>
+                  <td>Katun</td>
+                  <td>Kain</td>
+                  <td style={{textAlign:'center'}}>2000</td>
                   <td>
                     <div className="d-flex justify-content-center">
                       <text style={{fontStyle:'italic', color:'#2479F9'}}>Dalam Proses</text>
@@ -168,10 +184,10 @@ const StokMaterial = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td>3</td>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
+                  <td style={{textAlign:'center'}}>3</td>
+                  <td>Kancing</td>
+                  <td>Pernik</td>
+                  <td style={{textAlign:'center'}}>4350</td>
                   <td>
                     <div className="d-flex justify-content-center">
                       <text style={{fontStyle:'italic', color:'#2479F9'}}>Dalam Proses</text>
@@ -179,10 +195,10 @@ const StokMaterial = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td>4</td>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
+                  <td style={{textAlign:'center'}}>4</td>
+                  <td>Resleting</td>
+                  <td>Pernik</td>
+                  <td style={{textAlign:'center'}}>2000</td>
                   <td>
                     <div className="d-flex justify-content-center">
                       <text style={{fontStyle:'italic', color:'#2479F9'}}>Dalam Proses</text>
@@ -201,38 +217,28 @@ const StokMaterial = () => {
             <div style={{marginTop:'5%'}}>
               <Table striped bordered hover>
                 <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
+                  <tr style={{textAlign:'center'}}>
+                    <th width="50">#</th>
+                    <th width="250">Material</th>
+                    <th width="180">Tipe</th>
+                    <th width="100">Stok</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
+                  {loading ? stokMaterial.map((material, index) => {
+                    return (
+                      <tr key={material.id}>
+                        <td style={{textAlign:'center'}}>{index + 1}</td>
+                        <td>{material.name}</td>
+                        <td>{material.types.name}</td>
+                        <td style={{textAlign:'center'}}>{material.stock}</td>
+                      </tr>
+                    );
+                  }):
+                  <div>
+                    <Bars width="50" color="#2f89e4" style={{marginLeft:'535%', marginTop:'20px'}}/>
+                  </div>
+                  }
                 </tbody>
               </Table>
             </div>

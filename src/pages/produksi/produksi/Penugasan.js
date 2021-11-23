@@ -71,7 +71,6 @@ const Penugasan = () => {
                       <div className="d-flex justify-content-center">
                         <Button
                           variant="primary"
-                          size="lg"
                           className="button-selesai-material"
                           style={{cursor:'pointer'}}
                           onClick={() => setlgShowDone(true)}
@@ -89,7 +88,6 @@ const Penugasan = () => {
                       <div className="d-flex justify-content-center">
                         <Button
                           variant="primary"
-                          size="lg"
                           className="button-selesai-material"
                           style={{cursor:'pointer'}}
                           onClick={() => setlgShowDone(true)}
@@ -107,7 +105,6 @@ const Penugasan = () => {
                       <div className="d-flex justify-content-center">
                         <Button
                           variant="primary"
-                          size="lg"
                           className="button-selesai-material"
                           style={{cursor:'pointer'}}
                           onClick={() => setlgShowDone(true)}

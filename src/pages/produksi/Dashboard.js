@@ -7,10 +7,11 @@ import {
   Image,
   Table,
   Button,
-  Form,
+  Form, 
   Modal,
 } from "react-bootstrap";
 import "./styles/all.css";
+import axios from "axios";
 
 const Dashboard = () => {
   let history = useHistory();
@@ -18,7 +19,13 @@ const Dashboard = () => {
   const [LgShowProfil, setLgShowProfil] = useState(false);
   const [LgShowProfilEdit, setLgShowProfilEdit] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+
+  const userName = localStorage.getItem("name");
+  const userRole = localStorage.getItem("roleName");
+
+  
   return (
+    
     <div className="marginBody">
       <Modal
         size=""
@@ -213,12 +220,8 @@ const Dashboard = () => {
                         paddingBottom: "13px",
                       }}
                     >
-                      <h3>
-                        Hallo <text>Farhan Ismail</text>
-                      </h3>
-                      <text style={{ fontSize: "21px" }}>
-                        Team <text>Produksi</text>
-                      </text>
+                      <h3>Hallo <text>{userName}</text></h3>
+                      <text style={{fontSize:'21px'}}>{userRole}</text>
                     </div>
                   </Col>
                 </Row>

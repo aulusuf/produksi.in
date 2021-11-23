@@ -6,9 +6,9 @@ const PermintaanMaterial = () => {
   const [LgShowDell, setLgShowDell] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   return (
-    <div className="marginBody">
+    <div className="marginBody"> 
 
-<Modal
+      <Modal
         size="lg"
         show={LgShowUpdate}
         onHide={() => setLgShowUpdate(false)}
@@ -139,19 +139,23 @@ const PermintaanMaterial = () => {
           </Row>
           <div style={{marginTop:'2%'}}>
             <Table striped bordered hover>
-              <thead>
+              <thead style={{textAlign:'center'}}>
                 <tr>
-                  <th>#</th>
-                  <th>First Name</th>
-                  <th>Username</th>
-                  <th>Action</th>
+                  <th width="40">#</th>
+                  <th width="200">Produk</th>
+                  <th width="150">Material</th>
+                  <th width="80">Jumlah</th>
+                  <th width="120">Dari</th>
+                  <th width="50">Status</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>1</td>
-                  <td>Mark</td>
-                  <td>@mdo</td>
+                  <td style={{textAlign:'center'}}>1</td>
+                  <td>Gantungan Kuncu</td>
+                  <td>Resleting</td>
+                  <td style={{textAlign:'center'}}>300</td>
+                  <td>Yusuf</td>
                   <td>
                     <div className="d-flex justify-content-center">
                       <Button as="input" type="submit" value="Ubah" className="button-edit-produk" onClick={() => setLgShowUpdate(true)}/>
@@ -160,9 +164,11 @@ const PermintaanMaterial = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td>2</td>
-                  <td>Jacob</td>
-                  <td>@fat</td>
+                  <td style={{textAlign:'center'}}>2</td>
+                  <td>Jaket</td>
+                  <td>Resleting</td>
+                  <td style={{textAlign:'center'}}>300</td>
+                  <td>Farhan</td>
                   <td>
                     <div className="d-flex justify-content-center">
                       <text style={{fontStyle:'italic', color:'#2479F9'}}>Dalam Proses</text>
@@ -170,19 +176,11 @@ const PermintaanMaterial = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td>3</td>
-                  <td>Jacob</td>
-                  <td>@fat</td>
-                  <td>
-                    <div className="d-flex justify-content-center">
-                      <text style={{fontStyle:'italic', color:'#2479F9'}}>Dalam Proses</text>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Jacob</td>
-                  <td>@fat</td>
+                  <td style={{textAlign:'center'}}>3</td>
+                  <td>Tas Punggung</td>
+                  <td>Benang</td>
+                  <td style={{textAlign:'center'}}>300</td>
+                  <td>Yusuf</td>
                   <td>
                     <div className="d-flex justify-content-center">
                       <text style={{fontStyle:'italic', color:'#2479F9'}}>Dalam Proses</text>
@@ -199,39 +197,37 @@ const PermintaanMaterial = () => {
         <Container style={{paddingTop:'20px', paddingBottom:'20px'}}>
           <h3>Riwayat Permintaan Material</h3>
           <div style={{marginTop:'5%'}}>
-            <Table striped bordered hover>
-              <thead>
+          <Table striped bordered hover>
+              <thead style={{textAlign:'center'}}>
                 <tr>
-                  <th>#</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Username</th>
+                  <th width="40">#</th>
+                  <th width="200">Produk</th>
+                  <th width="150">Material</th>
+                  <th width="80">Jumlah</th>
+                  <th width="120">Dari</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>1</td>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
+                  <td style={{textAlign:'center'}}>1</td>
+                  <td>Gantungan Kuncu</td>
+                  <td>Resleting</td>
+                  <td style={{textAlign:'center'}}>300</td>
+                  <td>Yusuf</td>
                 </tr>
                 <tr>
-                  <td>2</td>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
+                  <td style={{textAlign:'center'}}>2</td>
+                  <td>Jaket</td>
+                  <td>Resleting</td>
+                  <td style={{textAlign:'center'}}>300</td>
+                  <td>Farhan</td>
                 </tr>
                 <tr>
-                  <td>3</td>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
+                  <td style={{textAlign:'center'}}>3</td>
+                  <td>Tas Punggung</td>
+                  <td>Benang</td>
+                  <td style={{textAlign:'center'}}>300</td>
+                  <td>Yusuf</td>
                 </tr>
               </tbody>
             </Table>
