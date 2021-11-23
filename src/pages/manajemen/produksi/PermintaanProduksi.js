@@ -125,7 +125,7 @@ const BuatPermintaan = () => {
                     <Form.Control
                       type="number"
                       placeholder="Jumlah yang ingin diproduksi"
-                      defaultValue={1}
+                      defaultValue={0}
                       value={jumlahProduksi}
                       onChange={(event) => setAmount(event.target.value)}
                     />
@@ -177,10 +177,10 @@ const BuatPermintaan = () => {
               </tr>
             </thead>
             <tbody>
-              {materialUsed.map((material) => {
+              {materialUsed.map((material, index) => {
                 return (
                   <tr>
-                    <td style={{ textAlign: "center" }}>{material.id}</td>
+                    <td style={{ textAlign: "center" }}>{index + 1}</td>
                     <td>
                       {material.materialId ? material.material.name : null}
                     </td>

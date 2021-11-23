@@ -546,8 +546,7 @@ const DataPegawai = () => {
                     />
                   </div>
                 )} */}
-                {loading ? (
-                  userData.map((user, index) => {
+                {loading ? (userData.map((user, index) => {
                     return (
                       <tr key={user.id} data={user}>
                         <td style={{ textAlign: "center" }}>{index + 1}</td>

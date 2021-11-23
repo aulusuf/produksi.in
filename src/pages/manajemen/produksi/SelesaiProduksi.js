@@ -167,8 +167,7 @@ const SelesaiProduksi = () => {
                 </tr>
               </thead>
               <tbody>
-                {loading ? (
-                  assignmentPending.map((paData, index) => {
+                {loading ? assignmentPending.map((paData, index) => {
                     return (
                       <tr key={paData.id}>
                         <td>{index + 1}</td>
@@ -199,16 +198,15 @@ const SelesaiProduksi = () => {
                         </td>
                       </tr>
                     );
-                  })
-                ) : (
+                  }):
                   <div>
                     <Bars
                       width="50"
                       color="#2f89e4"
-                      style={{ marginLeft: "700%", marginTop: "20px" }}
+                      style={{ marginLeft: "500%", marginTop: "20px" }}
                     />
                   </div>
-                )}
+                }
               </tbody>
             </Table>
           </div>
@@ -217,7 +215,7 @@ const SelesaiProduksi = () => {
 
       <div class="shadow-sm p-3 mt-3 bg-body rounded">
         <Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
-          <h3>Riwayat Prosuksi</h3>
+          <h3>Riwayat Produksi</h3>
           <div style={{ marginTop: "5%" }}>
             <Table striped bordered hover style={{ textAlign: "center" }}>
               <thead>
@@ -229,8 +227,7 @@ const SelesaiProduksi = () => {
                 </tr>
               </thead>
               <tbody>
-                {loading ? (
-                  assignmentData.map((assignmentDone, index) => {
+                {loading ? assignmentData.map((assignmentDone, index) => {
                     return (
                       <tr key={assignmentDone.id}>
                         <td>{index + 1}</td>
@@ -238,23 +235,22 @@ const SelesaiProduksi = () => {
                           {assignmentDone.products.name}
                         </td>
                         <td>{assignmentDone.amount}</td>
-                        <td>
+                        <td style={{fontStyle:'italic', color:'#2479F9'}}>
                           {assignmentDone.statusId
                             ? assignmentDone.status.name
                             : null}
                         </td>
                       </tr>
                     );
-                  })
-                ) : (
+                  }):
                   <div>
                     <Bars
                       width="50"
                       color="#2f89e4"
-                      style={{ marginLeft: "635%", marginTop: "20px" }}
+                      style={{ marginLeft: "535%", marginTop: "20px" }}
                     />
                   </div>
-                )}
+                }
               </tbody>
             </Table>
           </div>
