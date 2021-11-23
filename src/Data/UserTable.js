@@ -38,14 +38,6 @@ export default function UserTable(props) {
                 <div className="d-flex justify-content-center">
                   <Button
                     as="input"
-                    variant="primary"
-                    value="Lihat"
-                    type="button"
-                    className="me-3"
-                    onClick={props.lihat}
-                  />
-                  <Button
-                    as="input"
                     variant="warning"
                     value="Ubah"
                     type="button"

@@ -11,18 +11,22 @@ import {
   Table,
   Button,
 } from "react-bootstrap";
+import {Bars} from '@agney/react-loading';
 
 const PermintaanMaterial = () => {
   const [LgShowUpdate, setLgShowUpdate] = useState(false);
   const [LgShowDell, setLgShowDell] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [requestList, setRequestList] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     axios.get("/api/material_requests").then((res) => {
       setRequestList(res.data);
+      setLoading(true); 
     });
   });
+
   return (
     <div className="marginBody">
       <Modal
@@ -235,22 +239,22 @@ const PermintaanMaterial = () => {
           <div style={{ marginTop: "2%" }}>
             <Table striped bordered hover>
               <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Produk</th>
-                  <th>Material</th>
-                  <th>Action</th>
-                  <th>Jumlah</th>
+                <tr style={{textAlign:'center'}}>
+                  <th width="50">#</th>
+                  <th width="250">Produk</th>
+                  <th width="180">Material</th>
+                  <th width="100">Jumlah</th>
+                  <th width="100">Action</th>
                 </tr>
               </thead>
               <tbody>
-                {requestList.map((request) => {
+                {loading ? requestList.map((request, index) => {
                   return (
                     <tr key={request.id} data={request}>
-                      <td>{request.id}</td>
+                      <td style={{textAlign:'center'}}>{index + 1}</td>
                       <td>{request.products.name}</td>
                       <td>{request.materials.name}</td>
-                      <td>{request.amount}</td>
+                      <td style={{textAlign:'center'}}>{request.amount}</td>
                       <td>
                         <div className="d-flex justify-content-center">
                           <Button
@@ -271,7 +275,11 @@ const PermintaanMaterial = () => {
                       </td>
                     </tr>
                   );
-                })}
+                }):
+                <div>
+                  <Bars width="50" color="#2f89e4" style={{marginLeft:'650%', marginTop:'20px'}}/>
+                </div>
+                }
               </tbody>
             </Table>
           </div>
@@ -284,24 +292,28 @@ const PermintaanMaterial = () => {
           <div style={{ marginTop: "5%" }}>
             <Table striped bordered hover>
               <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Produk</th>
-                  <th>Material</th>
-                  <th>Jumlah</th>
+                <tr style={{textAlign:'center'}}>
+                  <th width="50">#</th>
+                  <th width="250">Produk</th>
+                  <th width="180">Material</th>
+                  <th width="100">Jumlah</th>
                 </tr>
               </thead>
               <tbody>
-                {requestList.map((request) => {
+                {loading ? requestList.map((request, index) => {
                   return (
                     <tr key={request.id} data={request}>
-                      <td>{request.id}</td>
+                      <td style={{textAlign:'center'}}>{index + 1}</td>
                       <td>{request.products.name}</td>
                       <td>{request.materials.name}</td>
-                      <td>{request.amount}</td>
+                      <td style={{textAlign:'center'}}>{request.amount}</td>
                     </tr>
                   );
-                })}
+                }):
+                <div>
+                  <Bars width="50" color="#2f89e4" style={{marginLeft:'570%', marginTop:'20px'}}/>
+                </div>
+                }
               </tbody>
             </Table>
           </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Container, Row, Image, Table, Modal, Form, Button } from 'react-bootstrap';
 import "./styles/all.css";
 import * as BiIcons from 'react-icons/bi';
@@ -6,6 +6,8 @@ import * as FaIcons from 'react-icons/fa';
 import * as MdIcons from 'react-icons/md';
 import * as BsIcons from 'react-icons/bs';
 import { useHistory } from 'react-router-dom';
+import {Bars} from '@agney/react-loading';
+import axios from 'axios';
 
 const Dashboard = () => {
   let history = useHistory()
@@ -13,6 +15,37 @@ const Dashboard = () => {
   const [LgShowProfil, setLgShowProfil] = useState(false);
   const [LgShowProfilEdit, setLgShowProfilEdit] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [productAssignmentData, setproductAssignmentData] = useState([]);
+  const [userData, setUserData] = useState({});
+  
+  const userName = localStorage.getItem("name");
+  const userRole = localStorage.getItem("roleName");
+
+  useEffect(() => {
+    axios.get("/api/product_assignments").then((res) => {
+      setproductAssignmentData(res.data);
+      setLoading(true); 
+    });
+  }, []);
+
+  const getUserData = () => {
+    const params = localStorage.getItem("id");
+    console.log(params);
+    axios
+      .get("/api/user/" + params)
+      .then((res) => {
+        setUserData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getUserData();
+  }, []);
+
   return (
     <div className="marginBody">
       <Modal
@@ -35,39 +68,27 @@ const Dashboard = () => {
               </div>
             </Col>
             <Col sm={8}>
-              <Row className="mb-2">
-                <Col sm="3">
-                  Nama
-                </Col>
-                <Col>
-                  Farhan Ismail
-                </Col>
-              </Row>
-              <Row className="mb-2">
-                <Col sm="3">
-                  Email
-                </Col>
-                <Col>
-                  farhanismail@mail.com
-                </Col>
-              </Row>
-              <Row className="mb-2">
-                <Col sm="3">
-                  Jabatan
-                </Col>
-                <Col>
-                  <strong>Supervisor</strong>
-                </Col>
-              </Row>
-              <Row className="mb-2">
-                <Col sm="3">
-                  Username
-                </Col>
-                <Col>
-                  Hannn
-                </Col>
-              </Row>
-            </Col>
+                {/* PROFILE CONTENT */}
+                <Row className="mb-2">
+                  <Col sm="3">Nama</Col>
+                  <Col>{userData.name}</Col>
+                  {/* <Col>Farhan Ismail</Col> */}
+                </Row>
+                <Row className="mb-2">
+                  <Col sm="3">Email</Col>
+                  <Col>{userData.email}</Col>
+                </Row>
+                <Row className="mb-2">
+                  <Col sm="3">Jabatan</Col>
+                  <Col>
+                    <strong>{userRole}</strong>
+                  </Col>
+                </Row>
+                <Row className="mb-2">
+                  <Col sm="3">Username</Col>
+                  <Col>{userData.username}</Col>
+                </Row>
+              </Col>
             <Col>
               <div className="d-flex justify-content-center">
                 <Button onClick={()=>setLgShowProfilEdit(true)} as="input" type="submit" value="Ubah" className="button-edit-produk" style={{paddingLeft:'20px', paddingRight:'20px'}}/>
@@ -175,7 +196,7 @@ const Dashboard = () => {
       </Modal>
 
       <Row>
-        <Col>
+        <Col sm='6'>
           <div className="cursor">
             <div class="shadow-sm p-3 mt-3 bg-body rounded">
               <Container className="padding-profil" onClick={() => setLgShowProfil(true)}>
@@ -187,8 +208,8 @@ const Dashboard = () => {
                   </Col>
                   <Col sm={9}>
                     <div style={{textAlign:"center", paddingTop:'10px'}}>
-                      <h3>Hallo <text>Farhan Ismail</text></h3>
-                      <text style={{fontSize:'21px'}}>Supervisor</text>
+                      <h3>Hallo <text>{userName}</text></h3>
+                      <text style={{fontSize:'21px'}}>{userRole}</text>
                     </div>
                   </Col>
                 </Row>
@@ -200,7 +221,7 @@ const Dashboard = () => {
             <Container style={{ paddingBottom:'30px'}}>
             <h3>Statistik</h3>
               <Row className="padding-statistik">
-                <Col>
+                <Col sm='6'>
                   <Row>
                     <Col className="d-flex justify-content-center">
                       <BiIcons.BiGroup style={{fontSize:'50px', color:'#FFCA42'}}/>
@@ -237,7 +258,7 @@ const Dashboard = () => {
                     <Col style={{textAlign:'center'}}>
                       <text style={{fontSize:'20px'}}><strong>4</strong></text>
                       <Col>
-                        <text style={{fontSize:'10px', color:'grey'}}>Kategori Produk</text>
+                        <text style={{fontSize:'10px', color:'grey'}}>Kategori</text>
                       </Col>
                     </Col>
                   </Row>
@@ -259,44 +280,44 @@ const Dashboard = () => {
             </Container>  
           </div>
         </Col>
-        <Col>
+        <Col sm='6'>
           <div class="shadow-sm p-3 mt-3 bg-body rounded">
               <Container style={{paddingTop:'20px', paddingBottom:'20px'}}>
                   <h3>Permintaan Produksi</h3>
                   <Table striped bordered hover>
-                  <thead>
+                  <thead style={{textAlign:'center'}}>
                       <tr>
-                      <th>#</th>
-                      <th>First Name</th>
-                      <th>Last Name</th>
-                      <th>Username</th>
+                        <th>#</th>
+                        <th>Produk</th>
+                        <th>Kategori</th>
+                        <th>Jumlah</th>
                       </tr>
                   </thead>
                   <tbody>
-                      <tr>
-                      <td>1</td>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      </tr>
-                      <tr>
-                      <td>2</td>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                      </tr>
-                      <tr>
-                      <td>3</td>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                      </tr>
-                      <tr>
-                      <td>4</td>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                      </tr>
+                    <tr>
+                      <td style={{textAlign:'center'}}>1</td>
+                      <td>Tas sandang</td>
+                      <td>Tas</td>
+                      <td style={{textAlign:'center'}}>200</td>
+                    </tr>
+                    <tr>
+                      <td style={{textAlign:'center'}}>2</td>
+                      <td>Jaket</td>
+                      <td>Atasan</td>
+                      <td style={{textAlign:'center'}}>352</td>
+                    </tr>
+                    <tr>
+                      <td style={{textAlign:'center'}}>3</td>
+                      <td>Sandal</td>
+                      <td>Alas Kaki</td>
+                      <td style={{textAlign:'center'}}>500</td>
+                    </tr>
+                    <tr>
+                      <td style={{textAlign:'center'}}>4</td>
+                      <td>Kemeja</td>
+                      <td>Atasan</td>
+                      <td style={{textAlign:'center'}}>10</td>
+                    </tr>
                   </tbody>
                   </Table>
               </Container> 
@@ -317,80 +338,74 @@ const Dashboard = () => {
         </Col>
         <Col>
           <div class="shadow-sm p-3 mt-3 bg-body rounded">
-            <Container>
-              <h3>Produk</h3>
-              <Row className="d-flex justify-content-center">
-                <Col sm='5'>
-                  <div class="shadow-sm bg-body rounded">
-                    <div className="d-flex justify-content-center">
-                      <Image style={{height:'135px', width:'140px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
+          <Container>
+                <h3>Produk</h3>
+                <Row className="d-flex justify-content-center">
+                  <Col sm='5'>
+                    <div class="shadow-sm bg-body rounded">
+                      <div className="d-flex justify-content-center">
+                        <Image style={{height:'135px', width:'140px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
+                      </div>
+                      <p style={{textAlign:'center'}}>Tas Punggung</p>
                     </div>
-                    <p style={{textAlign:'center'}}>Tas</p>
+                  </Col>
+                  <Col sm='5'>
+                    <div class="shadow-sm bg-body rounded">
+                      <div className="d-flex justify-content-center">
+                        <Image style={{height:'135px', width:'140px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
+                      </div>
+                      <p style={{textAlign:'center'}}>Tas Jinjing</p>
+                    </div>
+                  </Col>
+                </Row>
+                
+                <Col className="cursor" onClick={() => history.push(`/manajemen/produk/data-produk`)}>
+                  <div className="d-flex justify-content-center">
+                    <text style={{textAlign:'center'}}>Lihat Semua</text>
                   </div>
                 </Col>
-                <Col sm='5'>
-                  <div class="shadow-sm bg-body rounded">
-                    <div className="d-flex justify-content-center">
-                      <Image style={{height:'135px', width:'140px'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRUhB044J0H_pcVbEe0qxV9aHSqcTqmjtggQ&usqp=CAU" rounded />
-                    </div>
-                    <p style={{textAlign:'center'}}>Tas</p>
-                  </div>
-                </Col>
-              </Row>
-              
-              <Col className="cursor" onClick={() => history.push(`/supervisor/produksi/produk`)}>
-                <div className="d-flex justify-content-center">
-                  <text style={{textAlign:'center'}}>Lihat Semua</text>
-                </div>
-              </Col>
-            </Container>
+              </Container>
           </div>
         </Col>
       </Row>
 
       <div class="shadow-sm p-3 mt-3 bg-body rounded">
-        <Container style={{paddingTop:'20px', paddingBottom:'20px'}}>
+        <Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
           <h3>Riwayat Produksi</h3>
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-            </tbody>
-          </Table>
-        </Container>  
+          <div style={{ marginTop: "5%" }}>
+            <Table striped bordered hover style={{textAlign:'center'}}>
+              <thead>
+                <tr>
+                  <th width="50">#</th>
+                  <th width="300">Produk</th>
+                  <th width="120">Jumlah</th>
+                  <th width="150">Biaya</th>
+                  <th width="180">Tim Produksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                {loading ? productAssignmentData.map((paData, index) => {
+                  return (
+                    <tr key={paData.id}>
+                      <td>{index + 1}</td>
+                      <td style={{textAlign:'start'}}>{paData.products.name}</td>
+                      <td>{paData.amount}</td>
+                      <td>{paData.cost}</td>
+                      <td>{paData.assignmentId}</td>
+                      {/* // untuk if else status */}
+                    </tr>
+                  );
+                }):
+                <div>
+                  <Bars width="50" color="#2f89e4" style={{marginLeft:'350%', marginTop:'20px'}}/>
+                </div>
+                }
+              </tbody>
+            </Table>
+          </div>
+        </Container>
       </div>
     </div>
-    
   );
 };
 

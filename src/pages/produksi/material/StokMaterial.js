@@ -11,6 +11,7 @@ import {
   Table,
   Button,
 } from "react-bootstrap";
+import {Bars} from '@agney/react-loading';
 
 const StokMaterial = () => {
   const [LgShowUpdate, setLgShowUpdate] = useState(false);
@@ -18,10 +19,12 @@ const StokMaterial = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const [materialList, setMaterialList] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     axios.get("/api/materials").then((res) => {
       setMaterialList(res.data);
+      setLoading(true); 
     });
   });
   return (
@@ -219,21 +222,21 @@ const StokMaterial = () => {
           </Row>
           <div style={{ marginTop: "2%" }}>
             <Table striped bordered hover>
-              <thead>
+              <thead style={{textAlign:'center'}}>
                 <tr>
-                  <th>#</th>
-                  <th>Material</th>
-                  <th>Sisa</th>
-                  <th>Action</th>
+                  <th width="50">#</th>
+                  <th width="300">Material</th>
+                  <th width="150">Sisa</th>
+                  <th width="80">Action</th>
                 </tr>
               </thead>
               <tbody>
-                {materialList.map((material) => {
+                {loading ? materialList.map((material, index) => {
                   return (
                     <tr>
-                      <td>{material.id}</td>
+                      <td style={{textAlign:'center'}}>{index + 1}</td>
                       <td>{material.name}</td>
-                      <td>{material.stock}</td>
+                      <td style={{textAlign:'center'}}>{material.stock}</td>
                       <td>
                         <div className="d-flex justify-content-center">
                           <Button
@@ -254,32 +257,11 @@ const StokMaterial = () => {
                       </td>
                     </tr>
                   );
-                })}
-
-                {/* <tr>
-                  <td>1</td>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>
-                    <div className="d-flex justify-content-center">
-                      <Button as="input" type="submit" value="Ubah" className="button-edit-produk" onClick={() => setLgShowUpdate(true)}/>
-                      <Button as="input" type="submit" value="Batal" className="button-cencel-prosuksi" onClick={() => setLgShowDell(true)}/>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                  <td>
-                    <div className="d-flex justify-content-center">
-                      <text style={{fontStyle:'italic', color:'#2479F9'}}>Akan Diambil</text>
-                    </div>
-                  </td>
-                </tr>
-                <tr> */}
+                }):
+                <div>
+                  <Bars width="50" color="#2f89e4" style={{marginLeft:'550%', marginTop:'20px'}}/>
+                </div>
+                }
               </tbody>
             </Table>
           </div>
@@ -291,25 +273,27 @@ const StokMaterial = () => {
           <h3>Riwayat Material Sisa</h3>
           <div style={{ marginTop: "5%" }}>
             <Table striped bordered hover>
-              <thead>
+              <thead style={{textAlign:'center'}}>
                 <tr>
-                  <th>#</th>
-                  <th>Material</th>
-                  <th>Produk</th>
-                  <th>Sisa</th>
+                  <th width="50">#</th>
+                  <th width="320">Material</th>
+                  <th width="100">Sisa</th>
                 </tr>
               </thead>
               <tbody>
-                {materialList.map((material) => {
+                {loading ? materialList.map((material, index) => {
                   return (
                     <tr>
-                      <td>{material.id}</td>
+                      <td style={{textAlign:'center'}}>{index + 1}</td>
                       <td>{material.name}</td>
-                      <td>{material.stock}</td>
-                      <td>30</td>
+                      <td style={{textAlign:'center'}}>{material.stock}</td>
                     </tr>
                   );
-                })}
+                }):
+                <div>
+                  <Bars width="50" color="#2f89e4" style={{marginLeft:'450%', marginTop:'20px'}}/>
+                </div>
+                }
               </tbody>
             </Table>
           </div>

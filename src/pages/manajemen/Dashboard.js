@@ -8,6 +8,7 @@ import {
   Table,
   Form,
   Modal,
+  Button
 } from "react-bootstrap";
 import "../../Styles/all.css";
 import "../../Styles/dashboard.css";
@@ -16,7 +17,6 @@ import * as BiIcons from "react-icons/bi";
 import * as FaIcons from "react-icons/fa";
 import * as MdIcons from "react-icons/md";
 import * as BsIcons from "react-icons/bs";
-import Button from "@restart/ui/esm/Button";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import {Bars} from '@agney/react-loading';
@@ -97,7 +97,7 @@ const Dashboard = () => {
                 <Row className="mb-2">
                   <Col sm="3">Jabatan</Col>
                   <Col>
-                    <strong>Manajemen</strong>
+                    <strong>{userRole}</strong>
                   </Col>
                 </Row>
                 <Row className="mb-2">
@@ -471,40 +471,40 @@ const Dashboard = () => {
         </Row>
 
         <div class="shadow-sm p-3 bg-body rounded">
-        <Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
-          <h3>Riwayat Prosuksi</h3>
-          <div style={{ marginTop: "5%" }}>
-            <Table striped bordered hover style={{textAlign:'center'}}>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Produk</th>
-                  <th>Jumlah</th>
-                  <th>Biaya</th>
-                  <th>Tim Produksi</th>
-                </tr>
-              </thead>
-              <tbody>
-                {loading ? productAssignmentData.map((paData, index) => {
-                  return (
-                    <tr key={paData.id}>
-                      <td width="50">{index + 1}</td>
-                      <td width="300" style={{textAlign:'start'}}>{paData.products.name}</td>
-                      <td width="120">{paData.amount}</td>
-                      <td width="150">{paData.cost}</td>
-                      <td width="180">{paData.assignmentId}</td>
-                      {/* // untuk if else status */}
-                    </tr>
-                  );
-                }):
-                <div>
-                  <Bars width="50" color="#2f89e4" style={{marginLeft:'750%', marginTop:'20px'}}/>
-                </div>
-                }
-              </tbody>
-            </Table>
-          </div>
-        </Container>
+          <Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
+            <h3>Riwayat Prosuksi</h3>
+            <div style={{ marginTop: "5%" }}>
+              <Table striped bordered hover style={{textAlign:'center'}}>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Produk</th>
+                    <th>Jumlah</th>
+                    <th>Biaya</th>
+                    <th>Tim Produksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {loading ? productAssignmentData.map((paData, index) => {
+                    return (
+                      <tr key={paData.id}>
+                        <td width="50">{index + 1}</td>
+                        <td width="300" style={{textAlign:'start'}}>{paData.products.name}</td>
+                        <td width="120">{paData.amount}</td>
+                        <td width="150">{paData.cost}</td>
+                        <td width="180">{paData.assignmentId}</td>
+                        {/* // untuk if else status */}
+                      </tr>
+                    );
+                  }):
+                  <div>
+                    <Bars width="50" color="#2f89e4" style={{marginLeft:'750%', marginTop:'20px'}}/>
+                  </div>
+                  }
+                </tbody>
+              </Table>
+            </div>
+          </Container>
         </div>
       </div>
     </div>
