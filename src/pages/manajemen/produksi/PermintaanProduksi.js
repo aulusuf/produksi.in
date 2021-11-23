@@ -102,6 +102,7 @@ const BuatPermintaan = () => {
                         value={productId}
                         onChange={(event) => handleDropdown(event.target.value)}
                       >
+                        <option selected> Pilih Produk </option>
                         {pilihProduk.map((produk) => {
                           return (
                             <>

@@ -11,7 +11,7 @@ import {
   Table,
   Button,
 } from "react-bootstrap";
-import {Bars} from '@agney/react-loading';
+import { Bars } from "@agney/react-loading";
 
 const PermintaanMaterial = () => {
   const [LgShowUpdate, setLgShowUpdate] = useState(false);
@@ -19,12 +19,43 @@ const PermintaanMaterial = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [requestList, setRequestList] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [productId, setProductId] = useState();
+  const [materialId, setMaterialId] = useState();
+  const [materialList, setMaterialList] = useState([]);
+  const [amount, setAmount] = useState();
+
+  const [productionAssigned, setProductionAssigned] = useState([]);
+
+  const handleDropdownProduk = (props) => {
+    console.log(props);
+    setProductId(props);
+    axios.get("/api/product_material/product/" + props).then((res) => {
+      console.log(res.data);
+      setMaterialList(res.data);
+    });
+  };
+  const handleDropdownMaterial = (props) => {
+    console.log(props);
+    setMaterialId(props);
+  };
+  const newRequest = (event) => {
+    event.preventDefault();
+    const input = { productId, materialId, amount, statusId: 1 };
+    console.log(input);
+    axios.post("/api/material_request/create", input).then((res) => {
+      console.log(res.data);
+    });
+  };
 
   useEffect(() => {
-    axios.get("/api/material_requests").then((res) => {
+    axios.get("/api/material_request/status/1").then((res) => {
       setRequestList(res.data);
-      setLoading(true); 
+      setLoading(true);
     });
+    axios.get("/api/product_assignment/status/2").then((res) => {
+      setProductionAssigned(res.data);
+    });
+    // axios.get("/api/product_material");
   });
 
   return (
@@ -51,11 +82,17 @@ const PermintaanMaterial = () => {
               <Form.Select
                 defaultValue="Pilih Produk..."
                 style={{ cursor: "pointer" }}
+                value={productId}
+                onChange={(event) => handleDropdownProduk(event.target.value)}
               >
                 <option selected>Pilih Produk</option>
-                <option>Tas</option>
-                <option>Sepatu</option>
-                <option>Baju</option>
+                {productionAssigned.map((productList) => {
+                  return (
+                    <option value={productList.productId}>
+                      {productList.productId ? productList.products.name : null}
+                    </option>
+                  );
+                })}
               </Form.Select>
             </Col>
             <Col sm="3">
@@ -65,11 +102,19 @@ const PermintaanMaterial = () => {
               <Form.Select
                 defaultValue="Pilih Produk..."
                 style={{ cursor: "pointer" }}
+                value={materialId}
+                onChange={(event) => handleDropdownMaterial(event.target.value)}
               >
-                <option selected>Pilih Material</option>
-                <option>Tas</option>
-                <option>Sepatu</option>
-                <option>Baju</option>
+                <option selected>Pilih Produk</option>
+                {materialList.map((materialData) => {
+                  return (
+                    <option value={materialData.materialId}>
+                      {materialData.materialId
+                        ? materialData.material.name
+                        : null}
+                    </option>
+                  );
+                })}
               </Form.Select>
             </Col>
             <Col sm="3">
@@ -79,7 +124,8 @@ const PermintaanMaterial = () => {
               <Form.Control
                 className="mt-1"
                 type="number"
-                placeholder="Jumlah..."
+                placeholder="Jumlah"
+                onChange={(event) => setAmount(event.target.value)}
               />
             </Col>
           </Row>
@@ -175,6 +221,7 @@ const PermintaanMaterial = () => {
                 type="submit"
                 value="Buat Permintaan"
                 className="button-submit-prosuksi"
+                onClick={newRequest}
               />
               <Button
                 as="input"
@@ -239,7 +286,7 @@ const PermintaanMaterial = () => {
           <div style={{ marginTop: "2%" }}>
             <Table striped bordered hover>
               <thead>
-                <tr style={{textAlign:'center'}}>
+                <tr style={{ textAlign: "center" }}>
                   <th width="50">#</th>
                   <th width="250">Produk</th>
                   <th width="180">Material</th>
@@ -248,38 +295,46 @@ const PermintaanMaterial = () => {
                 </tr>
               </thead>
               <tbody>
-                {loading ? requestList.map((request, index) => {
-                  return (
-                    <tr key={request.id} data={request}>
-                      <td style={{textAlign:'center'}}>{index + 1}</td>
-                      <td>{request.products.name}</td>
-                      <td>{request.materials.name}</td>
-                      <td style={{textAlign:'center'}}>{request.amount}</td>
-                      <td>
-                        <div className="d-flex justify-content-center">
-                          <Button
-                            as="input"
-                            type="submit"
-                            value="Ubah"
-                            className="button-edit-produk"
-                            onClick={() => setLgShowUpdate(true)}
-                          />
-                          <Button
-                            as="input"
-                            type="submit"
-                            value="Batal"
-                            className="button-cencel-prosuksi"
-                            onClick={() => setLgShowDell(true)}
-                          />
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                }):
-                <div>
-                  <Bars width="50" color="#2f89e4" style={{marginLeft:'650%', marginTop:'20px'}}/>
-                </div>
-                }
+                {loading ? (
+                  requestList.map((request, index) => {
+                    return (
+                      <tr key={request.id} data={request}>
+                        <td style={{ textAlign: "center" }}>{index + 1}</td>
+                        <td>{request.products.name}</td>
+                        <td>{request.materials.name}</td>
+                        <td style={{ textAlign: "center" }}>
+                          {request.amount}
+                        </td>
+                        <td>
+                          <div className="d-flex justify-content-center">
+                            <Button
+                              as="input"
+                              type="submit"
+                              value="Ubah"
+                              className="button-edit-produk"
+                              onClick={() => setLgShowUpdate(true)}
+                            />
+                            <Button
+                              as="input"
+                              type="submit"
+                              value="Batal"
+                              className="button-cencel-prosuksi"
+                              onClick={() => setLgShowDell(true)}
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <div>
+                    <Bars
+                      width="50"
+                      color="#2f89e4"
+                      style={{ marginLeft: "650%", marginTop: "20px" }}
+                    />
+                  </div>
+                )}
               </tbody>
             </Table>
           </div>
@@ -292,7 +347,7 @@ const PermintaanMaterial = () => {
           <div style={{ marginTop: "5%" }}>
             <Table striped bordered hover>
               <thead>
-                <tr style={{textAlign:'center'}}>
+                <tr style={{ textAlign: "center" }}>
                   <th width="50">#</th>
                   <th width="250">Produk</th>
                   <th width="180">Material</th>
@@ -300,20 +355,28 @@ const PermintaanMaterial = () => {
                 </tr>
               </thead>
               <tbody>
-                {loading ? requestList.map((request, index) => {
-                  return (
-                    <tr key={request.id} data={request}>
-                      <td style={{textAlign:'center'}}>{index + 1}</td>
-                      <td>{request.products.name}</td>
-                      <td>{request.materials.name}</td>
-                      <td style={{textAlign:'center'}}>{request.amount}</td>
-                    </tr>
-                  );
-                }):
-                <div>
-                  <Bars width="50" color="#2f89e4" style={{marginLeft:'570%', marginTop:'20px'}}/>
-                </div>
-                }
+                {loading ? (
+                  requestList.map((request, index) => {
+                    return (
+                      <tr key={request.id} data={request}>
+                        <td style={{ textAlign: "center" }}>{index + 1}</td>
+                        <td>{request.products.name}</td>
+                        <td>{request.materials.name}</td>
+                        <td style={{ textAlign: "center" }}>
+                          {request.amount}
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <div>
+                    <Bars
+                      width="50"
+                      color="#2f89e4"
+                      style={{ marginLeft: "570%", marginTop: "20px" }}
+                    />
+                  </div>
+                )}
               </tbody>
             </Table>
           </div>
