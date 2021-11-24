@@ -159,8 +159,8 @@ const SelesaiProduksi = () => {
                 <thead>
                   <tr>
                     <th width="40">#</th>
-                    <th width="250">Produk</th>
                     <th width="80">ID</th>
+                    <th width="250">Produk</th>
                     <th width="100">Jumlah</th>
                     <th width="120">Status</th>
                   </tr>
@@ -170,10 +170,10 @@ const SelesaiProduksi = () => {
                       return (
                         <tr key={paData.id} data={paData}>
                           <td>{index + 1}</td>
+                          <td>1121{paData.id}</td>
                           <td style={{ textAlign: "start" }}>
                             {paData.products.name}
                           </td>
-                          <td>{paData.id}</td>
                           <td>{paData.amount}</td>
                           <td>
                             <div className="d-flex justify-content-center">
@@ -268,8 +268,8 @@ const SelesaiProduksi = () => {
               <thead>
                 <tr>
                   <th width="40">#</th>
-                  <th width="250">Produk</th>
                   <th width="80">ID</th>
+                  <th width="250">Produk</th>
                   <th width="100">Jumlah</th>
                   <th width="120">Status</th>
                 </tr>
@@ -279,10 +279,10 @@ const SelesaiProduksi = () => {
                     return (
                       <tr key={assignmentDone.id}>
                         <td>{index + 1}</td>
+                        <td>1121{assignmentDone.id}</td>
                         <td style={{ textAlign: "start" }}>
                           {assignmentDone.products.name}
                         </td>
-                        <td>{assignmentDone.id}</td>
                         <td>{assignmentDone.amount}</td>
                         <td>
                           {assignmentDone.statusId === 1 ? (

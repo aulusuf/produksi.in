@@ -200,17 +200,19 @@ const Tipe = () => {
             <Table striped bordered hover>
               <thead>
                 <tr style={{textAlign:'center'}}>
-                  <th>#</th>
-                  <th>Nama Tipe</th>
-                  <th>Action</th>
+                  <th width="50">#</th>
+                  <th width="100">ID</th>
+                  <th width="450">Nama Tipe</th>
+                  <th width="100">Action</th>
                 </tr>
               </thead>
               <tbody>
                 {loading ? typeData.map((type, index) => {
                   return (
                     <tr key={type.id} data={type}>
-                      <td width="80" style={{textAlign:'center'}}>{index + 1}</td>
-                      <td width="550">{type.name}</td>
+                      <td style={{textAlign:'center'}}>{index + 1}</td>
+                      <td style={{textAlign:'center'}}>0321{type.id}</td>
+                      <td>{type.name}</td>
                       <td className="d-flex justify-content-center">
                         <Button
                           // as="input"
@@ -234,7 +236,7 @@ const Tipe = () => {
                   );
                 }):
                 <div>
-                  <Bars width="50" color="#2f89e4" style={{marginLeft:'200%', marginTop:'20px'}}/>
+                  <Bars width="50" color="#2f89e4" style={{marginLeft:'650%', marginTop:'20px'}}/>
                 </div>
                 }
               </tbody>

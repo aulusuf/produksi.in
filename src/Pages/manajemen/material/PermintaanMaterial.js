@@ -48,6 +48,7 @@ const PermintaanMaterial = () => {
               <thead style={{ textAlign: "center" }}>
                 <tr>
                   <th width="50">#</th>
+                  <th width="100">ID</th>
                   <th width="150">Produk</th>
                   <th width="150">Material</th>
                   <th width="80">Jumlah</th>
@@ -61,6 +62,7 @@ const PermintaanMaterial = () => {
                     return (
                       <tr key={reqMat.id} data={reqMat}>
                         <td style={{ textAlign: "center" }}>{index + 1}</td>
+                        <td style={{ textAlign: "center" }}>1221{reqMat.id}</td>
                         <td>{reqMat.products.name}</td>
                         <td>{reqMat.materials.name}</td>
                         <td style={{ textAlign: "center" }}>{reqMat.amount}</td>
@@ -103,7 +105,7 @@ const PermintaanMaterial = () => {
                     <Bars
                       width="50"
                       color="#2f89e4"
-                      style={{ marginLeft: "470%", marginTop: "20px" }}
+                      style={{ marginLeft: "570%", marginTop: "20px" }}
                     />
                   </div>
                 )}

@@ -231,6 +231,7 @@ const StokMaterial = () => {
               <thead>
                 <tr style={{ textAlign: "center" }}>
                   <th width="50">#</th>
+                  <th width="100">ID</th>
                   <th width="250">Material</th>
                   <th width="180">Tipe</th>
                   <th width="80">Stok</th>
@@ -244,6 +245,7 @@ const StokMaterial = () => {
                     return (
                       <tr key={material.id}>
                         <td style={{ textAlign: "center" }}>{index + 1}</td>
+                        <td style={{ textAlign: "center" }}>0221{material.id}</td>
                         <td>{material.name}</td>
                         <td>{material.types.name}</td>
                         <td style={{ textAlign: "right" }}>
@@ -274,7 +276,7 @@ const StokMaterial = () => {
                     <Bars
                       width="50"
                       color="#2f89e4"
-                      style={{ marginLeft: "635%", marginTop: "20px" }}
+                      style={{ marginLeft: "750%", marginTop: "20px" }}
                     />
                   </div>
                 )}
@@ -310,6 +312,7 @@ const StokMaterial = () => {
               <thead>
                 <tr style={{ textAlign: "center" }}>
                   <th width="50">#</th>
+                  <th width="100">ID</th>
                   <th width="250">Produk</th>
                   <th width="180">Kategori</th>
                   <th width="80">Stok</th>
@@ -323,6 +326,7 @@ const StokMaterial = () => {
                     return (
                       <tr key={product.id}>
                         <td style={{ textAlign: "center" }}>{index + 1}</td>
+                        <td style={{ textAlign: "center" }}>0121{product.id}</td>
                         <td>{product.name}</td>
                         <td>{product.categories.name}</td>
                         <td style={{ textAlign: "right" }}>{product.stock}</td>
@@ -351,7 +355,7 @@ const StokMaterial = () => {
                     <Bars
                       width="50"
                       color="#2f89e4"
-                      style={{ marginLeft: "635%", marginTop: "20px" }}
+                      style={{ marginLeft: "750%", marginTop: "20px" }}
                     />
                   </div>
                 )}
