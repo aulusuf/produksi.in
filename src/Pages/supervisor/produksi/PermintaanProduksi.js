@@ -14,9 +14,11 @@ const BuatPermintaan = () => {
   const [assignmentPending, setAssignmentPending] = useState([]);
   const [assignmentOngoing, setAssignmentOngoing] = useState([]);
   const [assignmentId, setAssignmentId] = useState([]);
+  const [dataMaterial, setDataMaterial] = useState([]);
 
   const terimaPermintaan = (props) => {
     setAssignmentId(props.id);
+<<<<<<< Updated upstream:src/Pages/supervisor/produksi/PermintaanProduksi.js
     let productionAmount = props.amount;
     axios.put("/api/product_assignment/" + props.id, { statusId: 2 });
     axios
@@ -37,6 +39,24 @@ const BuatPermintaan = () => {
               });
             });
         }
+=======
+    // axios
+    //   .put("/api/product_assignment/" + props.id, { statusId: 2 })
+    //   .then((res) => {
+    //     console.log(res.data);
+    //   });
+    axios
+      .get("/api/product_material/product/" + props.productId)
+      .then((res) => {
+        // setDataMaterial(res.data);
+        let panjangData = res.data;
+        for (let i = 0; i < panjangData.length; i++) {
+          console.log(panjangData[i]);
+        }
+        // axios.get("/api/material/" + res.data.materialId).then((res) => {
+        //   console.log(res.data);
+        // });
+>>>>>>> Stashed changes:src/pages/supervisor/produksi/PermintaanProduksi.js
       });
   };
 
