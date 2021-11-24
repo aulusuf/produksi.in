@@ -148,6 +148,7 @@ const BuatPermintaan = () => {
                 <tr>
                   <th width="50">#</th>
                   <th width="300">Produk</th>
+                  <th width="100">ID</th>
                   <th width="120">Jumlah</th>
                   <th width="100">Action</th>
                 </tr>
@@ -163,6 +164,7 @@ const BuatPermintaan = () => {
                             ? pendingData.products.name
                             : null}
                         </td>
+                        <td>{pendingData.id}</td>
                         <td>{pendingData.amount}</td>
                         <td>
                           <div className="d-flex justify-content-center">
@@ -201,6 +203,7 @@ const BuatPermintaan = () => {
                 <tr>
                   <th width="50">#</th>
                   <th width="300">Produk</th>
+                  <th width="100">ID</th>
                   <th width="120">Jumlah</th>
                   <th width="100">Action</th>
                 </tr>
@@ -216,6 +219,7 @@ const BuatPermintaan = () => {
                             ? ongoingData.products.name
                             : null}
                         </td>
+                        <td>{ongoingData.id}</td>
                         <td>{ongoingData.amount}</td>
                         <td>
                           <div className="d-flex justify-content-center">
@@ -255,6 +259,7 @@ const BuatPermintaan = () => {
                 <tr>
                   <th width="50">#</th>
                   <th width="250">Produk</th>
+                  <th width="100">ID</th>
                   <th width="120">Jumlah</th>
                   <th width="120">Status</th>
                 </tr>
@@ -268,11 +273,18 @@ const BuatPermintaan = () => {
                         <td style={{ textAlign: "start" }}>
                           {assignmentDone.products.name}
                         </td>
+                        <td>{assignmentDone.id}</td>
                         <td>{assignmentDone.amount}</td>
-                        <td style={{ fontStyle: "italic", color: "#2479F9" }}>
-                          {assignmentDone.statusId
-                            ? assignmentDone.status.name
-                            : null}
+                        <td>
+                          {assignmentDone.statusId === 1 ? (
+                            <text style={{fontStyle:'italic', color:'#e72300'}}>{assignmentDone.status.name}</text>
+                          ) : assignmentDone.statusId === 2 ? (
+                            <text style={{fontStyle:'italic', color:'#f99d24'}}>{assignmentDone.status.name}</text>
+                          ) : assignmentDone.statusId === 3 ? (
+                            <text style={{fontStyle:'italic', color:'#2479F9'}}>{assignmentDone.status.name}</text>
+                          ) : assignmentDone.statusId === 4 ? (
+                            <text style={{fontStyle:'italic', color:'#00b62d'}}>{assignmentDone.status.name}</text>
+                          ) : null}
                         </td>
                       </tr>
                     );

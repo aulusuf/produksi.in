@@ -21,14 +21,15 @@ export default function CategoryTable(props) {
       <thead>
         <tr style={{textAlign:'center'}}>
           <th width="50">#</th>
+          <th width="100">ID</th>
           <th width="450">Kategori</th>
           <th width="150">Action</th>
         </tr>
       </thead>
       <tbody>
-        {loading ? categoryData.map((category) => {
+        {loading ? categoryData.map((category, index) => {
           return (
-            <CategoryTableData key={category.id} data={category}>
+            <CategoryTableData key={category.id} data={category} i={index}>
               <div className="d-flex justify-content-center">
                 <Button
                   as="input"
@@ -49,7 +50,7 @@ export default function CategoryTable(props) {
           );
         }):
         <div>
-          <Bars width="50" color="#2f89e4" style={{marginLeft:'600%', marginTop:'20px'}}/>
+          <Bars width="50" color="#2f89e4" style={{marginLeft:'700%', marginTop:'20px'}}/>
         </div>}
       </tbody>
     </Table>

@@ -497,6 +497,7 @@ const DataPegawai = () => {
               <thead>
                 <tr style={{ textAlign: "center" }}>
                   <th width="50">#</th>
+                  <th width="100">ID</th>
                   <th width="220">Nama</th>
                   <th width="200">Email</th>
                   <th width="120">Role</th>
@@ -550,6 +551,7 @@ const DataPegawai = () => {
                     return (
                       <tr key={user.id} data={user}>
                         <td style={{ textAlign: "center" }}>{index + 1}</td>
+                        <td style={{ textAlign: "center" }}>0521{user.id}</td>
                         <td>{user.name}</td>
                         <td>{user.email}</td>
                         <td>{user.roles.name}</td>
@@ -574,7 +576,7 @@ const DataPegawai = () => {
                     <Bars
                       width="50"
                       color="#2f89e4"
-                      style={{ marginLeft: "750%", marginTop: "20px" }}
+                      style={{ marginLeft: "780%", marginTop: "20px" }}
                     />
                   </div>
                 )}
