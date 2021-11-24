@@ -196,39 +196,21 @@ const BuatPermintaan = () => {
                       {material.material ? material.material.stock : null}
                     </td>
                     <td style={{ textAlign: "center" }}>
-                      {countAmount(material)}
+                      {countAmount(material) === isNaN
+                        ? "0"
+                        : countAmount(material)}
                     </td>
                     <td style={{ textAlign: "center" }}>
                       {(material.material ? material.material.stock : null) -
-                        countAmount(material)}
+                        countAmount(material) ===
+                      isNaN
+                        ? "0"
+                        : (material.material ? material.material.stock : null) -
+                          countAmount(material)}
                     </td>
                   </tr>
                 );
               })}
-              {/* <tr>
-                <td style={{ textAlign: "center" }}>1</td>
-                <td>Resleting</td>
-                <td style={{ textAlign: "center" }}>2000</td>
-                <td style={{ textAlign: "center" }}>3</td>
-              </tr>
-              <tr>
-                <td style={{ textAlign: "center" }}>2</td>
-                <td>Denim</td>
-                <td style={{ textAlign: "center" }}>1000</td>
-                <td style={{ textAlign: "center" }}>10</td>
-              </tr>
-              <tr>
-                <td style={{ textAlign: "center" }}>3</td>
-                <td>Lem</td>
-                <td style={{ textAlign: "center" }}>30</td>
-                <td style={{ textAlign: "center" }}>32</td>
-              </tr>
-              <tr>
-                <td style={{ textAlign: "center" }}>4</td>
-                <td>Pengait</td>
-                <td style={{ textAlign: "center" }}>200</td>
-                <td style={{ textAlign: "center" }}>249</td>
-              </tr> */}
             </tbody>
           </Table>
         </Container>
