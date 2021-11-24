@@ -16,12 +16,26 @@ const BuatPermintaan = () => {
   const [assignmentId, setAssignmentId] = useState([]);
 
   const terimaPermintaan = (props) => {
-    console.log(props);
     setAssignmentId(props.id);
+    let productionAmount = props.amount;
+    axios.put("/api/product_assignment/" + props.id, { statusId: 2 });
     axios
-      .put("/api/product_assignment/" + props.id, { statusId: 2 })
+      .get("/api/product_material/product/" + props.productId)
       .then((res) => {
-        console.log(res.data);
+        let materialList = res.data;
+        for (let i = 0; i < materialList.length; i++) {
+          let decreasingStock = 0;
+          let stockRemaining = 0;
+          decreasingStock = materialList[i].amount * productionAmount;
+          axios
+            .get("/api/material/" + materialList[i].materialId)
+            .then((res) => {
+              stockRemaining = res.data.stock - decreasingStock;
+              axios.put("/api/material/" + materialList[i].materialId, {
+                stock: stockRemaining,
+              });
+            });
+        }
       });
   };
 
@@ -58,7 +72,7 @@ const BuatPermintaan = () => {
       setAssignmentData(res.data);
       setLoading(true);
     });
-  });
+  }, []);
 
   return (
     <div className="marginBody">
