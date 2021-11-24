@@ -286,14 +286,12 @@ const SelesaiProduksi = () => {
                         <td>{assignmentDone.amount}</td>
                         <td>
                           {assignmentDone.statusId === 1 ? (
-                            <text style={{fontStyle:'italic', color:'#f99d24'}}>{assignmentDone.status.name}</text>
+                            <text style={{fontStyle:'italic', color:'#e72300'}}>{assignmentDone.status.name}</text>
                           ) : assignmentDone.statusId === 2 ? (
-                            <text style={{fontStyle:'italic', color:'#00b62d'}}>{assignmentDone.status.name}</text>
+                            <text style={{fontStyle:'italic', color:'#f99d24'}}>{assignmentDone.status.name}</text>
                           ) : assignmentDone.statusId === 3 ? (
                             <text style={{fontStyle:'italic', color:'#2479F9'}}>{assignmentDone.status.name}</text>
                           ) : assignmentDone.statusId === 4 ? (
-                            <text style={{fontStyle:'italic', color:'#2479F9'}}>{assignmentDone.status.name}</text>
-                          ) : assignmentDone.statusId === 5 ? (
                             <text style={{fontStyle:'italic', color:'#00b62d'}}>{assignmentDone.status.name}</text>
                           ) : null}
                         </td>
