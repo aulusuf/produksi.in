@@ -31,6 +31,7 @@ const BuatPermintaan = () => {
             .get("/api/material/" + materialList[i].materialId)
             .then((res) => {
               stockRemaining = res.data.stock - decreasingStock;
+              console.log(stockRemaining);
               axios.put("/api/material/" + materialList[i].materialId, {
                 stock: stockRemaining,
               });
