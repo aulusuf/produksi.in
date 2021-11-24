@@ -345,34 +345,36 @@ const PermintaanMaterial = () => {
               <tbody>
                 {loading ? (
                   requestList.map((request, index) => {
-                    return (
-                      <tr key={request.id} data={request}>
-                        <td style={{ textAlign: "center" }}>{index + 1}</td>
-                        <td>{request.products.name}</td>
-                        <td>{request.materials.name}</td>
-                        <td style={{ textAlign: "center" }}>
-                          {request.amount}
-                        </td>
-                        <td>
-                          <div className="d-flex justify-content-center">
-                            <Button
-                              as="input"
-                              type="submit"
-                              value="Ubah"
-                              className="button-edit-produk"
-                              onClick={() => handleUbah(request)}
-                            />
-                            <Button
-                              as="input"
-                              type="submit"
-                              value="Batal"
-                              className="button-cencel-prosuksi"
-                              onClick={() => handleDelete(request)}
-                            />
-                          </div>
-                        </td>
-                      </tr>
-                    );
+                    if (request.statusId === 1) {
+                      return (
+                        <tr key={request.id} data={request}>
+                          <td style={{ textAlign: "center" }}>{index + 1}</td>
+                          <td>{request.products.name}</td>
+                          <td>{request.materials.name}</td>
+                          <td style={{ textAlign: "center" }}>
+                            {request.amount}
+                          </td>
+                          <td>
+                            <div className="d-flex justify-content-center">
+                              <Button
+                                as="input"
+                                type="submit"
+                                value="Ubah"
+                                className="button-edit-produk"
+                                onClick={() => handleUbah(request)}
+                              />
+                              <Button
+                                as="input"
+                                type="submit"
+                                value="Batal"
+                                className="button-cencel-prosuksi"
+                                onClick={() => handleDelete(request)}
+                              />
+                            </div>
+                          </td>
+                        </tr>
+                      );
+                    }
                   })
                 ) : (
                   <div>
