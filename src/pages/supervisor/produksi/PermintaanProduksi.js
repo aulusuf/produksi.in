@@ -18,11 +18,11 @@ const BuatPermintaan = () => {
   const terimaPermintaan = (props) => {
     console.log(props);
     setAssignmentId(props.id);
-    axios
-      .put("/api/product_assignment/" + props.id, { statusId: 2 })
-      .then((res) => {
-        console.log(res.data);
-      });
+    // axios
+    //   .put("/api/product_assignment/" + props.id, { statusId: 2 })
+    //   .then((res) => {
+    //     console.log(res.data);
+    //   });
   };
 
   const modalSelesaikan = (props) => {
@@ -118,38 +118,40 @@ const BuatPermintaan = () => {
                 </tr>
               </thead>
               <tbody>
-                {loading ? ( assignmentPending.map((pendingData, index) => {
-                  return (
-                    <tr key={pendingData.id} data={pendingData}>
-                      <td>{index + 1}</td>
-                      <td>
-                        {pendingData.productId
-                          ? pendingData.products.name
-                          : null}
-                      </td>
-                      <td>{pendingData.amount}</td>
-                      <td>
-                        <div className="d-flex justify-content-center">
-                          <Button
-                            as="input"
-                            type="submit"
-                            value="Terima"
-                            className="button-submit-prosuksi"
-                            onClick={() => terimaPermintaan(pendingData)}
-                          />
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })):
-                <div>
-                  <Bars
-                    width="50"
-                    color="#2f89e4"
-                    style={{ marginLeft: "535%", marginTop: "20px" }}
-                  />
-                </div>
-                }
+                {loading ? (
+                  assignmentPending.map((pendingData, index) => {
+                    return (
+                      <tr key={pendingData.id} data={pendingData}>
+                        <td>{index + 1}</td>
+                        <td>
+                          {pendingData.productId
+                            ? pendingData.products.name
+                            : null}
+                        </td>
+                        <td>{pendingData.amount}</td>
+                        <td>
+                          <div className="d-flex justify-content-center">
+                            <Button
+                              as="input"
+                              type="submit"
+                              value="Terima"
+                              className="button-submit-prosuksi"
+                              onClick={() => terimaPermintaan(pendingData)}
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <div>
+                    <Bars
+                      width="50"
+                      color="#2f89e4"
+                      style={{ marginLeft: "535%", marginTop: "20px" }}
+                    />
+                  </div>
+                )}
               </tbody>
             </Table>
           </div>
@@ -169,38 +171,40 @@ const BuatPermintaan = () => {
                 </tr>
               </thead>
               <tbody>
-                {loading ? ( assignmentOngoing.map((ongoingData, index) => {
-                  return (
-                    <tr key={ongoingData.id} data={ongoingData}>
-                      <td>{index + 1}</td>
-                      <td>
-                        {ongoingData.productId
-                          ? ongoingData.products.name
-                          : null}
-                      </td>
-                      <td>{ongoingData.amount}</td>
-                      <td>
-                        <div className="d-flex justify-content-center">
-                          <Button
-                            as="input"
-                            type="submit"
-                            value="Selesaikan"
-                            variant="success"
-                            onClick={() => modalSelesaikan(ongoingData)}
-                          />
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })):
-                <div>
-                  <Bars
-                    width="50"
-                    color="#2f89e4"
-                    style={{ marginLeft: "535%", marginTop: "20px" }}
-                  />
-                </div>
-                }
+                {loading ? (
+                  assignmentOngoing.map((ongoingData, index) => {
+                    return (
+                      <tr key={ongoingData.id} data={ongoingData}>
+                        <td>{index + 1}</td>
+                        <td>
+                          {ongoingData.productId
+                            ? ongoingData.products.name
+                            : null}
+                        </td>
+                        <td>{ongoingData.amount}</td>
+                        <td>
+                          <div className="d-flex justify-content-center">
+                            <Button
+                              as="input"
+                              type="submit"
+                              value="Selesaikan"
+                              variant="success"
+                              onClick={() => modalSelesaikan(ongoingData)}
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <div>
+                    <Bars
+                      width="50"
+                      color="#2f89e4"
+                      style={{ marginLeft: "535%", marginTop: "20px" }}
+                    />
+                  </div>
+                )}
               </tbody>
             </Table>
           </div>
@@ -211,7 +215,7 @@ const BuatPermintaan = () => {
         <Container style={{ paddingTop: "20px", paddingBottom: "20px" }}>
           <h3>Riwayat</h3>
           <div style={{ marginTop: "5%" }}>
-          <Table striped bordered hover style={{ textAlign: "center" }}>
+            <Table striped bordered hover style={{ textAlign: "center" }}>
               <thead>
                 <tr>
                   <th width="50">#</th>
@@ -221,7 +225,8 @@ const BuatPermintaan = () => {
                 </tr>
               </thead>
               <tbody>
-                {loading ? assignmentData.map((assignmentDone, index) => {
+                {loading ? (
+                  assignmentData.map((assignmentDone, index) => {
                     return (
                       <tr key={assignmentDone.id}>
                         <td>{index + 1}</td>
@@ -229,14 +234,15 @@ const BuatPermintaan = () => {
                           {assignmentDone.products.name}
                         </td>
                         <td>{assignmentDone.amount}</td>
-                        <td style={{fontStyle:'italic', color:'#2479F9'}}>
+                        <td style={{ fontStyle: "italic", color: "#2479F9" }}>
                           {assignmentDone.statusId
                             ? assignmentDone.status.name
                             : null}
                         </td>
                       </tr>
                     );
-                  }):
+                  })
+                ) : (
                   <div>
                     <Bars
                       width="50"
@@ -244,7 +250,7 @@ const BuatPermintaan = () => {
                       style={{ marginLeft: "510%", marginTop: "20px" }}
                     />
                   </div>
-                }
+                )}
               </tbody>
             </Table>
           </div>
