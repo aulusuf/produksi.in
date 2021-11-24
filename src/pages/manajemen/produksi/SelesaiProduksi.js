@@ -15,7 +15,7 @@ const SelesaiProduksi = () => {
   const [LgShowUpdate, setLgShowUpdate] = useState(false);
   const [LgShowDell, setLgShowDell] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [assignmentPending, setAssignmentPending] = useState(null);
+  const [assignmentPending, setAssignmentPending] = useState([]);
   const [assignmentData, setAssignmentData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [assignmentId, setAssignmentId] = useState();

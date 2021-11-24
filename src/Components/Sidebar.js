@@ -63,7 +63,8 @@ const Sidebar = () => {
   //   }
   // `;
   const onClickMenuIcon = () => {
-    setCollapsed(!collapsed);
+    // setCollapsed(!collapsed);
+    collapsed ? setCollapsed(false) : setCollapsed(true);
   };
 
   const handleLogout = () => {
@@ -107,9 +108,16 @@ const Sidebar = () => {
               marginBottom: "10px",
             }}
           >
+            <div>
+              {collapsed ? '' : 
             <button className="btn btn-danger" onClick={handleLogout}>
               Logout
             </button>
+            }
+            </div>
+            {/* <button className="btn btn-danger" onClick={handleLogout}>
+              Logout
+            </button> */}
           </div>
         </SidebarHeader>
         {sidebarContentByRole()}
