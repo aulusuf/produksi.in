@@ -91,7 +91,7 @@ const PermintaanMaterial = () => {
   };
 
   useEffect(() => {
-    axios.get("/api/material_request/status/1").then((res) => {
+    axios.get("/api/material_requests").then((res) => {
       setRequestList(res.data);
       setLoading(true);
     });
@@ -416,13 +416,25 @@ const PermintaanMaterial = () => {
                           {request.amount}
                         </td>
                         <td className="text-center">
-                          {request.statusId === 1
-                            ? <text style={{fontStyle:'italic', color:'#f99d24'}}>Pending</text>
-                            : request.statusId === 2
-                            ? <text style={{fontStyle:'italic', color:'#2479F9'}}>Sedang dikirim</text>
-                            : request.statusId === 3
-                            ? <text style={{fontStyle:'italic', color:'#00b62d'}}>Selesai</text>
-                            : null}
+                          {request.statusId === 1 ? (
+                            <text
+                              style={{ fontStyle: "italic", color: "#f99d24" }}
+                            >
+                              Pending
+                            </text>
+                          ) : request.statusId === 2 ? (
+                            <text
+                              style={{ fontStyle: "italic", color: "#2479F9" }}
+                            >
+                              Sedang dikirim
+                            </text>
+                          ) : request.statusId === 3 ? (
+                            <text
+                              style={{ fontStyle: "italic", color: "#00b62d" }}
+                            >
+                              Selesai
+                            </text>
+                          ) : null}
                         </td>
                       </tr>
                     );
