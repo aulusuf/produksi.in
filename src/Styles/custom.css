@@ -1,0 +1,42 @@
+body {
+  background-color: rgba(239, 246, 255) !important;
+}
+
+.bg-login {
+  --tw-bg-opacity: 1;
+  background-color: rgba(239, 246, 255, var(--tw-bg-opacity));
+}
+.box {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.content {
+  margin-top: 60px;
+}
+
+.content-box {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px 30px;
+  height: 350px;
+}
+
+.content-button {
+  border-radius: 10px;
+  padding: 20px 30px;
+  height: 50%;
+  background-color: white;
+}
+
+.content-head {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.photo-sm {
+  height: 120px;
+  width: auto;
+}

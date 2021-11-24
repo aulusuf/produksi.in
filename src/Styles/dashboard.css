@@ -1,0 +1,60 @@
+.button-dashboard {
+    margin-bottom: 30px;
+    padding-top: 43px;
+    padding-bottom: 40px;
+    border-radius: 10px;
+    background-color: #006EBD;
+    cursor: pointer;
+    color: white;
+}
+.button-dashboard:hover {
+    background-color: #0462a5;
+}
+
+.button-dashboard-produksi {
+    margin-bottom: 30px;
+    padding-top: 28px;
+    padding-bottom: 25px;
+    border-radius: 10px;
+    background-color: #006EBD;
+    cursor: pointer;
+    color: white;
+}
+.button-dashboard-produksi:hover {
+    background-color: #0462a5;
+}
+
+.modal-body {
+    background-color: rgba(239, 246, 255);
+    border-radius: 10px;
+}
+
+.image-dashboard {
+    width: 150px;
+    height: 150px;
+}
+
+.image-profil {
+    height: 80px;
+    width: 80px;
+}
+
+.padding-profil {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.text-profil {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.padding-statistik {
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.image-data {
+    width: 150px;
+    height: 150px;
+}
