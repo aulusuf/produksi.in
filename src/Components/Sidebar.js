@@ -109,11 +109,11 @@ const Sidebar = () => {
             }}
           >
             <div>
-              {collapsed ? '' : 
-            <button className="btn btn-danger" onClick={handleLogout}>
-              Logout
-            </button>
-            }
+              {collapsed ? "" : 
+                <button className="btn btn-danger" onClick={handleLogout}>
+                  Logout
+                </button>
+              }
             </div>
             {/* <button className="btn btn-danger" onClick={handleLogout}>
               Logout
