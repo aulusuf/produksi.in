@@ -18,11 +18,11 @@ const BuatPermintaan = () => {
   const terimaPermintaan = (props) => {
     console.log(props);
     setAssignmentId(props.id);
-    // axios
-    //   .put("/api/product_assignment/" + props.id, { statusId: 2 })
-    //   .then((res) => {
-    //     console.log(res.data);
-    //   });
+    axios
+      .put("/api/product_assignment/" + props.id, { statusId: 2 })
+      .then((res) => {
+        console.log(res.data);
+      });
   };
 
   const modalSelesaikan = (props) => {
