@@ -1,5 +1,5 @@
 import { Container, Button, Table } from "react-bootstrap";
-import MaterialRequestTable from "../../../Data/MaterialRequestTable";
+// import MaterialRequestTable from "../../../Data/MaterialRequestTable";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Bars } from "@agney/react-loading";
@@ -7,8 +7,22 @@ import { Bars } from "@agney/react-loading";
 const PermintaanMaterial = () => {
   const [matReqData, setMatReqData] = useState([]);
   const [loading, setLoading] = useState(false);
+  // const [amount, setAmount] = useState([]);
+  // const [stock, setStock] = useState([]);
 
   const handleKirim = (props) => {
+    axios.get("/api/material/" + props.materialId).then((res) => {
+      let pengurangan = res.data.stock - props.amount;
+      axios
+        .put("/api/material/" + props.materialId, { stock: pengurangan })
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    });
+
     axios
       .put("/api/material_request/" + props.id, { statusId: 2 })
       .then((res) => {
@@ -64,7 +78,10 @@ const PermintaanMaterial = () => {
                               />
                             </div>
                           ) : reqMat.statusId === 2 ? (
-                            <div className="d-flex justify-content-center" style={{fontStyle:'italic', color:'#2479F9'}}>
+                            <div
+                              className="d-flex justify-content-center"
+                              style={{ fontStyle: "italic", color: "#2479F9" }}
+                            >
                               <text>Telah Dikirim</text>
                             </div>
                           ) : (

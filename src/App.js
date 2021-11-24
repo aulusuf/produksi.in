@@ -21,7 +21,7 @@ import DataPegawai from "./Pages/manajemen/pegawai/DataPegawai";
 import Tipe from "./Pages/manajemen/material/Tipe";
 
 import DashboardSupervisor from "./Pages/supervisor/Dashboard";
-import PermintaanProduksi from "./Pages/supervisor/produksi/PermintaanProduksi";
+// import PermintaanProduksi from "./Pages/supervisor/produksi/PermintaanProduksi";
 import Material from "./Pages/supervisor/material/PermintaanMaterial";
 import Stok from "./Pages/supervisor/material/StokMaterial";
 
@@ -141,7 +141,7 @@ function App() {
               <Route exact path="/supervisor/produksi">
                 <div className="parent">
                   <Header />
-                  <PermintaanProduksi />
+                  <PermintaanMaterialP />
                 </div>
               </Route>
               <Route path="/supervisor/produksi/produk">

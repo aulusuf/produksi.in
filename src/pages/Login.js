@@ -81,9 +81,9 @@ const Login = () => {
                           <button className="btn btn-primary">Masuk</button>
                         </div>
                         <div className="mt-3">
-                          <Link to="/">
+                          {/* <Link to="/">
                             Lupa password?
-                          </Link>
+                          </Link> */}
                         </div>
                       </div>
                     </form>
