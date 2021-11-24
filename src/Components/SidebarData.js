@@ -3,19 +3,20 @@ import * as AiIcons from "react-icons/ai";
 import * as GiIcons from "react-icons/gi";
 import * as MdIcons from "react-icons/md";
 import * as BiIcons from "react-icons/bi";
+import * as BsIcons from "react-icons/bs";
 import styled from "styled-components";
 import { Menu, MenuItem, SidebarContent, SubMenu } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
 
 export const SidebarDataManajemen = [
   {
-    MenuitemIcon: <AiIcons.AiOutlineDashboard />,
+    MenuitemIcon: <AiIcons.AiOutlineDashboard size="18px"/>,
     label: "Dashboard",
     path: "/manajemen",
   },
   {
     title: "Produksi",
-    SubmenuIcon: <GiIcons.GiGearHammer />,
+    SubmenuIcon: <GiIcons.GiGearHammer  size="18px"/>,
     subNav: [
       {
         MenuitemIcon: <GiIcons.GiGearHammer />,
@@ -31,7 +32,7 @@ export const SidebarDataManajemen = [
   },
   {
     title: "Produk",
-    SubmenuIcon: <MdIcons.MdProductionQuantityLimits />,
+    SubmenuIcon: <MdIcons.MdProductionQuantityLimits size="18px" />,
     subNav: [
       {
         MenuitemIcon: <MdIcons.MdProductionQuantityLimits />,
@@ -52,7 +53,7 @@ export const SidebarDataManajemen = [
   },
   {
     title: "Material",
-    SubmenuIcon: <GiIcons.GiMaterialsScience />,
+    SubmenuIcon: <GiIcons.GiMaterialsScience size="18px" />,
     subNav: [
       {
         MenuitemIcon: <GiIcons.GiMaterialsScience />,
@@ -72,12 +73,12 @@ export const SidebarDataManajemen = [
     ],
   },
   {
-    MenuitemIcon: <GiIcons.GiMaterialsScience />,
+    MenuitemIcon: <BsIcons.BsInboxes />,
     label: "Stok",
     path: "/manajemen/material/stok",
   },
   {
-    MenuitemIcon: <BiIcons.BiGroup />,
+    MenuitemIcon: <BiIcons.BiGroup size="18px" />,
     label: "Pegawai",
     path: "/manajemen/pegawai",
   },
