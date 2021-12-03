@@ -39,9 +39,9 @@ username: hadi
 password: (1 till 8)
 
 Deployment:
-Vercel
+- Vercel
 [https://produksi-in.vercel.app/]
-Server
+- Server
 https://github.com/aulusuf/produksi.in-serverside
 
 Role based login:
