@@ -41,6 +41,8 @@ password: (1 till 8)
 Deployment:
 Vercel
 [https://produksi-in.vercel.app/]
+Server
+https://github.com/aulusuf/produksi.in-serverside
 
 Role based login:
 - Manajemen
