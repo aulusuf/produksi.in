@@ -1,18 +1,42 @@
-# Getting Started with Create React App
+# Produksi.in
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created to establish, track the flow of material used in production and reduce the wasted material.
 
-## Available Scripts
+In the project directory, you can run as:
 
-In the project directory, you can run:
+### `Manajemen`
 
-### `npm start`
+Manajemen is the top-notch in this system. Manajemen can:
+- Manage the Users
+- Manage the Products
+- Manage the Materials
+- Creating Production Request
+- Accept Material Request from Supervisor and Tim Produksi.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Authentication for Manajemen:
+username: farhan
+password: (1 till 8)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### `Supervisor`
+
+Supervisor is the secondth role in this system. Supervisor can:
+- View the Users
+- Accept and Finish the Production Requests
+- Creating Material Requests
+
+Authentication for Supervisor:
+username: yusuf
+password: (1 till 8)
+
+### `Tim Produksi`
+
+Tim Produksi is the last role in this system. Tim Produksi can:
+- Creating Material Requests
+- Finish the Production Requests and submit it to Supervisor
+
+Authentication for Tim Produksi:
+username: hadi
+password: (1 till 8)
 
 Deployment:
 Vercel
