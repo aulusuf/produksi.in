@@ -1,5 +1,11 @@
 # Produksi.in
 
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
+<br/>
+[![Vercel](https://img.shields.io/badge/Deployment-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://produksi-in.vercel.app/)
+[![Server](https://img.shields.io/badge/Server%20-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/aulusuf/produksi.in-serverside)
+
 This project was created to establish, track the flow of material used in production and reduce the wasted material.
 
 In the project directory, you can run as:
@@ -37,12 +43,6 @@ Tim Produksi is the last role in this system. Tim Produksi can:
 Authentication for Tim Produksi:
 username: hadi
 password: (1 till 8)
-
-Deployment:
-- Vercel
-[https://produksi-in.vercel.app/]
-- Server
-https://github.com/aulusuf/produksi.in-serverside
 
 Role based login:
 - Manajemen
